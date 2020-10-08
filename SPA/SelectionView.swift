@@ -64,20 +64,19 @@ struct ProjectView: View {
     ]
     
     var body: some View {
-        NavigationView {
-            List(projectlist, id: \.projectname){ project in
-                VStack{
-                    Button(project.projectname){
-                        setup.pname=project.projectname
-                        self.projectSelected = false
-                    }
-                    NavigationLink(destination: tempNextScreen(), isActive:self.$projectSelected){
-                        EmptyView()
-                    }
+        VStack{
+            ForEach(projectlist, id: \.projectname){project in
+                NavigationLink(destination: tempNextScreen(), isActive:self.$projectSelected){
+                    EmptyView()
                 }
-            }.navigationBarTitle(Text("Project List"))
-        }
+                Button(project.projectname){
+                    setup.pname=project.projectname
+                    self.projectSelected = true
+                }
+            }
+        }.navigationBarTitle(Text("Project List"))
     }
+    
 }
 
 struct UserView_Previews: PreviewProvider {
