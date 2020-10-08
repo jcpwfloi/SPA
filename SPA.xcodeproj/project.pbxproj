@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7C16E06E252EB22D00ED73C7 /* UserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C16E06D252EB22D00ED73C7 /* UserListView.swift */; };
+		7C16E06E252EB22D00ED73C7 /* SelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C16E06D252EB22D00ED73C7 /* SelectionView.swift */; };
 		FB8A7BE5251D6672004831BD /* SPAApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8A7BE4251D6672004831BD /* SPAApp.swift */; };
 		FB8A7BE7251D6672004831BD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8A7BE6251D6672004831BD /* ContentView.swift */; };
 		FB8A7BE9251D6674004831BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB8A7BE8251D6674004831BD /* Assets.xcassets */; };
@@ -37,7 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7C16E06D252EB22D00ED73C7 /* UserListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListView.swift; sourceTree = "<group>"; };
+		7C16E06D252EB22D00ED73C7 /* SelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionView.swift; sourceTree = "<group>"; };
 		FB8A7BE1251D6672004831BD /* SPA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SPA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB8A7BE4251D6672004831BD /* SPAApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPAApp.swift; sourceTree = "<group>"; };
 		FB8A7BE6251D6672004831BD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -111,7 +111,7 @@
 				FB8A7BEF251D6674004831BD /* SPA.xcdatamodeld */,
 				FB8A7BEA251D6674004831BD /* Preview Content */,
 				FBE437F1252EA9F900DC41AB /* LoginView.swift */,
-				7C16E06D252EB22D00ED73C7 /* UserListView.swift */,
+				7C16E06D252EB22D00ED73C7 /* SelectionView.swift */,
 			);
 			path = SPA;
 			sourceTree = "<group>";
@@ -272,7 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB8A7BF1251D6674004831BD /* SPA.xcdatamodeld in Sources */,
-				7C16E06E252EB22D00ED73C7 /* UserListView.swift in Sources */,
+				7C16E06E252EB22D00ED73C7 /* SelectionView.swift in Sources */,
 				FB8A7BEE251D6674004831BD /* Persistence.swift in Sources */,
 				FB8A7BE7251D6672004831BD /* ContentView.swift in Sources */,
 				FB8A7BE5251D6672004831BD /* SPAApp.swift in Sources */,
