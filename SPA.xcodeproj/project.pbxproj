@@ -7,10 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7C034750252E3EBB009CCD1D /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C03474F252E3EBB009CCD1D /* Storyboard.storyboard */; };
-		7C034755252E438E009CCD1D /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C034754252E438E009CCD1D /* TableViewCell.swift */; };
-		7C03475A252E873B009CCD1D /* Username.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C034759252E873B009CCD1D /* Username.swift */; };
-		7C034762252E87A2009CCD1D /* UserListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C034761252E87A2009CCD1D /* UserListScreen.swift */; };
+		7C16E06E252EB22D00ED73C7 /* UserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C16E06D252EB22D00ED73C7 /* UserListView.swift */; };
 		FB8A7BE5251D6672004831BD /* SPAApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8A7BE4251D6672004831BD /* SPAApp.swift */; };
 		FB8A7BE7251D6672004831BD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8A7BE6251D6672004831BD /* ContentView.swift */; };
 		FB8A7BE9251D6674004831BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB8A7BE8251D6674004831BD /* Assets.xcassets */; };
@@ -40,10 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7C03474F252E3EBB009CCD1D /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Storyboard.storyboard; path = Storyboard/Storyboard.storyboard; sourceTree = SOURCE_ROOT; };
-		7C034754252E438E009CCD1D /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
-		7C034759252E873B009CCD1D /* Username.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Username.swift; sourceTree = "<group>"; };
-		7C034761252E87A2009CCD1D /* UserListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListScreen.swift; sourceTree = "<group>"; };
+		7C16E06D252EB22D00ED73C7 /* UserListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListView.swift; sourceTree = "<group>"; };
 		FB8A7BE1251D6672004831BD /* SPA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SPA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB8A7BE4251D6672004831BD /* SPAApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPAApp.swift; sourceTree = "<group>"; };
 		FB8A7BE6251D6672004831BD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -116,11 +110,8 @@
 				FB8A7BF2251D6674004831BD /* Info.plist */,
 				FB8A7BEF251D6674004831BD /* SPA.xcdatamodeld */,
 				FB8A7BEA251D6674004831BD /* Preview Content */,
-				7C03474F252E3EBB009CCD1D /* Storyboard.storyboard */,
-				7C034759252E873B009CCD1D /* Username.swift */,
-				7C034761252E87A2009CCD1D /* UserListScreen.swift */,
-				7C034754252E438E009CCD1D /* TableViewCell.swift */,
 				FBE437F1252EA9F900DC41AB /* LoginView.swift */,
+				7C16E06D252EB22D00ED73C7 /* UserListView.swift */,
 			);
 			path = SPA;
 			sourceTree = "<group>";
@@ -256,7 +247,6 @@
 			files = (
 				FB8A7BEC251D6674004831BD /* Preview Assets.xcassets in Resources */,
 				FB8A7BE9251D6674004831BD /* Assets.xcassets in Resources */,
-				7C034750252E3EBB009CCD1D /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,14 +271,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C034755252E438E009CCD1D /* TableViewCell.swift in Sources */,
 				FB8A7BF1251D6674004831BD /* SPA.xcdatamodeld in Sources */,
+				7C16E06E252EB22D00ED73C7 /* UserListView.swift in Sources */,
 				FB8A7BEE251D6674004831BD /* Persistence.swift in Sources */,
-				7C03475A252E873B009CCD1D /* Username.swift in Sources */,
 				FB8A7BE7251D6672004831BD /* ContentView.swift in Sources */,
 				FB8A7BE5251D6672004831BD /* SPAApp.swift in Sources */,
 				FBE437F2252EA9F900DC41AB /* LoginView.swift in Sources */,
-				7C034762252E87A2009CCD1D /* UserListScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
