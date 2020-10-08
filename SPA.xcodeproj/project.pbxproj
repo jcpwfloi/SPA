@@ -19,6 +19,7 @@
 		FB8A7BF1251D6674004831BD /* SPA.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FB8A7BEF251D6674004831BD /* SPA.xcdatamodeld */; };
 		FB8A7BFC251D6674004831BD /* SPATests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8A7BFB251D6674004831BD /* SPATests.swift */; };
 		FB8A7C07251D6674004831BD /* SPAUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8A7C06251D6674004831BD /* SPAUITests.swift */; };
+		FBE437F2252EA9F900DC41AB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE437F1252EA9F900DC41AB /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		FB8A7C02251D6674004831BD /* SPAUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SPAUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB8A7C06251D6674004831BD /* SPAUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPAUITests.swift; sourceTree = "<group>"; };
 		FB8A7C08251D6674004831BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FBE437F1252EA9F900DC41AB /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 				7C034759252E873B009CCD1D /* Username.swift */,
 				7C034761252E87A2009CCD1D /* UserListScreen.swift */,
 				7C034754252E438E009CCD1D /* TableViewCell.swift */,
+				FBE437F1252EA9F900DC41AB /* LoginView.swift */,
 			);
 			path = SPA;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				7C03475A252E873B009CCD1D /* Username.swift in Sources */,
 				FB8A7BE7251D6672004831BD /* ContentView.swift in Sources */,
 				FB8A7BE5251D6672004831BD /* SPAApp.swift in Sources */,
+				FBE437F2252EA9F900DC41AB /* LoginView.swift in Sources */,
 				7C034762252E87A2009CCD1D /* UserListScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
