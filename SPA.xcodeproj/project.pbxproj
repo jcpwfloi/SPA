@@ -7,19 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7C034750252E3EBB009CCD1D /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C03474F252E3EBB009CCD1D /* Storyboard.storyboard */; };
-		7C034755252E438E009CCD1D /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C034754252E438E009CCD1D /* TableViewCell.swift */; };
-		7C03475A252E873B009CCD1D /* Username.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C034759252E873B009CCD1D /* Username.swift */; };
-		7C034762252E87A2009CCD1D /* UserListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C034761252E87A2009CCD1D /* UserListScreen.swift */; };
 		814CA038252EBFF500ABAA1B /* RawInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814CA037252EBFF500ABAA1B /* RawInputView.swift */; };
 		FB8A7BE5251D6672004831BD /* SPAApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8A7BE4251D6672004831BD /* SPAApp.swift */; };
 		FB8A7BE7251D6672004831BD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8A7BE6251D6672004831BD /* ContentView.swift */; };
 		FB8A7BE9251D6674004831BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB8A7BE8251D6674004831BD /* Assets.xcassets */; };
 		FB8A7BEC251D6674004831BD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB8A7BEB251D6674004831BD /* Preview Assets.xcassets */; };
 		FB8A7BEE251D6674004831BD /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8A7BED251D6674004831BD /* Persistence.swift */; };
-		FB8A7BF1251D6674004831BD /* SPA.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FB8A7BEF251D6674004831BD /* SPA.xcdatamodeld */; };
 		FB8A7BFC251D6674004831BD /* SPATests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8A7BFB251D6674004831BD /* SPATests.swift */; };
 		FB8A7C07251D6674004831BD /* SPAUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8A7C06251D6674004831BD /* SPAUITests.swift */; };
+		FBB0AAA62530CAA900D67EDE /* SelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB0AAA32530CAA900D67EDE /* SelectionView.swift */; };
+		FBB0AAA72530CAA900D67EDE /* SPA.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FBB0AAA42530CAA900D67EDE /* SPA.xcdatamodeld */; };
 		FBE437F2252EA9F900DC41AB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE437F1252EA9F900DC41AB /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,10 +38,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7C03474F252E3EBB009CCD1D /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Storyboard.storyboard; path = Storyboard/Storyboard.storyboard; sourceTree = SOURCE_ROOT; };
-		7C034754252E438E009CCD1D /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
-		7C034759252E873B009CCD1D /* Username.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Username.swift; sourceTree = "<group>"; };
-		7C034761252E87A2009CCD1D /* UserListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListScreen.swift; sourceTree = "<group>"; };
 		814CA037252EBFF500ABAA1B /* RawInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawInputView.swift; sourceTree = "<group>"; };
 		FB8A7BE1251D6672004831BD /* SPA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SPA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB8A7BE4251D6672004831BD /* SPAApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPAApp.swift; sourceTree = "<group>"; };
@@ -52,7 +45,6 @@
 		FB8A7BE8251D6674004831BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB8A7BEB251D6674004831BD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FB8A7BED251D6674004831BD /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		FB8A7BF0251D6674004831BD /* SPA.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SPA.xcdatamodel; sourceTree = "<group>"; };
 		FB8A7BF2251D6674004831BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB8A7BF7251D6674004831BD /* SPATests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SPATests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB8A7BFB251D6674004831BD /* SPATests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPATests.swift; sourceTree = "<group>"; };
@@ -60,6 +52,8 @@
 		FB8A7C02251D6674004831BD /* SPAUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SPAUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB8A7C06251D6674004831BD /* SPAUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPAUITests.swift; sourceTree = "<group>"; };
 		FB8A7C08251D6674004831BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FBB0AAA32530CAA900D67EDE /* SelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionView.swift; sourceTree = "<group>"; };
+		FBB0AAA52530CAA900D67EDE /* SPA.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SPA.xcdatamodel; sourceTree = "<group>"; };
 		FBE437F1252EA9F900DC41AB /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,17 +105,14 @@
 		FB8A7BE3251D6672004831BD /* SPA */ = {
 			isa = PBXGroup;
 			children = (
+				FBB0AAA32530CAA900D67EDE /* SelectionView.swift */,
+				FBB0AAA42530CAA900D67EDE /* SPA.xcdatamodeld */,
 				FB8A7BE4251D6672004831BD /* SPAApp.swift */,
 				FB8A7BE6251D6672004831BD /* ContentView.swift */,
 				FB8A7BE8251D6674004831BD /* Assets.xcassets */,
 				FB8A7BED251D6674004831BD /* Persistence.swift */,
 				FB8A7BF2251D6674004831BD /* Info.plist */,
-				FB8A7BEF251D6674004831BD /* SPA.xcdatamodeld */,
 				FB8A7BEA251D6674004831BD /* Preview Content */,
-				7C03474F252E3EBB009CCD1D /* Storyboard.storyboard */,
-				7C034759252E873B009CCD1D /* Username.swift */,
-				7C034761252E87A2009CCD1D /* UserListScreen.swift */,
-				7C034754252E438E009CCD1D /* TableViewCell.swift */,
 				FBE437F1252EA9F900DC41AB /* LoginView.swift */,
 				814CA037252EBFF500ABAA1B /* RawInputView.swift */,
 			);
@@ -259,7 +250,6 @@
 			files = (
 				FB8A7BEC251D6674004831BD /* Preview Assets.xcassets in Resources */,
 				FB8A7BE9251D6674004831BD /* Assets.xcassets in Resources */,
-				7C034750252E3EBB009CCD1D /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,14 +274,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C034755252E438E009CCD1D /* TableViewCell.swift in Sources */,
-				FB8A7BF1251D6674004831BD /* SPA.xcdatamodeld in Sources */,
 				FB8A7BEE251D6674004831BD /* Persistence.swift in Sources */,
-				7C03475A252E873B009CCD1D /* Username.swift in Sources */,
 				FB8A7BE7251D6672004831BD /* ContentView.swift in Sources */,
 				FB8A7BE5251D6672004831BD /* SPAApp.swift in Sources */,
+				FBB0AAA72530CAA900D67EDE /* SPA.xcdatamodeld in Sources */,
 				FBE437F2252EA9F900DC41AB /* LoginView.swift in Sources */,
-				7C034762252E87A2009CCD1D /* UserListScreen.swift in Sources */,
+				FBB0AAA62530CAA900D67EDE /* SelectionView.swift in Sources */,
 				814CA038252EBFF500ABAA1B /* RawInputView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -610,12 +598,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		FB8A7BEF251D6674004831BD /* SPA.xcdatamodeld */ = {
+		FBB0AAA42530CAA900D67EDE /* SPA.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				FB8A7BF0251D6674004831BD /* SPA.xcdatamodel */,
+				FBB0AAA52530CAA900D67EDE /* SPA.xcdatamodel */,
 			);
-			currentVersion = FB8A7BF0251D6674004831BD /* SPA.xcdatamodel */;
+			currentVersion = FBB0AAA52530CAA900D67EDE /* SPA.xcdatamodel */;
 			path = SPA.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
