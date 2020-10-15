@@ -34,34 +34,17 @@ struct InputView: View{
     }
 }
 
-//extension HorizontalAlignment{
-//    private enum
-//}
 struct RawInputView: View {
-    @State var projectName : String = ""
-    @State var programmingLanguage : String = ""
-    @State var avgAnnualSalary : String = ""
-    @State var teamSize : String = ""
-    @State var ncnbSLOC : String = ""
-    @State var requirementsAndDesignEffort : String = ""
-    @State var developmentEffort : String = ""
-    @State var findDefectEffort : String = ""
-    @State var reworkEffort : String = ""
-    @State var issueEffort : String = ""
-    @State var postReleaseIndicator : String = ""
+    @ObservedObject var items : RawInputItems = RawInputItems()
     func disabled()->Bool{
-        return projectName.isEmpty ||
-            programmingLanguage.isEmpty ||
-            avgAnnualSalary.isEmpty  ||
-            teamSize.isEmpty ||
-            ncnbSLOC.isEmpty ||
-            requirementsAndDesignEffort.isEmpty ||
-            developmentEffort.isEmpty ||
-            findDefectEffort.isEmpty ||
-            reworkEffort.isEmpty ||
-            issueEffort.isEmpty ||
-            postReleaseIndicator.isEmpty
+        for rawInput in items.tags{
+            if(rawInput.textInput.isEmpty){
+                return true
+            }
+        }
+        return false
     }
+    
     var body: some View {
         
         VStack {
@@ -69,7 +52,6 @@ struct RawInputView: View {
                 Button(action: {}){
                     Text("Back")
                         .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                        
                 }
                 Spacer()
                 Button(action: {
@@ -82,27 +64,16 @@ struct RawInputView: View {
             }.padding(.leading, 80)
             .padding(.trailing, 60)
             .padding(.bottom, 100)
-            Group{
-                InputView(name: "Project Name", placeholder: "project name", textInput: $projectName)
-                InputView(name: "Programming Language", placeholder: "programming language", textInput: $programmingLanguage)
-                InputView(name: "Average Annual Salary", placeholder: "average annual salary",textInput: $avgAnnualSalary)
-                InputView(name: "Team Size", placeholder: "team size",textInput: $teamSize)
-                InputView(name: "NonCommentNonBlankSLOC", placeholder: "number",textInput: $ncnbSLOC)
-                InputView(name: "Requirenents and Design Effort", placeholder: "design effort",textInput: $requirementsAndDesignEffort)
-                InputView(name: "Development Effort", placeholder: "development effort",textInput: $developmentEffort)
-                InputView(name: "Find Defect Effort", placeholder: "find deffect effort",textInput: $findDefectEffort)
-                InputView(name: "Rework Effort", placeholder: "rework effort",textInput: $reworkEffort)
-                InputView(name: "Issue Count", placeholder: "issue count",textInput: $issueEffort)
+        
+            ForEach(items.tags.indices){ idx in
+                InputView(name: items.tags[idx].name, placeholder: items.tags[idx].placeholder,textInput: $items.tags[idx].textInput)
             }
-
-            InputView(name: "Post-Release Indicator", placeholder: "post-release indicator",textInput: $postReleaseIndicator)
             HStack{
                 Button(action: {
-                    print(projectName)
+                
                 }){
                     Text(" Derived Input ")
                         .font(.title2)
-                        
                 }.padding()
                 .disabled(disabled())
                 Button(action: {}){
