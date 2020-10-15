@@ -13,7 +13,7 @@ struct SPAApp: App {
 
     var body: some Scene {
         WindowGroup {
-            RawInputView()
+            LoginView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
