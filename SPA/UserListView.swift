@@ -9,7 +9,7 @@ import SwiftUI
 
 struct UserListView: View {
     @ObservedObject var user: UserModel
-    @ObservedObject var viewState: ViewState
+    
     var body: some View {
         VStack{
             Button(action: {
@@ -22,7 +22,7 @@ struct UserListView: View {
             NavigationView{
                 List(Array(projects.keys), id: \.self){ user in
                     NavigationLink(
-                        destination: ProjectListView(user: user, viewState:viewState)){
+                        destination: ProjectListView(user: user)){
                     Text(user)
                     }
                 }.navigationBarTitle(Text("User List"))

@@ -36,7 +36,7 @@ struct InputView: View{
 
 struct RawInputView: View {
     @ObservedObject var model : SPAModel = SPAModel()
-    @ObservedObject var viewState: ViewState
+    @EnvironmentObject var viewState: ViewState
     func disabled()->Bool{
         for rawInput in model.rawInputTags{
             if(rawInput.textInput.isEmpty){

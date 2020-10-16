@@ -38,7 +38,7 @@ struct OutputView: View{
 
 struct DerivedInputView: View {
 //    @ObservedObject var model : SPAModel
-    @ObservedObject var viewState: ViewState
+    @EnvironmentObject var viewState: ViewState
     
     @State var metrics :[(String, Double?, String?)] = []
     var body: some View {

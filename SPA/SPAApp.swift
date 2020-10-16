@@ -13,7 +13,7 @@ struct SPAApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView(user: UserModel(), viewState: ViewState())
+            ContentView(user: UserModel()).environmentObject(ViewState())
         }
     }
 }

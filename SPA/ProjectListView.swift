@@ -9,11 +9,10 @@ import SwiftUI
 
 struct ProjectListView: View{
     var user: String
-    @ObservedObject var viewState: ViewState
     var body: some View{
         List(projects[user]!, id: \.self){ project in
             NavigationLink(
-                destination: RawInputView(viewState: viewState)){
+                destination: RawInputView()){
             Text(project)
             }
         }.navigationBarTitle(Text("Project List"))

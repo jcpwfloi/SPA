@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var user: UserModel
-    @ObservedObject var viewState: ViewState
+    @EnvironmentObject var viewState: ViewState
     
     @ViewBuilder
     var body: some View {
@@ -18,13 +18,13 @@ struct ContentView: View {
                 LoginView(user: user)
             } else {
                 if (viewState.state == 0) {
-                    UserListView(user: user, viewState: viewState)
+                    UserListView(user: user)
                 } else {
                     if(viewState.state == 1){
-                        DerivedInputView(viewState: viewState)
+                        DerivedInputView()
                     }
                     else{
-                        RawInputView(viewState:viewState)
+                        RawInputView()
                     }
                 }
             }
