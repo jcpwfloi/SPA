@@ -35,9 +35,9 @@ struct InputView: View{
 }
 
 struct RawInputView: View {
-    @ObservedObject var items : RawInputItems = RawInputItems()
+    @ObservedObject var model : SPAModel = SPAModel()
     func disabled()->Bool{
-        for rawInput in items.tags{
+        for rawInput in model.tags{
             if(rawInput.textInput.isEmpty){
                 return true
             }
@@ -48,25 +48,25 @@ struct RawInputView: View {
     var body: some View {
         
         VStack {
-            HStack{
-                Button(action: {}){
-                    Text("Back")
-                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                }
-                Spacer()
-                Button(action: {
-                    exit(0)
-                }){
-                    Text("Log off")
-                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                        
-                }
-            }.padding(.leading, 80)
-            .padding(.trailing, 60)
-            .padding(.bottom, 100)
+//            HStack{
+//                Button(action: {}){
+//                    Text("Back")
+//                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+//                }
+//                Spacer()
+//                Button(action: {
+//                    exit(0)
+//                }){
+//                    Text("Log off")
+//                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+//                        
+//                }
+//            }.padding(.leading, 80)
+//            .padding(.trailing, 60)
+//            .padding(.bottom, 100)
         
-            ForEach(items.tags.indices){ idx in
-                InputView(name: items.tags[idx].name, placeholder: items.tags[idx].placeholder,textInput: $items.tags[idx].textInput)
+            ForEach(model.tags.indices){ idx in
+                InputView(name: model.tags[idx].name, placeholder: model.tags[idx].placeholder,textInput: $model.tags[idx].textInput)
             }
             HStack{
                 Button(action: {
