@@ -7,11 +7,13 @@
 
 import SwiftUI
 
-struct UserListView: View{
-    var body: some View{
+struct UserListView: View {
+    @ObservedObject var user: UserModel
+    
+    var body: some View {
         VStack{
             Button(action: {
-                exit(0)
+                user.logout()
             }){
                 Text("Log off")
                     .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
@@ -32,7 +34,7 @@ struct UserListView: View{
 #if DEBUG
 struct UserListView_Previews: PreviewProvider {
     static var previews: some View {
-        UserListView()
+        UserListView(user: UserModel())
     }
 }
 #endif
