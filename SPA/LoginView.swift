@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct LoginView: View {
+    @ObservedObject var user: UserModel
+    
     @State var username: String = ""
     @State var password: String = ""
     
+    @ViewBuilder
     var body: some View {
         VStack {
             Text(/*@START_MENU_TOKEN@*/"Login"/*@END_MENU_TOKEN@*/)
@@ -25,17 +28,11 @@ struct LoginView: View {
                 .frame(width: 400, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
             Button("Login", action: {
-                
+                user.login()
             })
+            
+            
             .padding(.top, 30.0)
         }
     }
 }
-
-#if DEBUG
-struct LoginView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginView()
-    }
-}
-#endif
