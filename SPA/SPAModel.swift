@@ -11,7 +11,7 @@ import Combine
 
 class SPAModel : ObservableObject{
     
-    @Published var tags = [RawInput(name: "Project Name", placeholder: "Project Name", textInput: projectName),
+    @Published var rawInputTags = [RawInput(name: "Project Name", placeholder: "Project Name", textInput: projectName),
                            RawInput(name: "Programming Language", placeholder: "Programming Language", textInput: programmingLanguage),
                            RawInput(name: "Average Annual Salary", placeholder: "Average Annual Salary", textInput: inputAvgAnnualSalary),
                            RawInput(name: "Team Size", placeholder: "Team Size", textInput: inputTeamSize),
@@ -23,9 +23,24 @@ class SPAModel : ObservableObject{
                            RawInput(name: "Issue Count", placeholder: "Issue Count", textInput:inputIssueCount),
                            RawInput(name: "Post-Release Indicator", placeholder: "Post-Release Indicator", textInput: inputPostReleaseIndicator)]
     
-    @Published var metrics: [(String, Double?, String?)]?
+    @Published var derivedInputTags = ["Team Size", "Labor Rate","Total Project Hours", "Development Effort Percent", "Test Effort Percent", "Programming Language Level","NumNcnbSloc", "Number of Issues","Est Number of Severity 1 Issues","Est Number of Severity 2 Issues","Est Number of Severity 3 Issues","Est Number of Severity 4 Issues"]
+    @Published var derivedInputIndices = [9,10,11,12,13,15,16,17,18,19,20,21]
+    @Published var metrics: [(String, Double?, String?)]
     init(){
-        self.metrics = computeMetrics()
+        projectId = "CMMILevel4Project"
+        projectProgrammingLanguage = "Bliss"
+        projectAvgAnnualSalary = 109953.0
+        projectTeamSize = 9.0
+        projectNcSloc = 100000.0
+        projectReqDesEffort = 6420.0
+        projectDevEffort = 18868.0
+        projectFindDefectEffort = 1332.0
+        projectReworkEffort = 600.0
+        projectIssueCount = 200.0
+        projectPostReleaseIndicator = "N"
+        self.metrics = computeMetrics()!
+        metrics = metrics.sorted {$0.0 < $1.0}
+        
     }
     
     

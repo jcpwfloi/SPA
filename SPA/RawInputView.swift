@@ -36,8 +36,9 @@ struct InputView: View{
 
 struct RawInputView: View {
     @ObservedObject var model : SPAModel = SPAModel()
+    @ObservedObject var viewState: ViewState
     func disabled()->Bool{
-        for rawInput in model.tags{
+        for rawInput in model.rawInputTags{
             if(rawInput.textInput.isEmpty){
                 return true
             }
@@ -46,7 +47,6 @@ struct RawInputView: View {
     }
     
     var body: some View {
-        
         VStack {
 //            HStack{
 //                Button(action: {}){
@@ -65,17 +65,19 @@ struct RawInputView: View {
 //            .padding(.trailing, 60)
 //            .padding(.bottom, 100)
         
-            ForEach(model.tags.indices){ idx in
-                InputView(name: model.tags[idx].name, placeholder: model.tags[idx].placeholder,textInput: $model.tags[idx].textInput)
+            ForEach(model.rawInputTags.indices){ idx in
+                InputView(name: model.rawInputTags[idx].name, placeholder: model.rawInputTags[idx].placeholder,textInput: $model.rawInputTags[idx].textInput)
             }
             HStack{
-                Button(action: {
-                
-                }){
-                    Text(" Derived Input ")
-                        .font(.title2)
-                }.padding()
-                .disabled(disabled())
+       
+                    Button(action: {
+                        viewState.state = 1
+                        viewState.model = model
+                    }){
+                        Text(" Derived Input ")
+                            .font(.title2)
+                    }.padding()
+                    .disabled(disabled())
                 Button(action: {}){
                     Text(" Executive ")
                         .font(.title2)
@@ -97,9 +99,9 @@ struct RawInputView: View {
         }
     }
 }
-
-struct RawInputView_Previews: PreviewProvider {
-    static var previews: some View {
-        RawInputView()
-    }
-}
+//
+//struct RawInputView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        RawInputView()
+//    }
+//}

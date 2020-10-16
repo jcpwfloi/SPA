@@ -9,7 +9,7 @@ import SwiftUI
 
 struct UserListView: View {
     @ObservedObject var user: UserModel
-    
+    @ObservedObject var viewState: ViewState
     var body: some View {
         VStack{
             Button(action: {
@@ -22,7 +22,7 @@ struct UserListView: View {
             NavigationView{
                 List(Array(projects.keys), id: \.self){ user in
                     NavigationLink(
-                        destination: ProjectListView(user: user)){
+                        destination: ProjectListView(user: user, viewState:viewState)){
                     Text(user)
                     }
                 }.navigationBarTitle(Text("User List"))
@@ -31,10 +31,10 @@ struct UserListView: View {
     }
 }
 
-#if DEBUG
-struct UserListView_Previews: PreviewProvider {
-    static var previews: some View {
-        UserListView(user: UserModel())
-    }
-}
-#endif
+//#if DEBUG
+//struct UserListView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        UserListView(user: UserModel())
+//    }
+//}
+//#endif

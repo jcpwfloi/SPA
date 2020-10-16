@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var user: UserModel = UserModel()
+    @ObservedObject var user: UserModel
+    @ObservedObject var viewState: ViewState
     
     @ViewBuilder
     var body: some View {
@@ -16,14 +17,23 @@ struct ContentView: View {
             if (!user.isLoggedin) {
                 LoginView(user: user)
             } else {
-                UserListView(user: user)
+                if (viewState.state == 0) {
+                    UserListView(user: user, viewState: viewState)
+                } else {
+                    if(viewState.state == 1){
+                        DerivedInputView(viewState: viewState)
+                    }
+                    else{
+                        RawInputView(viewState:viewState)
+                    }
+                }
             }
         }
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView(user: UserModel())
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView(user: UserModel())
+//    }
+//}
