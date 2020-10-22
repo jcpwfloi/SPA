@@ -36,13 +36,13 @@ struct ExecutiveView: View {
                         }.padding(.leading, 80)
                         .padding(.trailing, 60)
                         .padding(.bottom, 100)
-            let tags = viewState.model!.managementTags
+            let tags = viewState.model!.executiveTags
 //            let indices = viewState.model!.derivedInputIndices
-            
-            ForEach(tags.indices) {
-                OutputView(name: tags[$0], labelWidth:350,text: tags[$0])
+            List{
+                ForEach(tags.indices) {
+                    OutputView(name: tags[$0], labelWidth:350,text: viewState.model!.dict[tags[$0]] ?? "")
+                }
             }
-            
             
         }
     }

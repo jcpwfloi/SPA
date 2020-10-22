@@ -37,5 +37,22 @@
             </PersistentString>
          </PersistentStrings>
       </ContextState>
+      <ContextState
+         contextName = "closure #1 in closure #2 in closure #1 in ExecutiveView.body.getter:ExecutiveView.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #3 in closure #2 in closure #1 in RawInputView.body.getter:RawInputView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "viewState.model">
+            </PersistentString>
+            <PersistentString
+               value = "viewState.model!.dict">
+            </PersistentString>
+            <PersistentString
+               value = "self.model.dict">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
    </ContextStates>
 </VariablesViewState>

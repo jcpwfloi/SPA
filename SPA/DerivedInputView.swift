@@ -67,11 +67,12 @@ struct DerivedInputView: View {
             let tags = viewState.model!.derivedInputTags
             let indices = viewState.model!.derivedInputIndices
             
-            ForEach(tags.indices) {
-                OutputView(name: tags[$0], text: String((viewState.model!.metrics[indices[$0]].1)!))
+            List{
+                ForEach(tags.indices) {
+                    OutputView(name: tags[$0], text: String((viewState.model!.metrics[indices[$0]].1)!))
+                }
+                
             }
-            
-            
         }
     }
 }

@@ -17,9 +17,6 @@
 		814CA06125393F1F00ABAA1B /* ProjectData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814CA05B25393F1F00ABAA1B /* ProjectData.swift */; };
 		814CA066253945C400ABAA1B /* DerivedInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814CA065253945C400ABAA1B /* DerivedInputView.swift */; };
 		814CA06E25394E3700ABAA1B /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814CA06D25394E3700ABAA1B /* ViewState.swift */; };
-		814CA0902541218B00ABAA1B /* PractionerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814CA08D2541218B00ABAA1B /* PractionerView.swift */; };
-		814CA0912541218B00ABAA1B /* ExecutiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814CA08E2541218B00ABAA1B /* ExecutiveView.swift */; };
-		814CA0922541218B00ABAA1B /* ManagementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814CA08F2541218B00ABAA1B /* ManagementView.swift */; };
 		FB8A7BE5251D6672004831BD /* SPAApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8A7BE4251D6672004831BD /* SPAApp.swift */; };
 		FB8A7BE7251D6672004831BD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8A7BE6251D6672004831BD /* ContentView.swift */; };
 		FB8A7BE9251D6674004831BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB8A7BE8251D6674004831BD /* Assets.xcassets */; };
@@ -61,9 +58,6 @@
 		814CA05B25393F1F00ABAA1B /* ProjectData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectData.swift; sourceTree = "<group>"; };
 		814CA065253945C400ABAA1B /* DerivedInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DerivedInputView.swift; sourceTree = "<group>"; };
 		814CA06D25394E3700ABAA1B /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
-		814CA08D2541218B00ABAA1B /* PractionerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PractionerView.swift; sourceTree = "<group>"; };
-		814CA08E2541218B00ABAA1B /* ExecutiveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExecutiveView.swift; sourceTree = "<group>"; };
-		814CA08F2541218B00ABAA1B /* ManagementView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagementView.swift; sourceTree = "<group>"; };
 		FB8A7BE1251D6672004831BD /* SPA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SPA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB8A7BE4251D6672004831BD /* SPAApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPAApp.swift; sourceTree = "<group>"; };
 		FB8A7BE6251D6672004831BD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -131,9 +125,6 @@
 		FB8A7BE3251D6672004831BD /* SPA */ = {
 			isa = PBXGroup;
 			children = (
-				814CA08E2541218B00ABAA1B /* ExecutiveView.swift */,
-				814CA08F2541218B00ABAA1B /* ManagementView.swift */,
-				814CA08D2541218B00ABAA1B /* PractionerView.swift */,
 				FBF6A7C5253A0BB700972B2C /* SPAModelEnv.swift */,
 				814CA05B25393F1F00ABAA1B /* ProjectData.swift */,
 				814CA05825393F1F00ABAA1B /* ProjectListView.swift */,
@@ -318,13 +309,10 @@
 				FB8A7BEE251D6674004831BD /* Persistence.swift in Sources */,
 				FB8A7BE7251D6672004831BD /* ContentView.swift in Sources */,
 				FB8A7BE5251D6672004831BD /* SPAApp.swift in Sources */,
-				814CA0902541218B00ABAA1B /* PractionerView.swift in Sources */,
 				814CA06E25394E3700ABAA1B /* ViewState.swift in Sources */,
 				814CA05E25393F1F00ABAA1B /* ProjectListView.swift in Sources */,
 				814CA03D2537BFFD00ABAA1B /* SPAModel.swift in Sources */,
 				FBE437F2252EA9F900DC41AB /* LoginView.swift in Sources */,
-				814CA0912541218B00ABAA1B /* ExecutiveView.swift in Sources */,
-				814CA0922541218B00ABAA1B /* ManagementView.swift in Sources */,
 				FBB4060625410C370000EA6C /* ComputeEngine.swift in Sources */,
 				814CA05C25393F1F00ABAA1B /* SPA.xcdatamodeld in Sources */,
 				FBF6A7C6253A0BB700972B2C /* SPAModelEnv.swift in Sources */,
