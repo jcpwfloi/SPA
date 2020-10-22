@@ -48,13 +48,6 @@ struct DerivedInputView: View {
             
                         HStack{
                             Button(action: {
-                                viewState.state = 0
-                            }){
-                                Text("Back")
-                                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                            }
-                            Spacer()
-                            Button(action: {
                                 exit(0)
                             }){
                                 Text("Log off")

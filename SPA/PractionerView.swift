@@ -20,13 +20,6 @@ struct PractionerView: View {
             
                         HStack{
                             Button(action: {
-                                viewState.state = 100
-                            }){
-                                Text("Back")
-                                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                            }
-                            Spacer()
-                            Button(action: {
                                 exit(0)
                             }){
                                 Text("Log off")

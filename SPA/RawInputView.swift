@@ -37,6 +37,7 @@ struct InputView: View{
 struct RawInputView: View {
     @ObservedObject var model : SPAModel = SPAModel()
     @EnvironmentObject var viewState: ViewState
+    @State private var action: Int? = 0
     func disabled()->Bool{
         for rawInput in model.rawInputTags{
             if(rawInput.textInput.isEmpty){
@@ -48,68 +49,48 @@ struct RawInputView: View {
     
     var body: some View {
         VStack {
-//            HStack{
-//                Button(action: {}){
-//                    Text("Back")
-//                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-//                }
-//                Spacer()
-//                Button(action: {
-//                    exit(0)
-//                }){
-//                    Text("Log off")
-//                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-//                        
-//                }
-//            }.padding(.leading, 80)
-//            .padding(.trailing, 60)
-//            .padding(.bottom, 100)
-        
             ForEach(model.rawInputTags.indices){ idx in
                 InputView(name: model.rawInputTags[idx].name, placeholder: model.rawInputTags[idx].placeholder,textInput: $model.rawInputTags[idx].textInput)
             }
-            HStack{
-       
-                    Button(action: {
-                        viewState.state = 1
+            HStack {
+                NavigationLink(destination: DerivedInputView(), tag: 1, selection: $action) {
+                    EmptyView()
+                }
+                NavigationLink(destination: ExecutiveView(), tag: 2, selection: $action) {
+                    EmptyView()
+                }
+                NavigationLink(destination: ManagementView(), tag: 3, selection: $action) {
+                    EmptyView()
+                }
+                NavigationLink(destination: PractionerView(), tag: 4, selection: $action) {
+                    EmptyView()
+                }
+                
+                Text(" Derived Input ").font(.title2).padding() .border(Color.black)
+                    .onTapGesture {
                         model.compute()
                         viewState.model = model
-                        
-                    }){
-                        Text(" Derived Input ")
-                            .font(.title2)
-                    }.padding()
-                    .disabled(disabled())
-                Button(action: {
-                    viewState.state = 2
-                    model.compute()
-                    viewState.model = model
-                }){
-                    Text(" Executive ")
-                        .font(.title2)
-                }.padding()
-                .disabled(disabled())
-                Button(action: {
-                    viewState.state = 3
-                    model.compute()
-                    viewState.model = model
-                }){
-                    Text(" Management ")
-                        .font(.title2)
-
-                }.padding()
-                .disabled(disabled())
-                Button(action: {
-                    viewState.state = 4
-                    model.compute()
-                    viewState.model = model
-                }){
-                    Text(" Practitioner ")
-                        .font(.title2)
-                }.padding()
-                .disabled(disabled())
+                        self.action = 1
+                }
+                Text(" Executive ").font(.title2).padding() .border(Color.black)
+                    .onTapGesture {
+                        model.compute()
+                        viewState.model = model
+                        self.action = 2
+                }
+                Text(" Management ").font(.title2).padding() .border(Color.black)
+                    .onTapGesture {
+                        model.compute()
+                        viewState.model = model
+                        self.action = 1
+                }
+                Text(" Practitioner ").font(.title2).padding() .border(Color.black)
+                    .onTapGesture {
+                        model.compute()
+                        viewState.model = model
+                        self.action = 2
+                }
             }.padding(30)
-
         }
     }
 }
