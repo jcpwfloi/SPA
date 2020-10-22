@@ -14,7 +14,6 @@
 		814CA05D25393F1F00ABAA1B /* UserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814CA05725393F1F00ABAA1B /* UserListView.swift */; };
 		814CA05E25393F1F00ABAA1B /* ProjectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814CA05825393F1F00ABAA1B /* ProjectListView.swift */; };
 		814CA05F25393F1F00ABAA1B /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814CA05925393F1F00ABAA1B /* UserModel.swift */; };
-		814CA06025393F1F00ABAA1B /* SelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814CA05A25393F1F00ABAA1B /* SelectionView.swift */; };
 		814CA06125393F1F00ABAA1B /* ProjectData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814CA05B25393F1F00ABAA1B /* ProjectData.swift */; };
 		814CA066253945C400ABAA1B /* DerivedInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814CA065253945C400ABAA1B /* DerivedInputView.swift */; };
 		814CA06E25394E3700ABAA1B /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814CA06D25394E3700ABAA1B /* ViewState.swift */; };
@@ -54,7 +53,6 @@
 		814CA05725393F1F00ABAA1B /* UserListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListView.swift; sourceTree = "<group>"; };
 		814CA05825393F1F00ABAA1B /* ProjectListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectListView.swift; sourceTree = "<group>"; };
 		814CA05925393F1F00ABAA1B /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
-		814CA05A25393F1F00ABAA1B /* SelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionView.swift; sourceTree = "<group>"; };
 		814CA05B25393F1F00ABAA1B /* ProjectData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectData.swift; sourceTree = "<group>"; };
 		814CA065253945C400ABAA1B /* DerivedInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DerivedInputView.swift; sourceTree = "<group>"; };
 		814CA06D25394E3700ABAA1B /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
@@ -125,7 +123,6 @@
 			children = (
 				814CA05B25393F1F00ABAA1B /* ProjectData.swift */,
 				814CA05825393F1F00ABAA1B /* ProjectListView.swift */,
-				814CA05A25393F1F00ABAA1B /* SelectionView.swift */,
 				814CA05525393F1F00ABAA1B /* SPA.xcdatamodeld */,
 				814CA05725393F1F00ABAA1B /* UserListView.swift */,
 				814CA05925393F1F00ABAA1B /* UserModel.swift */,
@@ -303,7 +300,6 @@
 			files = (
 				FB8A7BF1251D6674004831BD /* SPA.xcdatamodeld in Sources */,
 				814CA05D25393F1F00ABAA1B /* UserListView.swift in Sources */,
-				814CA06025393F1F00ABAA1B /* SelectionView.swift in Sources */,
 				FB8A7BEE251D6674004831BD /* Persistence.swift in Sources */,
 				FB8A7BE7251D6672004831BD /* ContentView.swift in Sources */,
 				FB8A7BE5251D6672004831BD /* SPAApp.swift in Sources */,

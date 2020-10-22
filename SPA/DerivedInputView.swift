@@ -74,9 +74,9 @@ struct DerivedInputView: View {
         }
     }
 }
-//
-//struct DerivedInputView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        DerivedInputView()
-//    }
-//}
+
+struct DerivedInputView_Previews: PreviewProvider {
+    static var previews: some View {
+        DerivedInputView()
+    }
+}
