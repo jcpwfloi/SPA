@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @ObservedObject var user: UserModel
     @EnvironmentObject var viewState: ViewState
+    @EnvironmentObject var coreData: CoreData
     
     @ViewBuilder
     var body: some View {
