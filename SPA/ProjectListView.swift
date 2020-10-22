@@ -29,12 +29,9 @@ struct ProjectListView: View{
         HStack{
             TextField("Enter New Project Name", text: $newName)
             Button(action:{
-                if(self.coreData.projects[user]!.isEmpty)
-                {
-                    for n in self.coreData.projects[user]!{
-                        if(newName==n){
-                            showAddAlert=true
-                        }
+                for n in self.coreData.projects[user]!{
+                    if(newName==n){
+                        showAddAlert=true
                     }
                 }
                 if(!showAddAlert){
