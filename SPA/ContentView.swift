@@ -23,6 +23,12 @@ struct ContentView: View {
                     if(viewState.state == 1){
                         DerivedInputView()
                     }
+                    if(viewState.state == 2){
+                        ExecutiveView()
+                    }
+                    if(viewState.state == 3){
+                        ManagementView()
+                    }
                     else{
                         RawInputView()
                     }

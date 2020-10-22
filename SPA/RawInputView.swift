@@ -78,18 +78,27 @@ struct RawInputView: View {
                             .font(.title2)
                     }.padding()
                     .disabled(disabled())
-                Button(action: {}){
+                Button(action: {
+                    viewState.state = 2
+                    viewState.model = model
+                }){
                     Text(" Executive ")
                         .font(.title2)
                 }.padding()
                 .disabled(disabled())
-                Button(action: {}){
+                Button(action: {
+                    viewState.state = 3
+                    viewState.model = model
+                }){
                     Text(" Management ")
                         .font(.title2)
 
                 }.padding()
                 .disabled(disabled())
-                Button(action: {}){
+                Button(action: {
+                    viewState.state = 3
+                    viewState.model = model
+                }){
                     Text(" Practitioner ")
                         .font(.title2)
                 }.padding()
@@ -100,8 +109,8 @@ struct RawInputView: View {
     }
 }
 //
-//struct RawInputView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        RawInputView()
-//    }
-//}
+struct RawInputView_Previews: PreviewProvider {
+    static var previews: some View {
+        RawInputView()
+    }
+}
