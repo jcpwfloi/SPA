@@ -72,24 +72,38 @@ struct RawInputView: View {
        
                     Button(action: {
                         viewState.state = 1
+                        model.compute()
                         viewState.model = model
+                        
                     }){
                         Text(" Derived Input ")
                             .font(.title2)
                     }.padding()
                     .disabled(disabled())
-                Button(action: {}){
+                Button(action: {
+                    viewState.state = 2
+                    model.compute()
+                    viewState.model = model
+                }){
                     Text(" Executive ")
                         .font(.title2)
                 }.padding()
                 .disabled(disabled())
-                Button(action: {}){
+                Button(action: {
+                    viewState.state = 3
+                    model.compute()
+                    viewState.model = model
+                }){
                     Text(" Management ")
                         .font(.title2)
 
                 }.padding()
                 .disabled(disabled())
-                Button(action: {}){
+                Button(action: {
+                    viewState.state = 4
+                    model.compute()
+                    viewState.model = model
+                }){
                     Text(" Practitioner ")
                         .font(.title2)
                 }.padding()
@@ -100,8 +114,8 @@ struct RawInputView: View {
     }
 }
 //
-//struct RawInputView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        RawInputView()
-//    }
-//}
+struct RawInputView_Previews: PreviewProvider {
+    static var previews: some View {
+        RawInputView()
+    }
+}

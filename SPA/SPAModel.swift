@@ -15,8 +15,8 @@ class SPAModel : ObservableObject{
                            RawInput(name: "Programming Language", placeholder: "Programming Language", textInput: programmingLanguage),
                            RawInput(name: "Average Annual Salary", placeholder: "Average Annual Salary", textInput: inputAvgAnnualSalary),
                            RawInput(name: "Team Size", placeholder: "Team Size", textInput: inputTeamSize),
-                           RawInput(name: "NonCommentNonBlankSLO", placeholder: "NonCommentNonBlankSLO", textInput:inputNumNcSloc),
-                           RawInput(name: "Requirenents and Design Effort", placeholder: "Requirenents and Design Effort", textInput: inputReqDesEffort),
+                           RawInput(name: "NonCommentNonBlankSLOC", placeholder: "NonCommentNonBlankSLOC", textInput:inputNumNcSloc),
+                           RawInput(name: "Requirements and Design Effort", placeholder: "Requirements and Design Effort", textInput: inputReqDesEffort),
                            RawInput(name: "Development Effort", placeholder: "Development Effort", textInput: inputDevEffort),
                            RawInput(name: "Find Defect Effort", placeholder: "Find Defect Effort", textInput: inputFindDefectEffort),
                            RawInput(name: "Rework Effort", placeholder: "Rework Effort", textInput: inputReworkEffort),
@@ -24,8 +24,13 @@ class SPAModel : ObservableObject{
                            RawInput(name: "Post-Release Indicator", placeholder: "Post-Release Indicator", textInput: inputPostReleaseIndicator)]
     
     @Published var derivedInputTags = ["Team Size", "Labor Rate","Total Project Hours", "Development Effort Percent", "Test Effort Percent", "Programming Language Level","NumNcnbSloc", "Number of Issues","Est Number of Severity 1 Issues","Est Number of Severity 2 Issues","Est Number of Severity 3 Issues","Est Number of Severity 4 Issues"]
+    @Published var executiveTags = ["Project Productivity", "Software Quality", "Project Cost Effectiveness", "Development Process Effectiveness", "Est Project Failure Risk", "Est Project Delay Risk", "Est Software Poor Quality Risk", "Est Complete Early", "Est Complete On-Time", "Est Complete Delayed", "Est Complete Canceled", "Est Cost of Quality", "Est Total Project Cost", "Est Project Duration"]
+    @Published var managementTags = ["Project Productivity", "Software Quality", "Project Cost Effectiveness", "Development Process Effectiveness", "Est Project Failure Risk", "Est Project Delay Risk", "Est Software Poor Quality Risk", "Est Complete Early", "Est Complete On-Time", "Est Complete Delayed", "Est Complete Canceled", "Est Cost of Quality", "Est Total Project Cost", "Est Project Duration"]
+    @Published var practionerTags = ["CMMI Maturity Level", "Programming Productivity", "Est PreRelease Defects", "Est PostRelease Defects", "Est Expected Delivered Defects", "Est PreRelease Design Defects", "Est PreRelease Code Defects", "Est PreRelease Test Defects", "Est PreRelease Documentation Defects", "Est PreRelease Bad-Fix Defects", "Software Defect Density", "Industry Average Defect Density", "Est Requirement Defects Left", "Est Design Defects Left", "Est Code Defects Left", "Est Security Defects Left", "Est User Documentation Defects Left", "Est Test Defects Left", "Est Bad-Fix Defects Left", "Est Defects per Engineering Month", "Est Software Inspection Productivity", "Est Quality Assurance Productivity", "Est Defects Leaked to Users", "Est Project Defect Removal Efficiency", "Est Capability-Based DRE", "Est US Average DRE", "Est US Average DDE", "Est Find Fix Effort Per Defect", "Est Avg Find Fix Effort per Defect", "Est Unit Cost per Engineering Month", "Est Find Fix Percentage", "Est Project Effort", "Est Requirements Effort", "Est Design Effort", "Est Code Effort", "Est Test Effort", "Est Total Project Staffing", "Est Requirements Staffing", "Est Design Staffing", "Est Coding Staffing", "Est Test Staffing", "Est Project Duration", "Est Design, Code & Test Cost", "Est Team Cost per Engineering Month", "Est Cost of Quality", "Est Technical Debt", "Est Total Development Cost", "Est Lifetime Maintenance Cost", "Est Total Project Cost", "Est Agile Invested Savings", "Est Cost-Effectiveness Indicator"]
     @Published var derivedInputIndices = [9,10,11,12,13,15,16,17,18,19,20,21]
+    @Published var dict = [String : String]()
     @Published var metrics: [(String, Double?, String?)]
+    
     init(){
         projectId = "CMMILevel4Project"
         projectProgrammingLanguage = "Bliss"
@@ -38,9 +43,13 @@ class SPAModel : ObservableObject{
         projectReworkEffort = 600.0
         projectIssueCount = 200.0
         projectPostReleaseIndicator = "N"
-        self.metrics = computeMetrics()!
+        metrics = computeMetrics()!
         metrics = metrics.sorted {$0.0 < $1.0}
-        
+//        dict = computeMetricsString(metrics)
+    }
+    
+    func compute(){
+        dict = computeMetricsString(metrics)
     }
     
     

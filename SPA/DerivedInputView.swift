@@ -13,14 +13,14 @@ import SwiftUI
 
 struct OutputView: View{
     var name: String
-    var spacerWidth : CGFloat = 200.0
-    var labelWidth : CGFloat = 500.0
-    var text: Double?
+    var spacerWidth : CGFloat = 20.0
+    var labelWidth : CGFloat = 300.0
+    var text: String
     var body: some View {
         HStack{
             
             HStack{
-//                Spacer().frame(width: spacerWidth)
+                Spacer().frame(width: spacerWidth)
                 Text(name)
                     .font(.headline)
             }
@@ -28,9 +28,10 @@ struct OutputView: View{
             .frame(width:labelWidth, alignment: .bottomTrailing)
             
             Spacer().frame(width: spacerWidth)
-            if text != nil {
-                Text(String(text!))
-            }
+//            if text != nil {
+                Text(text)
+                    .frame(width:labelWidth)
+//            }
             Spacer().frame(width: spacerWidth)
         }.padding()
     }
@@ -47,7 +48,7 @@ struct DerivedInputView: View {
             
                         HStack{
                             Button(action: {
-                                viewState.state = 2
+                                viewState.state = 1000
                             }){
                                 Text("Back")
                                     .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
@@ -66,11 +67,12 @@ struct DerivedInputView: View {
             let tags = viewState.model!.derivedInputTags
             let indices = viewState.model!.derivedInputIndices
             
-            ForEach(tags.indices) {
-                OutputView(name: tags[$0], text: viewState.model!.metrics[indices[$0]].1)
+            List{
+                ForEach(tags.indices) {
+                    OutputView(name: tags[$0], text: String((viewState.model!.metrics[indices[$0]].1)!))
+                }
+                
             }
-            
-            
         }
     }
 }
