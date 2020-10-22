@@ -13,6 +13,10 @@ struct LoginView: View {
     @State var username: String = ""
     @State var password: String = ""
     
+    @State var showingAlert = false
+    
+    var showAlert = false
+    
     @ViewBuilder
     var body: some View {
         VStack {
@@ -28,8 +32,12 @@ struct LoginView: View {
                 .frame(width: 400, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
             Button("Login", action: {
-                user.login()
-            })
+                if !user.login(username, password) {
+                    showingAlert = true
+                }
+            }).alert(isPresented: $showingAlert) {
+                Alert(title: Text("Error"), message: Text("Incorrect username or password"), dismissButton: .default(Text("Got it!")))
+            }
             
             
             .padding(.top, 30.0)
