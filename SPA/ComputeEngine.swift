@@ -282,7 +282,7 @@ func computeMetrics(_ outputValues: [(String, Double?, String?)]) -> [String : (
 }
 
 func computeMetricsString(_ outputValues: [(String, Double?, String?)]) -> [String : String] {
-    var ans = computeMetrics(outputValues)
+    let ans = computeMetrics(outputValues)
     
     var ret = [String : String] ()
     
