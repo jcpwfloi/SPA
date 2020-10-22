@@ -30,7 +30,6 @@
 		FB8A7C07251D6674004831BD /* SPAUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8A7C06251D6674004831BD /* SPAUITests.swift */; };
 		FBB4060625410C370000EA6C /* ComputeEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB4060525410C360000EA6C /* ComputeEngine.swift */; };
 		FBE437F2252EA9F900DC41AB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE437F1252EA9F900DC41AB /* LoginView.swift */; };
-		FBF6A7C6253A0BB700972B2C /* SPAModelEnv.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF6A7C5253A0BB700972B2C /* SPAModelEnv.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,7 +79,6 @@
 		FB8A7C08251D6674004831BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FBB4060525410C360000EA6C /* ComputeEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputeEngine.swift; sourceTree = "<group>"; };
 		FBE437F1252EA9F900DC41AB /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		FBF6A7C5253A0BB700972B2C /* SPAModelEnv.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPAModelEnv.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,7 +132,6 @@
 				814CA08E2541218B00ABAA1B /* ExecutiveView.swift */,
 				814CA08F2541218B00ABAA1B /* ManagementView.swift */,
 				814CA08D2541218B00ABAA1B /* PractionerView.swift */,
-				FBF6A7C5253A0BB700972B2C /* SPAModelEnv.swift */,
 				814CA05B25393F1F00ABAA1B /* ProjectData.swift */,
 				814CA05825393F1F00ABAA1B /* ProjectListView.swift */,
 				814CA05525393F1F00ABAA1B /* SPA.xcdatamodeld */,
@@ -327,7 +324,6 @@
 				814CA0922541218B00ABAA1B /* ManagementView.swift in Sources */,
 				FBB4060625410C370000EA6C /* ComputeEngine.swift in Sources */,
 				814CA05C25393F1F00ABAA1B /* SPA.xcdatamodeld in Sources */,
-				FBF6A7C6253A0BB700972B2C /* SPAModelEnv.swift in Sources */,
 				814CA038252EBFF500ABAA1B /* RawInputView.swift in Sources */,
 				814CA05F25393F1F00ABAA1B /* UserModel.swift in Sources */,
 				814CA066253945C400ABAA1B /* DerivedInputView.swift in Sources */,
