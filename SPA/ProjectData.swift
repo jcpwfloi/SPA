@@ -13,13 +13,18 @@ class CoreData : ObservableObject {
     func addUser(username:String){
         projects[username]=[]
     }
+    func removeUser(username:String){
+        projects.removeValue(forKey: username)
+    }
     
     func addProject(username:String,project:String){
-        if(projects[username]==nil){
-            projects[username]=[project]
-        }else{
-            projects[username]!.append(project)
+        projects[username]!.append(project)
+    }
+    func removeProject(username:String,project:String){
+        if let index = projects[username]!.firstIndex(of: project) {
+            projects[username]!.remove(at: index)
         }
     }
+    
 }
 

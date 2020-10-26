@@ -15,11 +15,11 @@ class UserModel : ObservableObject {
     @Published var isLoggedin = false
     
     func login(_ username: String, _ password: String) -> Bool {
-        if username == "admin" && password == "admin123" {
+//        if username == "admin" && password == "admin123" {
             self.isLoggedin = true
             return true
-        }
-        return false
+//        }
+//        return false
     }
     
     func logout() {
