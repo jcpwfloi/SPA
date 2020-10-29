@@ -20,6 +20,9 @@
 		814CA0902541218B00ABAA1B /* PractionerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814CA08D2541218B00ABAA1B /* PractionerView.swift */; };
 		814CA0912541218B00ABAA1B /* ExecutiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814CA08E2541218B00ABAA1B /* ExecutiveView.swift */; };
 		814CA0922541218B00ABAA1B /* ManagementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814CA08F2541218B00ABAA1B /* ManagementView.swift */; };
+		814CA09D254A445100ABAA1B /* OutputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814CA09C254A445100ABAA1B /* OutputView.swift */; };
+		814CA0A2254A44C300ABAA1B /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814CA0A1254A44C300ABAA1B /* InputView.swift */; };
+		814CA0A7254A452F00ABAA1B /* RawInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814CA0A6254A452F00ABAA1B /* RawInput.swift */; };
 		FB8A7BE5251D6672004831BD /* SPAApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8A7BE4251D6672004831BD /* SPAApp.swift */; };
 		FB8A7BE7251D6672004831BD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8A7BE6251D6672004831BD /* ContentView.swift */; };
 		FB8A7BE9251D6674004831BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB8A7BE8251D6674004831BD /* Assets.xcassets */; };
@@ -63,6 +66,9 @@
 		814CA08D2541218B00ABAA1B /* PractionerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PractionerView.swift; sourceTree = "<group>"; };
 		814CA08E2541218B00ABAA1B /* ExecutiveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExecutiveView.swift; sourceTree = "<group>"; };
 		814CA08F2541218B00ABAA1B /* ManagementView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagementView.swift; sourceTree = "<group>"; };
+		814CA09C254A445100ABAA1B /* OutputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputView.swift; sourceTree = "<group>"; };
+		814CA0A1254A44C300ABAA1B /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
+		814CA0A6254A452F00ABAA1B /* RawInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawInput.swift; sourceTree = "<group>"; };
 		FB8A7BE1251D6672004831BD /* SPA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SPA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB8A7BE4251D6672004831BD /* SPAApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPAApp.swift; sourceTree = "<group>"; };
 		FB8A7BE6251D6672004831BD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -151,6 +157,9 @@
 				814CA065253945C400ABAA1B /* DerivedInputView.swift */,
 				814CA06D25394E3700ABAA1B /* ViewState.swift */,
 				FBB4060525410C360000EA6C /* ComputeEngine.swift */,
+				814CA09C254A445100ABAA1B /* OutputView.swift */,
+				814CA0A1254A44C300ABAA1B /* InputView.swift */,
+				814CA0A6254A452F00ABAA1B /* RawInput.swift */,
 			);
 			path = SPA;
 			sourceTree = "<group>";
@@ -321,10 +330,13 @@
 				814CA03D2537BFFD00ABAA1B /* SPAModel.swift in Sources */,
 				FBE437F2252EA9F900DC41AB /* LoginView.swift in Sources */,
 				814CA0912541218B00ABAA1B /* ExecutiveView.swift in Sources */,
+				814CA0A7254A452F00ABAA1B /* RawInput.swift in Sources */,
 				814CA0922541218B00ABAA1B /* ManagementView.swift in Sources */,
 				FBB4060625410C370000EA6C /* ComputeEngine.swift in Sources */,
 				814CA05C25393F1F00ABAA1B /* SPA.xcdatamodeld in Sources */,
 				814CA038252EBFF500ABAA1B /* RawInputView.swift in Sources */,
+				814CA0A2254A44C300ABAA1B /* InputView.swift in Sources */,
+				814CA09D254A445100ABAA1B /* OutputView.swift in Sources */,
 				814CA05F25393F1F00ABAA1B /* UserModel.swift in Sources */,
 				814CA066253945C400ABAA1B /* DerivedInputView.swift in Sources */,
 				814CA042253825EA00ABAA1B /* SPAPrototype.swift in Sources */,

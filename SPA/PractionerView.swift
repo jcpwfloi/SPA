@@ -30,7 +30,6 @@ struct PractionerView: View {
                         .padding(.trailing, 60)
                         .padding(.bottom, 100)
             let tags = viewState.model!.practionerTags
-//            let indices = viewState.model!.derivedInputIndices
             List{
                 ForEach(tags.indices) {
                     OutputView(name: tags[$0], labelWidth:350,text: viewState.model!.dict[tags[$0]] ?? "")

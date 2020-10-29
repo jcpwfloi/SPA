@@ -78,7 +78,7 @@ func computeMetrics(_ outputValues: [(String, Double?, String?)]) -> [String : (
             ans["Total Project Hours"] = (tuple.1, nil)
             
         case "OutputIndex08a":
-            ans["Dev Effort Percent"] = (tuple.1, nil)
+            ans["Development Effort Percent"] = (tuple.1, nil)
             
         case "OutputIndex08b":
             ans["Test Effort Percent"] = (tuple.1, nil)
@@ -87,25 +87,25 @@ func computeMetrics(_ outputValues: [(String, Double?, String?)]) -> [String : (
             ans["Programming Language"] = (nil, tuple.2)
             
         case "OutputIndex09a":
-            ans["Prog LanguageLevel"] = (tuple.1, nil)
+            ans["Programming Language Level"] = (tuple.1, nil)
             
         case "OutputIndex10":
-            ans["NcSloc"] = (tuple.1, nil)
+            ans["NumNcnbSloc"] = (tuple.1, nil)
             
         case "OutputIndex10a":
-            ans["NumIssues"] = (tuple.1, nil)
+            ans["Number of Issues"] = (tuple.1, nil)
             
         case "OutputIndex10b":
-            ans["EstNumSeverity 1 Issues"] = (tuple.1, nil)
+            ans["Est Number of Severity 1 Issues"] = (tuple.1, nil)
             
         case "OutputIndex10c":
-            ans["EstNumSeverity 2 Issues"] = (tuple.1, nil)
+            ans["Est Number of Severity 2 Issues"] = (tuple.1, nil)
             
         case "OutputIndex10d":
-            ans["EstNumSeverity 3 Issues"] = (tuple.1, nil)
+            ans["Est Number of Severity 3 Issues"] = (tuple.1, nil)
             
         case "OutputIndex10e":
-            ans["EstNumSeverity 4 Issues"] = (tuple.1, nil)
+            ans["Est Number of Severity 4 Issues"] = (tuple.1, nil)
             
         case "OutputIndex11":
             ans["CMMI Maturity Level"] = (tuple.1, nil)
@@ -183,7 +183,7 @@ func computeMetrics(_ outputValues: [(String, Double?, String?)]) -> [String : (
             ans["Est Defects Leaked to Users"] = (tuple.1, nil)
             
         case "OutputIndex21":
-            ans["ProjectDRE"] = (tuple.1, nil)
+            ans["Est Project Defect Removal Efficiency"] = (tuple.1, nil)
             
         case "OutputIndex22":
             ans["Est Capability-Based DRE"] = (nil, tuple.2)
