@@ -20,13 +20,6 @@ struct ExecutiveView: View {
             
                         HStack{
                             Button(action: {
-                                viewState.state = 100
-                            }){
-                                Text("Back")
-                                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                            }
-                            Spacer()
-                            Button(action: {
                                 exit(0)
                             }){
                                 Text("Log off")
@@ -37,7 +30,6 @@ struct ExecutiveView: View {
                         .padding(.trailing, 60)
                         .padding(.bottom, 100)
             let tags = viewState.model!.executiveTags
-//            let indices = viewState.model!.derivedInputIndices
             List{
                 ForEach(tags.indices) {
                     OutputView(name: tags[$0], labelWidth:350,text: viewState.model!.dict[tags[$0]] ?? "")
