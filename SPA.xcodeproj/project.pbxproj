@@ -13,7 +13,6 @@
 		814CA05D25393F1F00ABAA1B /* UserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814CA05725393F1F00ABAA1B /* UserListView.swift */; };
 		814CA05E25393F1F00ABAA1B /* ProjectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814CA05825393F1F00ABAA1B /* ProjectListView.swift */; };
 		814CA05F25393F1F00ABAA1B /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814CA05925393F1F00ABAA1B /* UserModel.swift */; };
-		814CA06125393F1F00ABAA1B /* ProjectData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814CA05B25393F1F00ABAA1B /* ProjectData.swift */; };
 		814CA066253945C400ABAA1B /* DerivedInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814CA065253945C400ABAA1B /* DerivedInputView.swift */; };
 		814CA06E25394E3700ABAA1B /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814CA06D25394E3700ABAA1B /* ViewState.swift */; };
 		814CA0902541218B00ABAA1B /* PractionerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814CA08D2541218B00ABAA1B /* PractionerView.swift */; };
@@ -58,7 +57,6 @@
 		814CA05725393F1F00ABAA1B /* UserListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListView.swift; sourceTree = "<group>"; };
 		814CA05825393F1F00ABAA1B /* ProjectListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectListView.swift; sourceTree = "<group>"; };
 		814CA05925393F1F00ABAA1B /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
-		814CA05B25393F1F00ABAA1B /* ProjectData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectData.swift; sourceTree = "<group>"; };
 		814CA065253945C400ABAA1B /* DerivedInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DerivedInputView.swift; sourceTree = "<group>"; };
 		814CA06D25394E3700ABAA1B /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
 		814CA08D2541218B00ABAA1B /* PractionerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PractionerView.swift; sourceTree = "<group>"; };
@@ -136,7 +134,6 @@
 				814CA08E2541218B00ABAA1B /* ExecutiveView.swift */,
 				814CA08F2541218B00ABAA1B /* ManagementView.swift */,
 				814CA08D2541218B00ABAA1B /* PractionerView.swift */,
-				814CA05B25393F1F00ABAA1B /* ProjectData.swift */,
 				814CA05825393F1F00ABAA1B /* ProjectListView.swift */,
 				814CA05725393F1F00ABAA1B /* UserListView.swift */,
 				814CA05925393F1F00ABAA1B /* UserModel.swift */,
@@ -336,7 +333,6 @@
 				814CA05F25393F1F00ABAA1B /* UserModel.swift in Sources */,
 				814CA066253945C400ABAA1B /* DerivedInputView.swift in Sources */,
 				814CA042253825EA00ABAA1B /* SPAPrototype.swift in Sources */,
-				814CA06125393F1F00ABAA1B /* ProjectData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

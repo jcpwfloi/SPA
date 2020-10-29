@@ -10,7 +10,6 @@ import SwiftUI
 struct ProjectListView: View{
     @Environment(\.managedObjectContext) private var viewContext
     
-    @EnvironmentObject var coreData: CoreData
     @State private var newName: String = ""
     @State private var showAddAlert = false
     @State private var showingAddSheet = false

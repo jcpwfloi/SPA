@@ -12,12 +12,11 @@ struct ContentView: View {
     
     @ObservedObject var user: UserModel
     @EnvironmentObject var viewState: ViewState
-    @EnvironmentObject var coreData: CoreData
     
     private func ContainedView() -> AnyView {
         switch (viewState.state) {
         case 0:
-            return AnyView(UserListView(user: user)
+            return AnyView(UserListView()
                 .environment(\.managedObjectContext, viewContext))
         case 1:
             return AnyView(DerivedInputView())

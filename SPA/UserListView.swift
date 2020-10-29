@@ -14,9 +14,7 @@ struct UserListView: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \User.username, ascending: true)],
             animation: .default)
     private var users: FetchedResults<User>
-    
-    @ObservedObject var user: UserModel
-    @EnvironmentObject var coreData: CoreData
+
     @State private var newName: String = ""
     @State private var showAddAlert = false
     @State private var showingAddSheet = false
@@ -102,11 +100,3 @@ struct UserListView: View {
     }
 
 }
-
-#if DEBUG
-struct UserListView_Previews: PreviewProvider {
-    static var previews: some View {
-        UserListView(user: UserModel())
-    }
-}
-#endif
