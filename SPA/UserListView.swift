@@ -22,6 +22,24 @@ struct UserListView: View {
     @State private var showingAddSheet = false
     
     var body: some View {
+        let AddUserPopup =
+            withAnimation {
+                ZStack {
+                    VStack {
+                        TextField("Enter New User Name", text: $newName)
+                        Button("Add") {
+                            addUser(name: newName)
+                            self.showingAddSheet.toggle()
+                        }.font(.title)
+                        Button(action: {
+                            self.showingAddSheet.toggle()
+                        }){
+                            Text("Dismiss")
+                            .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                        }
+                    }
+                }.padding()
+            }
         NavigationView{
             VStack{
                 if users.count > 0 {
@@ -35,57 +53,22 @@ struct UserListView: View {
                     }
                     .navigationBarTitle(Text("User List"))
                     .navigationBarItems(trailing:
-                                    Button("Add") {
-                                        self.showingAddSheet.toggle()
-                                    }.sheet(isPresented: $showingAddSheet){
-                                        ZStack {
-                                            VStack {
-                                                TextField("Enter New User Name", text: $newName)
-                                                Button("add") {
-                                                    addUser(name: newName)
-                                                    self.showingAddSheet.toggle()
-                                                }.font(.title)
-                                                Button(action: {
-                                                    self.showingAddSheet.toggle()
-                                                }){
-                                                    Text("Dismiss")
-                                                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                                                }
-                                            }
-                                        }
-                                    }
+                        Button("Add") {
+                            self.showingAddSheet.toggle()
+                        }.sheet(isPresented: $showingAddSheet){
+                            AddUserPopup
+                        }
                     )
                 } else {
-                    Text("User List is Empty, add a user below.")
+                    Text("Empty")
                         .navigationBarTitle(Text("User List"))
                         .navigationBarItems(trailing:
-                                        Button("Add") {
-                                            self.showingAddSheet.toggle()
-                                        }.sheet(isPresented: $showingAddSheet){
-                                            ZStack {
-                                                VStack {
-                                                    TextField("Enter New User Name", text: $newName)
-                                                    Button("add") {
-                                                        addUser(name: newName)
-                                                        self.showingAddSheet.toggle()
-                                                    }.font(.title)
-                                                    Button(action: {
-                                                        self.showingAddSheet.toggle()
-                                                    }){
-                                                        Text("Dismiss")
-                                                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                                                    }
-                                                }
-                                            }
-                                        }
+                            Button("Add") {
+                                self.showingAddSheet.toggle()
+                            }.sheet(isPresented: $showingAddSheet){
+                                AddUserPopup
+                            }
                         )
-                }
-                
-                Button(action: {
-                    user.logout()
-                }){
-                    Text("Log off")
-                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                 }
             }
         }.navigationViewStyle(StackNavigationViewStyle())

@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import Combine
 
-class SPAModel : ObservableObject{
+class SPAModel : ObservableObject {
     
     @Published var rawInputTags = [RawInput(name: "Project Name", placeholder: "Project Name", textInput: projectName),
                            RawInput(name: "Programming Language", placeholder: "Programming Language", textInput: programmingLanguage),
@@ -30,6 +30,7 @@ class SPAModel : ObservableObject{
     @Published var dict = [String : String]()
     @Published var metrics: [(String, Double?, String?)]
     var rawInputValidationTags = [projectNameValidationTag,programmingLanguageValidationTag,inputAvgAnnualSalaryValidationTag,teamSizeValidationTag,ncSlocValidationTag,reqDesEffortValidationTag,devEffortValidationTag,findDefectEffortValidationTag,reworkEffortValidationTag,issueCountValidationTag,postReleaseIndicatorTag]
+    
     init(){
         projectId = "CMMILevel4Project"
         projectProgrammingLanguage = "Bliss"
@@ -44,6 +45,10 @@ class SPAModel : ObservableObject{
         projectPostReleaseIndicator = "N"
         metrics = computeMetrics()!
         metrics = metrics.sorted {$0.0 < $1.0}
+    }
+    
+    private func save() {
+        
     }
     
     func compute(){

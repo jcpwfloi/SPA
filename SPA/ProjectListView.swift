@@ -16,64 +16,55 @@ struct ProjectListView: View{
     @State private var showingAddSheet = false
     
     @ObservedObject var user: User
-    var body: some View {
-        let temp = user.projects as? Set<Project> ?? []
-        let projects = Array(temp).sorted {
+    
+    public var projects: [Project] {
+        let set = user.projects as? Set<Project> ?? []
+        return set.sorted {
             $0.name ?? "" < $1.name ?? ""
         }
-        if projects.count > 0 {
-            List(projects) { project in
-                NavigationLink(
-                    destination: RawInputView()
-                        .environment(\.managedObjectContext, viewContext)) {
-                    Text("\(project.name ?? "Not Set")")
+    }
+    
+    var body: some View {
+        let AddProjectView = withAnimation {
+            ZStack {
+                VStack {
+                    TextField("Enter New Project Name", text: $newName)
+                    Button("Add") {
+                        addProject(name: newName, user: user)
+                        self.showingAddSheet.toggle()
+                    }.font(.title)
+                    Button(action: {
+                        self.showingAddSheet.toggle()
+                    }){
+                        Text("Dismiss")
+                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                    }
                 }
-            }.navigationBarTitle(Text("Project List"))
-            .navigationBarItems(trailing:
-                            Button("Add") {
-                                self.showingAddSheet.toggle()
-                            }.sheet(isPresented: $showingAddSheet) {
-                                ZStack {
-                                    VStack {
-                                        TextField("Enter New Project Name", text: $newName)
-                                        Button("add") {
-                                            addProject(name: newName, user: user)
-                                            self.showingAddSheet.toggle()
-                                        }.font(.title)
-                                        Button(action: {
-                                            self.showingAddSheet.toggle()
-                                        }){
-                                            Text("Dismiss")
-                                            .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                                        }
-                                    }
-                                }
-                            }
-            )
+            }
+            .padding()
+        }
+        
+        let AddButton = Button("Add") {
+            self.showingAddSheet.toggle()
+        }.sheet(isPresented: $showingAddSheet) {
+            AddProjectView
+        }
+        
+        if projects != [] {
+            List {
+                ForEach(projects, id: \.self) { project in
+                    NavigationLink(destination: RawInputView()
+                            .environment(\.managedObjectContext, viewContext)) {
+                        Text("\(project.name ?? "Not Set")")
+                    }
+                }.onDelete(perform: removeProject)
+            }
+            .navigationBarTitle(Text("Project List - \(user.username ?? "Null")"))
+            .navigationBarItems(trailing: AddButton)
         } else {
-            Text("Project List is Empty, add a project below.")
-            .navigationBarTitle(Text("Project List"))
-                .navigationBarItems(trailing:
-                                Button("Add") {
-                                    self.showingAddSheet.toggle()
-                                }.sheet(isPresented: $showingAddSheet){
-                                    ZStack {
-                                        VStack {
-                                            TextField("Enter New Project Name", text: $newName)
-                                            Button("add") {
-                                                addProject(name: newName, user: user)
-                                                self.showingAddSheet.toggle()
-                                            }.font(.title)
-                                            Button(action: {
-                                                self.showingAddSheet.toggle()
-                                            }){
-                                                Text("Dismiss")
-                                                .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                                            }
-                                        }
-                                    }
-                                }
-                )
+            Text("Empty")
+                .navigationBarTitle(Text("Project List - \(user.username ?? "Null")"))
+                .navigationBarItems(trailing: AddButton)
         }
     }
     private func addProject(name: String, user: User) {
@@ -92,6 +83,23 @@ struct ProjectListView: View{
                     fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
                 }
             }
+    }
+    
+    private func removeProject(at offsets: IndexSet) {
+        for index in offsets {
+            let temp = projects[index]
+            user.removeFromProjects(temp)
+            viewContext.delete(temp)
+        }
+        
+        do {
+            try viewContext.save()
+        } catch {
+            // Replace this implementation with code to handle the error appropriately.
+            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+            let nsError = error as NSError
+            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+        }
     }
 }
 //#if DEBUG
