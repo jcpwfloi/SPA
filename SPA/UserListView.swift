@@ -40,6 +40,13 @@ struct UserListView: View {
                     }
                 }.padding()
             }
+        
+        let AddButton = Button("Add") {
+            self.showingAddSheet.toggle()
+        }.sheet(isPresented: $showingAddSheet){
+            AddUserPopup
+        }
+        
         NavigationView{
             VStack{
                 if users.count > 0 {
@@ -52,23 +59,11 @@ struct UserListView: View {
                         }.onDelete(perform: removeUser)
                     }
                     .navigationBarTitle(Text("User List"))
-                    .navigationBarItems(trailing:
-                        Button("Add") {
-                            self.showingAddSheet.toggle()
-                        }.sheet(isPresented: $showingAddSheet){
-                            AddUserPopup
-                        }
-                    )
+                    .navigationBarItems(trailing: AddButton)
                 } else {
                     Text("Empty")
                         .navigationBarTitle(Text("User List"))
-                        .navigationBarItems(trailing:
-                            Button("Add") {
-                                self.showingAddSheet.toggle()
-                            }.sheet(isPresented: $showingAddSheet){
-                                AddUserPopup
-                            }
-                        )
+                        .navigationBarItems(trailing: AddButton)
                 }
             }
         }.navigationViewStyle(StackNavigationViewStyle())

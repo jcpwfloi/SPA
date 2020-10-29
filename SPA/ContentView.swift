@@ -14,32 +14,31 @@ struct ContentView: View {
     @EnvironmentObject var viewState: ViewState
     @EnvironmentObject var coreData: CoreData
     
+    private func ContainedView() -> AnyView {
+        switch (viewState.state) {
+        case 0:
+            return AnyView(UserListView(user: user)
+                .environment(\.managedObjectContext, viewContext))
+        case 1:
+            return AnyView(DerivedInputView())
+        case 2:
+            return AnyView(ExecutiveView())
+        case 3:
+            return AnyView(ManagementView())
+        case 4:
+            return AnyView(PractionerView())
+        default:
+            return AnyView(RawInputView())
+        }
+    }
+    
     @ViewBuilder
     var body: some View {
         VStack {
             if (!user.isLoggedin) {
                 LoginView(user: user)
             } else {
-                if (viewState.state == 0) {
-                    UserListView(user: user)
-                        .environment(\.managedObjectContext, viewContext)
-                } else {
-                    if(viewState.state == 1){
-                        DerivedInputView()
-                    }
-                    else if(viewState.state == 2){
-                        ExecutiveView()
-                    }
-                    else if(viewState.state == 3){
-                        ManagementView()
-                    }
-                    else if(viewState.state == 4){
-                        PractionerView()
-                    }
-                    else{
-                        RawInputView()
-                    }
-                }
+                ContainedView()
             }
         }
     }
