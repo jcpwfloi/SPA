@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    
     @ObservedObject var user: UserModel
     @EnvironmentObject var viewState: ViewState
     @EnvironmentObject var coreData: CoreData
@@ -20,6 +22,7 @@ struct ContentView: View {
             } else {
                 if (viewState.state == 0) {
                     UserListView(user: user)
+                        .environment(\.managedObjectContext, viewContext)
                 } else {
                     if(viewState.state == 1){
                         DerivedInputView()
