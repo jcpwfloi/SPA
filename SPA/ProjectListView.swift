@@ -15,6 +15,7 @@ struct ProjectListView: View{
     @State private var showingAddSheet = false
     
     @ObservedObject var user: User
+    var userModel: UserModel
     
     public var projects: [Project] {
         let set = user.projects as? Set<Project> ?? []
@@ -43,10 +44,27 @@ struct ProjectListView: View{
             .padding()
         }
         
-        let AddButton = Button("Add") {
+        let AddButton = Button(action: {
             self.showingAddSheet.toggle()
-        }.sheet(isPresented: $showingAddSheet) {
+        }) {
+            Image(systemName: "person.badge.plus.fill")
+                .font(Font.system(.title).bold())
+        }.sheet(isPresented: $showingAddSheet){
             AddProjectView
+        }
+        
+        let LogoutButton = Button(action: {
+            userModel.logout()
+        }) {
+            Text("Logout")
+        }
+        
+        let navigationButtons = HStack {
+            AddButton
+            Spacer()
+            Spacer()
+            Spacer()
+            LogoutButton
         }
         
         if projects != [] {
@@ -59,11 +77,11 @@ struct ProjectListView: View{
                 }.onDelete(perform: removeProject)
             }
             .navigationBarTitle(Text("Project List - \(user.username ?? "Null")"))
-            .navigationBarItems(trailing: AddButton)
+            .navigationBarItems(trailing: navigationButtons)
         } else {
             Text("Empty")
                 .navigationBarTitle(Text("Project List - \(user.username ?? "Null")"))
-                .navigationBarItems(trailing: AddButton)
+                .navigationBarItems(trailing: navigationButtons)
         }
     }
     private func addProject(name: String, user: User) {

@@ -16,7 +16,7 @@ struct ContentView: View {
     private func ContainedView() -> AnyView {
         switch (viewState.state) {
         case 0:
-            return AnyView(UserListView()
+            return AnyView(UserListView(user: user)
                 .environment(\.managedObjectContext, viewContext))
         case 1:
             return AnyView(DerivedInputView())

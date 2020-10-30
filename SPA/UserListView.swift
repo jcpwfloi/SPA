@@ -14,6 +14,8 @@ struct UserListView: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \User.username, ascending: true)],
             animation: .default)
     private var users: FetchedResults<User>
+    
+    var user: UserModel
 
     @State private var newName: String = ""
     @State private var showAddAlert = false
@@ -39,10 +41,27 @@ struct UserListView: View {
                 }.padding()
             }
         
-        let AddButton = Button("Add") {
+        let AddButton = Button(action: {
             self.showingAddSheet.toggle()
+        }) {
+            Image(systemName: "person.badge.plus.fill")
+                .font(Font.system(.title).bold())
         }.sheet(isPresented: $showingAddSheet){
             AddUserPopup
+        }
+        
+        let LogoutButton = Button(action: {
+            user.logout()
+        }) {
+            Text("Logout")
+        }
+        
+        let navigationButtons = HStack {
+            AddButton
+            Spacer()
+            Spacer()
+            Spacer()
+            LogoutButton
         }
         
         NavigationView{
@@ -50,18 +69,18 @@ struct UserListView: View {
                 if users.count > 0 {
                     List {
                         ForEach(users, id: \.self) { myUser in
-                            NavigationLink(destination: ProjectListView(user: myUser)
+                            NavigationLink(destination: ProjectListView(user: myUser, userModel: user)
                                             .environment(\.managedObjectContext, viewContext)) {
                                 Text("\(myUser.username ?? "Not set")")
                             }
                         }.onDelete(perform: removeUser)
                     }
                     .navigationBarTitle(Text("User List"))
-                    .navigationBarItems(trailing: AddButton)
+                    .navigationBarItems(trailing: navigationButtons)
                 } else {
                     Text("Empty")
                         .navigationBarTitle(Text("User List"))
-                        .navigationBarItems(trailing: AddButton)
+                        .navigationBarItems(trailing: navigationButtons)
                 }
             }
         }.navigationViewStyle(StackNavigationViewStyle())
