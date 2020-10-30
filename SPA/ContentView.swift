@@ -27,7 +27,7 @@ struct ContentView: View {
         case 4:
             return AnyView(PractionerView())
         default:
-            return AnyView(RawInputView())
+            return AnyView(EmptyView())
         }
     }
     

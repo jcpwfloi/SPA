@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="19G2021" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Input" representedClassName="Input" syncable="YES" codeGenerationType="class">
+    <entity name="Project" representedClassName="Project" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="details" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ProjectDetails"/>
+    </entity>
+    <entity name="ProjectDetails" representedClassName="ProjectDetails" syncable="YES" codeGenerationType="class">
         <attribute name="projectAvgAnnualSalary" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="projectDevEffort" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="projectFindDefectEffort" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -13,17 +17,13 @@
         <attribute name="projectReworkEffort" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="projectTeamSize" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
-    <entity name="Project" representedClassName="Project" syncable="YES" codeGenerationType="class">
-        <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="details" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Input"/>
-    </entity>
     <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
         <attribute name="username" optional="YES" attributeType="String"/>
         <relationship name="projects" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Project"/>
     </entity>
     <elements>
-        <element name="User" positionX="-63" positionY="-18" width="128" height="73"/>
+        <element name="ProjectDetails" positionX="-395.41796875" positionY="276.0703125" width="128" height="208"/>
         <element name="Project" positionX="-253.08984375" positionY="158.05859375" width="128" height="73"/>
-        <element name="Input" positionX="-395.41796875" positionY="276.0703125" width="128" height="208"/>
+        <element name="User" positionX="-63" positionY="-18" width="128" height="73"/>
     </elements>
 </model>

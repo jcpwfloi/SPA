@@ -17,18 +17,6 @@ struct ManagementView: View {
     var body: some View {
         
         VStack {
-            
-                        HStack{
-                            Button(action: {
-                                exit(0)
-                            }){
-                                Text("Log off")
-                                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-            
-                            }
-                        }.padding(.leading, 80)
-                        .padding(.trailing, 60)
-                        .padding(.bottom, 100)
             let tags = viewState.model!.managementTags
             List{
                 ForEach(tags.indices) {
