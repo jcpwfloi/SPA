@@ -23,22 +23,21 @@ struct UserListView: View {
     
     var body: some View {
         let AddUserPopup =
-            withAnimation {
-                ZStack {
-                    VStack {
+            NavigationView {
+                Form {
+                    Section {
                         TextField("Enter New User Name", text: $newName)
-                        Button("Add") {
-                            addUser(name: newName)
-                            self.showingAddSheet.toggle()
-                        }.font(.title)
-                        Button(action: {
-                            self.showingAddSheet.toggle()
-                        }){
-                            Text("Dismiss")
-                            .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                        }
                     }
-                }.padding()
+                    Button("Add") {
+                        addUser(name: newName)
+                        self.showingAddSheet.toggle()
+                    }
+                    Button(action: {
+                        self.showingAddSheet.toggle()
+                    }){
+                        Text("Dismiss")
+                    }.foregroundColor(.red)
+                }.navigationTitle("Add a New User")
             }
         
         let AddButton = Button(action: {
@@ -65,7 +64,7 @@ struct UserListView: View {
         }
         
         NavigationView{
-            VStack{
+            VStack {
                 if users.count > 0 {
                     List {
                         ForEach(users, id: \.self) { myUser in
@@ -105,6 +104,13 @@ struct UserListView: View {
     func removeUser(at offsets: IndexSet) {
         for index in offsets {
             let temp = users[index]
+            
+            let projects = temp.projects as? Set<Project> ?? []
+            
+            for project in projects {
+                viewContext.delete(project)
+            }
+            
             viewContext.delete(temp)
         }
         

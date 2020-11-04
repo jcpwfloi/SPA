@@ -13,15 +13,22 @@ struct LoginView: View {
     @State var username: String = ""
     @State var password: String = ""
     
+    @State var email = ""
+    @State var registerPassword = ""
+    @State var confirmPassword = ""
+    @State var realname = ""
+    @State var number = ""
+    
     @State var showingAlert = false
+    @State var showingRegister = false
     
     var showAlert = false
     
     @ViewBuilder
     var body: some View {
         VStack {
-            Text(/*@START_MENU_TOKEN@*/"Login"/*@END_MENU_TOKEN@*/)
-                .font(.largeTitle)
+            Text("Software Project Analytics")
+                .font(.title)
                 .fontWeight(.semibold)
                 .padding(.top)
             TextField("Username", text: $username)
@@ -37,10 +44,60 @@ struct LoginView: View {
                 }
             }).alert(isPresented: $showingAlert) {
                 Alert(title: Text("Error"), message: Text("Incorrect username or password"), dismissButton: .default(Text("Got it!")))
-            }
-            
-            
-            .padding(.top, 30.0)
+            }.padding(.top, 30.0)
+            Button("Register", action: {
+                self.showingRegister.toggle()
+            }).sheet(isPresented: $showingRegister, content: {
+                NavigationView {
+                    Form {
+                        Section(header: Text("UserInfo")) {
+                            HStack {
+                                Text("Email").bold()
+                                Spacer().frame(width: 30)
+                                TextField("Email", text: $email)
+                                    .multilineTextAlignment(.trailing)
+                            }
+                            HStack {
+                                Text("Password").bold()
+                                Spacer().frame(width: 30)
+                                SecureField("Password", text: $registerPassword)
+                                    .multilineTextAlignment(.trailing)
+                            }
+                            HStack {
+                                Text("Confirm Password").bold()
+                                Spacer().frame(width: 30)
+                                SecureField("Confirm Password", text: $confirmPassword)
+                                    .multilineTextAlignment(.trailing)
+                            }
+                            HStack {
+                                Text("Actual Name").bold()
+                                Spacer().frame(width: 30)
+                                TextField("Actual Name", text: $realname)
+                                    .multilineTextAlignment(.trailing)
+                            }
+                            HStack {
+                                Text("Phone Number").bold()
+                                Spacer().frame(width: 30)
+                                TextField("Phone Number", text: $number)
+                                    .multilineTextAlignment(.trailing)
+                            }
+                        }
+                        Button("Clear", action: {
+                            email = ""
+                            registerPassword = ""
+                            confirmPassword = ""
+                            realname = ""
+                            number = ""
+                        })
+                        .foregroundColor(.red)
+                        .multilineTextAlignment(.center)
+                    }
+                    .navigationTitle("Register")
+                    .navigationBarItems(trailing: Button("Register") {
+                        
+                    })
+                }
+            }).padding(.top, 10.0)
         }
     }
 }
