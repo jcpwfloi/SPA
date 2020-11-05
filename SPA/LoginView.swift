@@ -20,7 +20,7 @@ struct LoginView: View {
     @ViewBuilder
     var body: some View {
         VStack {
-            Text(/*@START_MENU_TOKEN@*/"Login"/*@END_MENU_TOKEN@*/)
+            Text("Login")
                 .font(.largeTitle)
                 .fontWeight(.semibold)
                 .padding(.top)

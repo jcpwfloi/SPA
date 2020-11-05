@@ -26,7 +26,7 @@ struct UserListView: View {
             withAnimation {
                 ZStack {
                     VStack {
-                        TextField("Enter New User Name", text: $newName)
+                        TextField("Enter New User Name", text: $newName).accessibilityIdentifier("")
                         Button("Add") {
                             addUser(name: newName)
                             self.showingAddSheet.toggle()
@@ -48,7 +48,7 @@ struct UserListView: View {
                 .font(Font.system(.title).bold())
         }.sheet(isPresented: $showingAddSheet){
             AddUserPopup
-        }
+        }.accessibilityIdentifier("Add")
         
         let LogoutButton = Button(action: {
             user.logout()
