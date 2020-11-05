@@ -37,10 +37,10 @@ class SPAUITests: XCTestCase {
         //test add user
         let AddButton = self.app.buttons["Add"]
         AddButton.tap()
-        let newusername = self.app.textFields["new"]
+        let newusername = self.app.textFields["newUser"]
         newusername.tap()
         newusername.typeText("user1")
-        let subAddButton = self.app.buttons["subAdd"]
+        let subAddButton = self.app.buttons["Add User"]
         subAddButton.tap()
         XCTAssertEqual(1, self.app.tables.children(matching: .cell).count)
         //test delete user
@@ -61,7 +61,7 @@ class SPAUITests: XCTestCase {
             tablesQuery.element(boundBy: 0).swipeLeft()
             tablesQuery.element(boundBy: 0).buttons["Delete"].tap()
         }
-        let AddButtonProject = self.app.buttons["AddProject"]
+        let AddButtonProject = self.app.buttons["Add Project"]
         AddButtonProject.tap()
         let newproject = self.app.textFields["newProject"]
         newproject.tap()

@@ -21,6 +21,7 @@
 		814CA09D254A445100ABAA1B /* OutputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814CA09C254A445100ABAA1B /* OutputView.swift */; };
 		814CA0A2254A44C300ABAA1B /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814CA0A1254A44C300ABAA1B /* InputView.swift */; };
 		814CA0A7254A452F00ABAA1B /* RawInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814CA0A6254A452F00ABAA1B /* RawInput.swift */; };
+		814CA0AF2553D9D700ABAA1B /* SPAUITests in Resources */ = {isa = PBXBuildFile; fileRef = 814CA0AE2553D9D700ABAA1B /* SPAUITests */; };
 		FB656AF6254C91BC00B5B88D /* GeneratedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB656AF5254C91BC00B5B88D /* GeneratedView.swift */; };
 		FB8A7BE5251D6672004831BD /* SPAApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8A7BE4251D6672004831BD /* SPAApp.swift */; };
 		FB8A7BE7251D6672004831BD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8A7BE6251D6672004831BD /* ContentView.swift */; };
@@ -66,6 +67,7 @@
 		814CA09C254A445100ABAA1B /* OutputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputView.swift; sourceTree = "<group>"; };
 		814CA0A1254A44C300ABAA1B /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		814CA0A6254A452F00ABAA1B /* RawInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawInput.swift; sourceTree = "<group>"; };
+		814CA0AE2553D9D700ABAA1B /* SPAUITests */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SPAUITests; sourceTree = "<group>"; };
 		FB656AF5254C91BC00B5B88D /* GeneratedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratedView.swift; sourceTree = "<group>"; };
 		FB8A7BE1251D6672004831BD /* SPA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SPA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB8A7BE4251D6672004831BD /* SPAApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPAApp.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 		FB8A7BD8251D6672004831BD = {
 			isa = PBXGroup;
 			children = (
+				814CA0AE2553D9D700ABAA1B /* SPAUITests */,
 				FB8A7BE3251D6672004831BD /* SPA */,
 				FB8A7BFA251D6674004831BD /* SPATests */,
 				FB8A7C05251D6674004831BD /* SPAUITests */,
@@ -290,6 +293,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				814CA0AF2553D9D700ABAA1B /* SPAUITests in Resources */,
 				FB8A7BEC251D6674004831BD /* Preview Assets.xcassets in Resources */,
 				FB8A7BE9251D6674004831BD /* Assets.xcassets in Resources */,
 			);

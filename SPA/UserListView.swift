@@ -26,11 +26,12 @@ struct UserListView: View {
             withAnimation {
                 ZStack {
                     VStack {
-                        TextField("Enter New User Name", text: $newName).accessibilityIdentifier("")
+                        TextField("Enter New User Name", text: $newName).accessibilityIdentifier("newUser")
                         Button("Add") {
                             addUser(name: newName)
                             self.showingAddSheet.toggle()
                         }.font(.title)
+                        .accessibilityIdentifier("Add User")
                         Button(action: {
                             self.showingAddSheet.toggle()
                         }){
