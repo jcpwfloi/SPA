@@ -6,6 +6,9 @@
 //
 import SwiftUI
 
+
+
+
 struct RawInputView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
@@ -32,6 +35,7 @@ struct RawInputView: View {
         for i in 0...model.rawInputTags.count-1{
             let result = validateInputParameter(model.rawInputTags[i].textInput, tag:model.rawInputValidationTags[i])
             if(result == nil){
+                print(i)
                 checked = false
                 break
             }
@@ -45,7 +49,7 @@ struct RawInputView: View {
             model.compute()
             viewState.model = model
             self.showNewView.toggle()
-        }
+        }.disabled(disabled())
         VStack {
             Form {
                 Section(header: Text("Details")) {
@@ -59,6 +63,8 @@ struct RawInputView: View {
                     }
                     
                 }
+            }.alert(isPresented: $violated) {
+                Alert(title: Text("Violation"), message: Text("Invalid Input"))
             }
             NavigationLink(
                 destination: GeneratedView().environment(\.managedObjectContext, viewContext),
@@ -67,6 +73,7 @@ struct RawInputView: View {
                 EmptyView()
             }
         }
+        
         .navigationTitle("Project Details - \(project.name ?? "")")
         .navigationBarItems(trailing: GenerateButton)
     }
