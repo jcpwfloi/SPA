@@ -15,7 +15,7 @@ struct ProjectListView: View{
     @State private var showingAddSheet = false
     
     @ObservedObject var user: User
-    var userModel: UserModel
+    @EnvironmentObject var userModel: UserModel
     
     public var projects: [Project] {
         let set = user.projects as? Set<Project> ?? []
