@@ -1,30 +1,30 @@
 //
-//  SPAUITests.swift
-//  SPAUITests
+//  UITests.swift
+//  SPA
 //
-//  Created by Bokai Li on 2020-11-01.
+//  Created by Bokai Li on 11/6/20.
 //
 
 import XCTest
 
-class SPAUITests: XCTestCase {
+class UITests: XCTestCase {
 
-//    private var app: XCUIApplication!
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        
+
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-        
-        
+
+        // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
+        XCUIApplication().launch()
+
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-    
-    
+
     func testIntegration(){
         let app  = XCUIApplication()
         app.launch()
@@ -137,4 +137,5 @@ class SPAUITests: XCTestCase {
         app.buttons["Logout"].tap()
         //XCTAssertTrue(loginButton.exists)
     }
+
 }

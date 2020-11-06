@@ -59,6 +59,16 @@
                ReferencedContainer = "container:SPA.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7C8F08572555B50F0083E579"
+               BuildableName = "SPA-UITests.xctest"
+               BlueprintName = "SPA-UITests"
+               ReferencedContainer = "container:SPA.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
