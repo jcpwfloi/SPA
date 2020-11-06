@@ -30,7 +30,7 @@ struct RawInputView: View {
         return false
     }
     
-    func validate() -> Void{
+    func validate() -> Bool{
         var checked = true
         for i in 0...model.rawInputTags.count-1{
             let result = validateInputParameter(model.rawInputTags[i].textInput, tag:model.rawInputValidationTags[i])
@@ -41,14 +41,19 @@ struct RawInputView: View {
             }
         }
         violated = !checked
+        return checked
     }
     
     var body: some View {
         let GenerateButton = Button("Generate") {
-            validate()
-            model.compute()
-            viewState.model = model
-            self.showNewView.toggle()
+            
+            if(validate()){
+                model.compute()
+                viewState.model = model
+                
+                self.showNewView.toggle()
+            }
+            
         }.disabled(disabled())
         VStack {
             Form {
@@ -58,7 +63,7 @@ struct RawInputView: View {
                             Text(model.rawInputTags[idx].name).bold()
                             Spacer().frame(width: 30)
                             TextField(model.rawInputTags[idx].name, text: $model.rawInputTags[idx].textInput)
-                                .multilineTextAlignment(.trailing)
+                                .multilineTextAlignment(.trailing).accessibilityIdentifier(model.rawInputTags[idx].name)
                         }
                     }
                     

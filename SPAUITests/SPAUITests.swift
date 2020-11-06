@@ -28,6 +28,11 @@ class SPAUITests: XCTestCase {
     func testIntegration(){
         let app  = XCUIApplication()
         app.launch()
+        addUIInterruptionMonitor(withDescription: "Dialog"){
+            (alert) -> Bool in
+            alert.buttons["OK"].tap()
+            return true
+        }
         let username = app.textFields["Username"]
         let password = app.secureTextFields["Password"]
         let loginButton = app.buttons["Login"]
@@ -95,8 +100,27 @@ class SPAUITests: XCTestCase {
         //test navigation link
         let project1 = app.tables.cells.element(boundBy: 0)
         project1.tap()
-        //Test Generate button
+        
         let generateButton = app.buttons["Generate"]
+        
+        //Test blank inputs and invalid inputs
+        let teamSize = app.textFields["Team Size"]
+        XCTAssertTrue(teamSize.exists)
+        teamSize.doubleTap()
+        teamSize.typeText(XCUIKeyboardKey.delete.rawValue)
+        XCTAssertFalse(generateButton.isEnabled)
+        
+        teamSize.typeText("N")
+        XCTAssertTrue(generateButton.isEnabled)
+        generateButton.tap()
+        //Alert handled by Interruption Monitor
+        teamSize.doubleTap()
+        teamSize.typeText(XCUIKeyboardKey.delete.rawValue)
+        teamSize.typeText("9")
+        XCTAssertTrue(generateButton.isEnabled)
+        
+        //Test Generate button
+        
         generateButton.tap()
         //Test Executive Screen
         app.tabBars.buttons.element(boundBy: 1).tap()
@@ -106,6 +130,9 @@ class SPAUITests: XCTestCase {
         app.tabBars.buttons.element(boundBy: 3).tap()
         //Test Derived Input
         app.tabBars.buttons.element(boundBy: 0).tap()
+        
+        
+        
         //LogOff This button currently exit the app
         app.buttons["Logout"].tap()
         //XCTAssertTrue(loginButton.exists)
