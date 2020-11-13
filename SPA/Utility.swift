@@ -35,6 +35,19 @@ extension Double{
     }
     
     func toPercent() -> String{
-        return String(format: "%3.0f", self)
+        return String(format: "%3.0f", self) + "%"
+    }
+    
+    func toString() -> String{
+        return String(format: "%.0f", self)
+    }
+}
+
+extension String{
+    func toDouble() -> Double{
+        return Double(self.trim())!
+    }
+    func trim() -> String{
+        return self.trimmingCharacters(in: .whitespaces)
     }
 }

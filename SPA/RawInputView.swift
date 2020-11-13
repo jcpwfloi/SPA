@@ -16,10 +16,11 @@ struct RawInputView: View {
     @EnvironmentObject var viewState: ViewState
     @State private var action: Int? = 0
     @State var violated: Bool = false
+    @State var error: Bool = false
     
     @State var showNewView = false
     
-    var project: Project
+    var alertMsg = "Invalid Input"
     
     func disabled() -> Bool{
         for rawInput in model.rawInputTags{
@@ -31,15 +32,7 @@ struct RawInputView: View {
     }
     
     func validate() -> Bool{
-        var checked = true
-        for i in 0...model.rawInputTags.count-1{
-            let result = validateInputParameter(model.rawInputTags[i].textInput, tag:model.rawInputValidationTags[i])
-            if(result == nil){
-                print(i)
-                checked = false
-                break
-            }
-        }
+        let checked = model.validate()
         violated = !checked
         return checked
     }
@@ -48,10 +41,16 @@ struct RawInputView: View {
         let GenerateButton = Button("Generate") {
             
             if (validate()){
-                model.compute()
-                viewState.model = model
                 
-                self.showNewView.toggle()
+                let result = model.compute()
+                if(result){
+                    viewState.model = model
+                    saveProjectDetails()
+                    self.showNewView.toggle()
+                }
+                else{
+                    error = true
+                }
             }
             
         }.disabled(disabled())
@@ -62,14 +61,19 @@ struct RawInputView: View {
                         HStack {
                             Text(model.rawInputTags[idx].name).bold()
                             Spacer().frame(width: 30)
-                            TextField(model.rawInputTags[idx].name, text: $model.rawInputTags[idx].textInput)
+                            TextField(model.rawInputTags[idx].placeholder, text: $model.rawInputTags[idx].textInput)
                                 .multilineTextAlignment(.trailing).accessibilityIdentifier(model.rawInputTags[idx].name)
+//                            Text(model.rawInputUnits[idx]).multilineTextAlignment(.leading)
                         }
                     }
                     
                 }
+                
+                .alert(isPresented: $error) {
+                    Alert(title: Text("Error"), message: Text("Error in computataion Engine"))
+                }
             }.alert(isPresented: $violated) {
-                Alert(title: Text("Violation"), message: Text("Invalid Input"))
+                Alert(title: Text("Violation"), message: Text(alertMsg))
             }
             NavigationLink(
                 destination: GeneratedView().environment(\.managedObjectContext, viewContext),
@@ -79,23 +83,12 @@ struct RawInputView: View {
             }
         }
         
-        .navigationTitle("Project Details - \(project.name ?? "")")
+        .navigationTitle("Project Details - \(model.project.name ?? "")")
         .navigationBarItems(trailing: GenerateButton)
     }
     
-    private func saveProjectDetails(_ model: SPAModel) {
-        let detail = project.details!
-        detail.projectId = projectId
-        detail.projectProgrammingLanguage = projectProgrammingLanguage
-        detail.projectAvgAnnualSalary = projectAvgAnnualSalary
-        detail.projectTeamSize = projectTeamSize
-        detail.projectNcSloc = projectNcSloc
-        detail.projectReqDesEffort = projectReqDesEffort
-        detail.projectDevEffort = projectDevEffort
-        detail.projectFindDefectEffort = projectFindDefectEffort
-        detail.projectReworkEffort = projectReworkEffort
-        detail.projectIssueCount = projectIssueCount
-        detail.projectPostReleaseIndicator = projectPostReleaseIndicator
+    private func saveProjectDetails() {
+        model.save()
         
         do {
             try viewContext.save()
@@ -107,3 +100,5 @@ struct RawInputView: View {
         }
     }
 }
+
+

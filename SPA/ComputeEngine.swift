@@ -142,8 +142,18 @@ let lowerCaseY = "y"                    // Lowercase 'y' response
 let upCaseN = "N"                       // Upcase 'N' response
 let lowerCaseN = "n"                    // Lowercase 'n' response
 
-func computeMetrics() -> [(String, Double?, String?)]? {
-    
+func computeMetrics(projectId: String,
+                    projectProgrammingLanguage:String,
+                    projectAvgAnnualSalary:Double,
+                    projectTeamSize: Double,
+                    projectNcSloc: Double,
+                    projectReqDesEffort: Double,
+                    projectDevEffort: Double,
+                    projectFindDefectEffort: Double,
+                    projectReworkEffort: Double,
+                    projectIssueCount: Double,
+                    projectPostReleaseIndicator: String) -> [(String, Double?, String?)]? {
+//func computeMetrics() ->[(String, Double?, String?)]?{
     //+
     // Computed metric values
     //-
@@ -924,6 +934,7 @@ func computeMetrics() -> [(String, Double?, String?)]? {
         let projectDuration = ((totalProjectEffort / teamSize) / hoursPerMonth)
         
         if projectDuration < 1.0 {
+            print(totalProjectEffort)
             print("Project Effort must be >= 1", terminator: "")
             return nil
         }

@@ -12,30 +12,46 @@ struct GeneratedView: View {
     
     @EnvironmentObject var viewState: ViewState
     @EnvironmentObject var userModel : UserModel
+//    @State var title = "Derived Input View"
     var body: some View {
+        
         TabView {
             DerivedInputView()
+//            .onTapGesture{
+////                self.navigation("Derived Input View")
+//                navigationTitle("Derived Input View")
+//
+//            }
             .tabItem {
                 Image(systemName: "list.dash")
                 Text("Derived Input")
             }
             ExecutiveView()
+//            .onTapGesture{
+//                self.navigationTitle("Executive View")
+//            }
             .tabItem {
                 Image(systemName: "square.and.pencil")
                 Text("Executive")
             }
             ManagementView()
+//            .onTapGesture{
+//                self.navigationTitle("Management View")
+//            }
             .tabItem {
                 Image(systemName: "square.and.pencil")
                 Text("Management")
             }
             PractionerView()
+//            .onTapGesture{
+//                self.navigationTitle("Practitioner View")
+//            }
             .tabItem {
                 Image(systemName: "square.and.pencil")
                 Text("Practitioner")
             }
         }
-        .navigationTitle("Generated Screens")
+        .navigationTitle("Generated View")
         .navigationBarItems(trailing: Button("Logout") {
             userModel.logout()
         })
