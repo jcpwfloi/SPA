@@ -29,10 +29,12 @@ struct ProjectListView: View{
             ZStack {
                 VStack {
                     TextField("Enter New Project Name", text: $newName)
+                        .accessibilityIdentifier("newProject")
                     Button("Add") {
                         addProject(name: newName, user: user)
                         self.showingAddSheet.toggle()
                     }.font(.title)
+                    .accessibilityIdentifier("subAddProject")
                     Button(action: {
                         self.showingAddSheet.toggle()
                     }){
@@ -52,6 +54,7 @@ struct ProjectListView: View{
         }.sheet(isPresented: $showingAddSheet){
             AddProjectView
         }
+        .accessibilityIdentifier("Add Project")
         
         let LogoutButton = Button(action: {
             userModel.logout()
