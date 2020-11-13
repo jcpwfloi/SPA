@@ -21,6 +21,7 @@ struct LoginView: View {
     
     @State var showingAlert = false
     @State var showingRegister = false
+    @State var showingRegisterAlert = false
     
     var showAlert = false
     
@@ -97,7 +98,9 @@ struct LoginView: View {
                         
                     })
                 }
-            }).padding(.top, 10.0)
+            }).alert(isPresented: $showingRegisterAlert) {
+                Alert(title: Text("Error"), message: Text("Incorrect username or password"), dismissButton: .default(Text("Got it!")))
+            }.padding(.top, 10.0)
         }
     }
 }
