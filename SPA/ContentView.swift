@@ -35,7 +35,7 @@ struct ContentView: View {
     var body: some View {
         VStack {
             if (!user.isLoggedin) {
-                LoginView(user: user)
+                LoginView(user: user).environment(\.managedObjectContext, viewContext)
             } else {
                 ContainedView()
             }

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct LoginView: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    
     @ObservedObject var user: UserModel
     
     @State var username: String = ""
@@ -22,11 +24,17 @@ struct LoginView: View {
     @State var showingAlert = false
     @State var showingRegister = false
     @State var showingRegisterAlert = false
+    @State var showingSuccessAlert = false
     
     var showAlert = false
     
     @ViewBuilder
     var body: some View {
+        let registerButton = Button("Register", action: register)
+            .alert(isPresented: $showingSuccessAlert) {
+                Alert(title: Text("Note"), message: Text("Registration Successful."), dismissButton: .default(Text("Got it!")))
+            }
+        
         VStack {
             Text("Software Project Analytics")
                 .font(.title)
@@ -40,7 +48,7 @@ struct LoginView: View {
                 .frame(width: 400, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
             Button("Login", action: {
-                if !user.login(username, password) {
+                if !user.login(username, password, viewContext) {
                     showingAlert = true
                 }
             }).alert(isPresented: $showingAlert) {
@@ -94,13 +102,31 @@ struct LoginView: View {
                         .multilineTextAlignment(.center)
                     }
                     .navigationTitle("Register")
-                    .navigationBarItems(trailing: Button("Register") {
-                        
-                    })
+                    .navigationBarItems(trailing: registerButton)
+                }.alert(isPresented: $showingRegisterAlert) {
+                    Alert(title: Text("Error"), message: Text("Passwords don't match."), dismissButton: .default(Text("Got it!")))
                 }
-            }).alert(isPresented: $showingRegisterAlert) {
-                Alert(title: Text("Error"), message: Text("Incorrect username or password"), dismissButton: .default(Text("Got it!")))
-            }.padding(.top, 10.0)
+            }).padding(.top, 10.0)
+        }
+    }
+    private func register() {
+        if (registerPassword != confirmPassword) {
+            showingRegisterAlert = true
+        } else {
+            var newAuth = Auth(context: viewContext)
+            newAuth.email = email
+            newAuth.password = registerPassword
+            newAuth.realname = realname
+            newAuth.number = number
+            
+            do {
+                try viewContext.save()
+                showingSuccessAlert = true
+                showingRegister = false
+            } catch {
+                let nsError = error as NSError
+                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            }
         }
     }
 }

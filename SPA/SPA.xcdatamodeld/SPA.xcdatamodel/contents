@@ -28,9 +28,9 @@
         <relationship name="projects" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Project"/>
     </entity>
     <elements>
+        <element name="Auth" positionX="-75.2734375" positionY="243.38671875" width="128" height="103"/>
         <element name="Project" positionX="-253.08984375" positionY="158.05859375" width="128" height="73"/>
         <element name="ProjectDetails" positionX="-395.41796875" positionY="276.0703125" width="128" height="208"/>
         <element name="User" positionX="-63" positionY="-18" width="128" height="73"/>
-        <element name="Auth" positionX="-75.2734375" positionY="243.38671875" width="128" height="103"/>
     </elements>
 </model>
