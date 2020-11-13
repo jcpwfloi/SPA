@@ -28,26 +28,23 @@ struct ProjectListView: View{
     }
     
     var body: some View {
-        let AddProjectView = withAnimation {
-            ZStack {
-                VStack {
-                    TextField("Enter New Project Name", text: $newName)
-                        .accessibilityIdentifier("newProject")
+        let AddProjectPopup =
+            NavigationView {
+                Form {
+                    Section {
+                        TextField("Enter New Project Name", text: $newName)
+                    }
                     Button("Add") {
                         addProject(name: newName, user: user)
                         self.showingAddSheet.toggle()
-                    }.font(.title)
-                    .accessibilityIdentifier("subAddProject")
+                    }
                     Button(action: {
                         self.showingAddSheet.toggle()
                     }){
                         Text("Dismiss")
-                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                    }
-                }
+                    }.foregroundColor(.red)
+                }.navigationTitle("Add a New Project")
             }
-            .padding()
-        }
         
         let AddButton = Button(action: {
             self.showingAddSheet.toggle()
@@ -55,7 +52,7 @@ struct ProjectListView: View{
             Image(systemName: "person.badge.plus.fill")
                 .font(Font.system(.title).bold())
         }.sheet(isPresented: $showingAddSheet){
-            AddProjectView
+            AddProjectPopup
         }
         .accessibilityIdentifier("Add Project")
         
@@ -107,6 +104,21 @@ struct ProjectListView: View{
             withAnimation {
                 let newProject = Project(context: viewContext)
                 newProject.name = name
+                
+                let newProjectDetails = ProjectDetails(context: viewContext)
+                newProjectDetails.projectId = "CMMILevel4Project"
+                newProjectDetails.projectProgrammingLanguage = "Bliss"
+                newProjectDetails.projectAvgAnnualSalary = 109953.0
+                newProjectDetails.projectTeamSize = 9.0
+                newProjectDetails.projectNcSloc = 100000.0
+                newProjectDetails.projectReqDesEffort = 6420.0
+                newProjectDetails.projectDevEffort = 18868.0
+                newProjectDetails.projectFindDefectEffort = 1332.0
+                newProjectDetails.projectReworkEffort = 600.0
+                newProjectDetails.projectIssueCount = 200.0
+                newProjectDetails.projectPostReleaseIndicator = "N"
+                
+                newProject.details = newProjectDetails
                 
                 user.addToProjects(newProject)
 

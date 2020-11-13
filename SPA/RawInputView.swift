@@ -47,7 +47,7 @@ struct RawInputView: View {
     var body: some View {
         let GenerateButton = Button("Generate") {
             
-            if(validate()){
+            if (validate()){
                 model.compute()
                 viewState.model = model
                 
@@ -81,5 +81,29 @@ struct RawInputView: View {
         
         .navigationTitle("Project Details - \(project.name ?? "")")
         .navigationBarItems(trailing: GenerateButton)
+    }
+    
+    private func saveProjectDetails(_ model: SPAModel) {
+        let detail = project.details!
+        detail.projectId = projectId
+        detail.projectProgrammingLanguage = projectProgrammingLanguage
+        detail.projectAvgAnnualSalary = projectAvgAnnualSalary
+        detail.projectTeamSize = projectTeamSize
+        detail.projectNcSloc = projectNcSloc
+        detail.projectReqDesEffort = projectReqDesEffort
+        detail.projectDevEffort = projectDevEffort
+        detail.projectFindDefectEffort = projectFindDefectEffort
+        detail.projectReworkEffort = projectReworkEffort
+        detail.projectIssueCount = projectIssueCount
+        detail.projectPostReleaseIndicator = projectPostReleaseIndicator
+        
+        do {
+            try viewContext.save()
+        } catch {
+            // Replace this implementation with code to handle the error appropriately.
+            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+            let nsError = error as NSError
+            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+        }
     }
 }
