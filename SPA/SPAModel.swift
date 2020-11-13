@@ -78,6 +78,23 @@ class SPAModel : ObservableObject {
         metrics = metrics.sorted {$0.0 < $1.0}
     }
     
+    init(project: Project) {
+        let d = project.details!
+        projectId = d.projectId!
+        projectProgrammingLanguage = d.projectProgrammingLanguage!
+        projectAvgAnnualSalary = 109953.0
+        projectTeamSize = 9.0
+        projectNcSloc = 100000.0
+        projectReqDesEffort = 6420.0
+        projectDevEffort = 18868.0
+        projectFindDefectEffort = 1332.0
+        projectReworkEffort = 600.0
+        projectIssueCount = 200.0
+        projectPostReleaseIndicator = "N"
+        metrics = computeMetrics()!
+        metrics = metrics.sorted {$0.0 < $1.0}
+    }
+    
     private func save() {
         
     }

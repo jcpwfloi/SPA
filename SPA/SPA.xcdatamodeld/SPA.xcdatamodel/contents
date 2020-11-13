@@ -19,9 +19,9 @@
         <attribute name="projectNcSloc" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="projectPostReleaseIndicator" optional="YES" attributeType="String"/>
         <attribute name="projectProgrammingLanguage" optional="YES" attributeType="String"/>
-        <attribute name="projectReqDesEffort" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="projectReqDesEffort" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="projectReworkEffort" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="projectTeamSize" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="projectTeamSize" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
         <attribute name="username" optional="YES" attributeType="String"/>
