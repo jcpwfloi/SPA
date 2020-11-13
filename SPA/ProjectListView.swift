@@ -17,6 +17,9 @@ struct ProjectListView: View{
     @ObservedObject var user: User
     @EnvironmentObject var userModel: UserModel
     
+    @State private var deleteIndexSet: IndexSet?
+    @State private var showingDeleteAlert = false
+    
     public var projects: [Project] {
         let set = user.projects as? Set<Project> ?? []
         return set.sorted {
@@ -77,8 +80,15 @@ struct ProjectListView: View{
                             .environment(\.managedObjectContext, viewContext)) {
                         Text("\(project.name ?? "Not Set")")
                     }
-                }.onDelete(perform: removeProject)
+                }.onDelete(perform: deleteProject)
             }
+            .alert(isPresented: $showingDeleteAlert, content: {
+                Alert(title: Text("Warning"), message: Text("Do you surely want to delete the item?"), primaryButton: .destructive(Text("Delete")) {
+                    if let iset = deleteIndexSet {
+                        removeProject(at: iset)
+                    }
+                } , secondaryButton: .cancel())
+            })
             .navigationBarTitle(Text("Project List - \(user.username ?? "Null")"))
             .navigationBarItems(trailing: navigationButtons)
         } else {
@@ -87,6 +97,12 @@ struct ProjectListView: View{
                 .navigationBarItems(trailing: navigationButtons)
         }
     }
+    
+    private func deleteProject(at offsets: IndexSet) {
+        self.deleteIndexSet = offsets
+        self.showingDeleteAlert = true
+    }
+    
     private func addProject(name: String, user: User) {
             withAnimation {
                 let newProject = Project(context: viewContext)
