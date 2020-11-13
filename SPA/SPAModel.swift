@@ -9,6 +9,37 @@ import Foundation
 import SwiftUI
 import Combine
 
+
+let projectName = "CMMILevel4Project"
+let programmingLanguage = "Bliss"
+let inputAvgAnnualSalary = "109953"
+let inputTeamSize = "9"
+let inputNumNcSloc = "100000"
+let inputReqDesEffort = "6420"
+let inputDevEffort = "18868"
+let inputFindDefectEffort = "1332"
+let inputReworkEffort = "600"
+let inputIssueCount = "200"
+let inputPostReleaseIndicator = "N"
+
+
+//+
+// Input Parameters After Input Conversion
+//-
+
+var projectId = ""
+var projectProgrammingLanguage = ""
+var projectAvgAnnualSalary = 0.0
+var projectTeamSize = 0.0
+var projectNcSloc = 0.0
+var projectReqDesEffort = 0.0
+var projectDevEffort = 0.0
+var projectFindDefectEffort = 0.0
+var projectReworkEffort = 0.0
+var projectIssueCount = 0.0
+var projectPostReleaseIndicator = ""
+
+
 class SPAModel : ObservableObject {
     
     @Published var rawInputTags = [RawInput(name: "Project Name", placeholder: "Project Name", textInput: projectName),

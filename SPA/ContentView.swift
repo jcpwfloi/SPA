@@ -10,22 +10,22 @@ import SwiftUI
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
-    @ObservedObject var user: UserModel
+    @EnvironmentObject var user: UserModel
     @EnvironmentObject var viewState: ViewState
     
     private func ContainedView() -> AnyView {
         switch (viewState.state) {
         case 0:
-            return AnyView(UserListView(user: user)
+            return AnyView(UserListView()
                 .environment(\.managedObjectContext, viewContext))
-        case 1:
-            return AnyView(DerivedInputView())
-        case 2:
-            return AnyView(ExecutiveView())
-        case 3:
-            return AnyView(ManagementView())
-        case 4:
-            return AnyView(PractionerView())
+//        case 1:
+//            return AnyView(DerivedInputView())
+//        case 2:
+//            return AnyView(ExecutiveView())
+//        case 3:
+//            return AnyView(ManagementView())
+//        case 4:
+//            return AnyView(PractionerView())
         default:
             return AnyView(EmptyView())
         }

@@ -11,6 +11,7 @@ struct GeneratedView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @EnvironmentObject var viewState: ViewState
+    @EnvironmentObject var userModel : UserModel
     var body: some View {
         TabView {
             DerivedInputView()
@@ -36,7 +37,7 @@ struct GeneratedView: View {
         }
         .navigationTitle("Generated Screens")
         .navigationBarItems(trailing: Button("Logout") {
-            exit(0)
+            userModel.logout()
         })
     }
 }

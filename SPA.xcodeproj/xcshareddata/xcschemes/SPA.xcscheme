@@ -27,7 +27,17 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
-      codeCoverageEnabled = "YES">
+      codeCoverageEnabled = "YES"
+      onlyGenerateCoverageForSpecifiedTargets = "YES">
+      <CodeCoverageTargets>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "FB8A7BE0251D6672004831BD"
+            BuildableName = "SPA.app"
+            BlueprintName = "SPA"
+            ReferencedContainer = "container:SPA.xcodeproj">
+         </BuildableReference>
+      </CodeCoverageTargets>
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -46,6 +56,16 @@
                BlueprintIdentifier = "FB8A7C01251D6674004831BD"
                BuildableName = "SPAUITests.xctest"
                BlueprintName = "SPAUITests"
+               ReferencedContainer = "container:SPA.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7C8F08572555B50F0083E579"
+               BuildableName = "SPA-UITests.xctest"
+               BlueprintName = "SPA-UITests"
                ReferencedContainer = "container:SPA.xcodeproj">
             </BuildableReference>
          </TestableReference>

@@ -15,7 +15,7 @@ struct UserListView: View {
             animation: .default)
     private var users: FetchedResults<User>
     
-    var user: UserModel
+    @EnvironmentObject var user: UserModel
 
     @State private var newName: String = ""
     @State private var showAddAlert = false
@@ -68,7 +68,7 @@ struct UserListView: View {
                 if users.count > 0 {
                     List {
                         ForEach(users, id: \.self) { myUser in
-                            NavigationLink(destination: ProjectListView(user: myUser, userModel: user)
+                            NavigationLink(destination: ProjectListView(user: myUser)
                                             .environment(\.managedObjectContext, viewContext)) {
                                 Text("\(myUser.username ?? "Not set")")
                             }

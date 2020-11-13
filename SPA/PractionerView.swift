@@ -20,7 +20,9 @@ struct PractionerView: View {
             let tags = viewState.model!.practionerTags
             List{
                 ForEach(tags.indices) {
-                    OutputView(name: tags[$0], labelWidth:350,text: viewState.model!.dict[tags[$0]] ?? "")
+                    OutputView(name: tags[$0], labelWidth:350,text:
+                                viewState.model!.dict[tags[$0]] ?? ""
+                    )
                 }
                 
             }

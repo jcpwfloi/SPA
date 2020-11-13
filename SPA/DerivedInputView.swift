@@ -23,7 +23,9 @@ struct DerivedInputView: View {
             let tags = viewState.model!.derivedInputTags
             List{
                 ForEach(tags.indices) {
-                    OutputView(name: tags[$0], labelWidth:350,text: viewState.model!.dict[tags[$0]] ?? "")
+                    OutputView(name: tags[$0], labelWidth:350,text: 
+                                viewState.model!.dict[tags[$0]] ?? ""
+                    )
                 }
             }
         }

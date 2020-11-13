@@ -13,9 +13,10 @@ struct SPAApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView(user: UserModel())
+            ContentView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .environmentObject(ViewState())
+                .environmentObject(UserModel())
         }
     }
 }

@@ -6,6 +6,9 @@
 //
 import SwiftUI
 
+
+
+
 struct RawInputView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
@@ -27,25 +30,31 @@ struct RawInputView: View {
         return false
     }
     
-    func validate() -> Void{
+    func validate() -> Bool{
         var checked = true
         for i in 0...model.rawInputTags.count-1{
             let result = validateInputParameter(model.rawInputTags[i].textInput, tag:model.rawInputValidationTags[i])
             if(result == nil){
+                print(i)
                 checked = false
                 break
             }
         }
         violated = !checked
+        return checked
     }
     
     var body: some View {
         let GenerateButton = Button("Generate") {
-            validate()
-            model.compute()
-            viewState.model = model
-            self.showNewView.toggle()
-        }
+            
+            if(validate()){
+                model.compute()
+                viewState.model = model
+                
+                self.showNewView.toggle()
+            }
+            
+        }.disabled(disabled())
         VStack {
             Form {
                 Section(header: Text("Details")) {
@@ -54,11 +63,13 @@ struct RawInputView: View {
                             Text(model.rawInputTags[idx].name).bold()
                             Spacer().frame(width: 30)
                             TextField(model.rawInputTags[idx].name, text: $model.rawInputTags[idx].textInput)
-                                .multilineTextAlignment(.trailing)
+                                .multilineTextAlignment(.trailing).accessibilityIdentifier(model.rawInputTags[idx].name)
                         }
                     }
                     
                 }
+            }.alert(isPresented: $violated) {
+                Alert(title: Text("Violation"), message: Text("Invalid Input"))
             }
             NavigationLink(
                 destination: GeneratedView().environment(\.managedObjectContext, viewContext),
@@ -67,6 +78,7 @@ struct RawInputView: View {
                 EmptyView()
             }
         }
+        
         .navigationTitle("Project Details - \(project.name ?? "")")
         .navigationBarItems(trailing: GenerateButton)
     }
