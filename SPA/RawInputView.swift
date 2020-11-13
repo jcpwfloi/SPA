@@ -12,7 +12,7 @@ import SwiftUI
 struct RawInputView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
-    @ObservedObject var model : SPAModel = SPAModel()
+    @ObservedObject var model : SPAModel
     @EnvironmentObject var viewState: ViewState
     @State private var action: Int? = 0
     @State var violated: Bool = false

@@ -73,7 +73,7 @@ struct ProjectListView: View{
         if projects != [] {
             List {
                 ForEach(projects, id: \.self) { project in
-                    NavigationLink(destination: RawInputView(project: project)
+                    NavigationLink(destination: RawInputView( model: SPAModel(project: project), project: project)
                             .environment(\.managedObjectContext, viewContext)) {
                         Text("\(project.name ?? "Not Set")")
                     }
