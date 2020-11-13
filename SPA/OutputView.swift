@@ -26,7 +26,7 @@ struct OutputView: View{
             
             Spacer().frame(width: spacerWidth)
                 Text(text)
-                    .frame(width:labelWidth)
+                    .frame(width:labelWidth, alignment: .bottomTrailing)
             Spacer().frame(width: spacerWidth)
         }.padding()
     }

@@ -21,3 +21,11 @@ func floorOrCeiling(_ x: Double) -> Double {
     return y
     
 }
+
+extension Double{
+    func toMoney(toLength: Int) -> String{
+        let str = "$" + String(format: "%.0f", self)
+        let len = str.count
+        return String(repeating: " ", count: toLength + 1 - len) + str
+    }
+}
