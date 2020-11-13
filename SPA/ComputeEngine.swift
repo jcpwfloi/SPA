@@ -2263,28 +2263,28 @@ func computeMetrics(_ outputValues: [(String, Double?, String?)]) -> [String : S
             ans["Development Process Effectiveness"] = String(format:"%1.0f", tuple.1!)
             
         case "OutputIndex04a":
-            ans["Est Project Failure Risk"] = String(format:"%3.0f", tuple.1!) + "%"
+            ans["Est Project Failure Risk"] = tuple.1!.toPercent()
             
         case "OutputIndex04b":
-            ans["Est Project Delay Risk"] = String(format:"%3.0f", tuple.1!) + "%"
+            ans["Est Project Delay Risk"] = tuple.1!.toPercent()
             
         case "OutputIndex04c":
-            ans["Est Software Poor Quality Risk"] = String(format:"%3.0f", tuple.1!) + "%"
+            ans["Est Software Poor Quality Risk"] = tuple.1!.toPercent()
 
         case "OutputIndex4d":
-            ans["Est Complete Early"] = String(format:"%3.0f", tuple.1!) + "%"
+            ans["Est Complete Early"] = tuple.1!.toPercent()
             
         case "OutputIndex4e":
-            ans["Est Complete On-Time"] = String(format:"%3.0f", tuple.1!) + "%"
+            ans["Est Complete On-Time"] = tuple.1!.toPercent()
             
         case "OutputIndex4f":
-            ans["Est Complete Delayed"] = String(format:"%3.0f", tuple.1!) + "%"
+            ans["Est Complete Delayed"] = tuple.1!.toPercent()
             
         case "OutputIndex4g":
-            ans["Est Complete Canceled"] = String(format:"%3.0f", tuple.1!) + "%"
+            ans["Est Complete Canceled"] = tuple.1!.toPercent()
             
         case "OutputIndex4h":
-            ans["Est Cost of Quality"] = String(format:"%3.0f", tuple.1!) + "%"
+            ans["Est Cost of Quality"] = tuple.1!.toPercent()
             
         case "OutputIndex4i":
             ans["Est Total Project Cost"] = tuple.1!.toMoney(toLength: 10)
@@ -2304,16 +2304,16 @@ func computeMetrics(_ outputValues: [(String, Double?, String?)]) -> [String : S
             ans["Project Team Size"] = String(format:"%4.0f", tuple.1!)
             
         case "OutputIndex07":
-            ans["Labor Rate"] = "$" + String(format:"%3.0f", tuple.1!)
+            ans["Labor Rate"] = tuple.1!.toMoney(toLength: 3)
             
         case "OutputIndex08":
             ans["Total Project Hours"] = String(format:"%11.0f", tuple.1!) + " Ehrs"
             
         case "OutputIndex08a":
-            ans["Development Effort Percent"] = String(format:"%3.0f", tuple.1!) + "%"
+            ans["Development Effort Percent"] = tuple.1!.toPercent()
             
         case "OutputIndex08b":
-            ans["Test Effort Percent"] = String(format:"%3.0f", tuple.1!) + "%"
+            ans["Test Effort Percent"] = tuple.1!.toPercent()
             
         case "OutputIndex09":
             ans["Programming Language"] = tuple.2!
@@ -2415,16 +2415,16 @@ func computeMetrics(_ outputValues: [(String, Double?, String?)]) -> [String : S
             ans["Est Defects Leaked to Users"] = String(format:"%4.0f", tuple.1!) + " Dfs per Em"
             
         case "OutputIndex21":
-            ans["Est Project Defect Removal Efficiency"] = String(format:"%3.0f", tuple.1!) + "%"
+            ans["Est Project Defect Removal Efficiency"] = tuple.1!.toPercent()
             
         case "OutputIndex22":
             ans["Est Capability-Based DRE"] = tuple.2!
             
         case "OutputIndex22a":
-            ans["Est US Average DRE"] = String(format:"%3.0f", tuple.1!) + "%"
+            ans["Est US Average DRE"] = tuple.1!.toPercent()
             
         case "OutputIndex22b":
-            ans["Est US Average DDE"] = String(format:"%3.0f", tuple.1!) + "%"
+            ans["Est US Average DDE"] = tuple.1!.toPercent()
             
         case "OutputIndex23":
             ans["Est Find Fix Effort Per Defect"] = String(format:"%3.1f", tuple.1!) + " Ehs per Dfs"
@@ -2433,10 +2433,10 @@ func computeMetrics(_ outputValues: [(String, Double?, String?)]) -> [String : S
             ans["Est Avg Find Fix Effort per Defect"] = String(format:"%3.1f", tuple.1!) + " Ehs per Dfs"
             
         case "OutputIndex25":
-            ans["Est Unit Cost per Engineering Month"] = "$" + String(format:"%3.1f", tuple.1!) + " per NcSloc per Em"
+            ans["Est Unit Cost per Engineering Month"] = tuple.1!.toMoneyWithDecimal(integer: 3, decimal: 1)
             
         case "OutputIndex28":
-            ans["Est Find Fix Percentage"] = String(format:"%3.0f", tuple.1!) + "%"
+            ans["Est Find Fix Percentage"] = tuple.1!.toPercent()
             
         case "OutputIndex28a":
             ans["Est Project Effort"] = String(format:"%6.0f", tuple.1!) + " Staff-Em"
@@ -2472,28 +2472,28 @@ func computeMetrics(_ outputValues: [(String, Double?, String?)]) -> [String : S
             ans["Est Project Duration"] = String(format:"%3.1f", tuple.1!) + " Ems"
             
         case "OutputIndex29a":
-            ans["Est Design, Code & Test Cost"] = "$" + String(format:"%11.0f", tuple.1!)
+            ans["Est Design, Code & Test Cost"] = tuple.1!.toMoney(toLength: 11)
             
         case "OutputIndex29b":
-            ans["Est Team Cost per Engineering Month"] = "$" + String(format:"%11.0f", tuple.1!) + " per Em"
+            ans["Est Team Cost per Engineering Month"] = tuple.1!.toMoney(toLength: 11) + " per Em"
             
         case "OutputIndex29c":
-            ans["Est Cost of Quality"] = "$" + String(format:"%11.0f", tuple.1!)
+            ans["Est Cost of Quality"] = tuple.1!.toMoney(toLength: 11)
             
         case "OutputIndex29d":
-            ans["Est Technical Debt"] = "$" + String(format:"%6.0f", tuple.1!)
+            ans["Est Technical Debt"] = tuple.1!.toMoney(toLength: 6)
             
         case "OutputIndex30":
-            ans["Est Total Development Cost"] = "$" + String(format:"%11.0f", tuple.1!)
+            ans["Est Total Development Cost"] = tuple.1!.toMoney(toLength: 11)
             
         case "OutputIndex30a":
-            ans["Est Lifetime Maintenance Cost"] = "$" + String(format:"%11.0f", tuple.1!)
+            ans["Est Lifetime Maintenance Cost"] = tuple.1!.toMoney(toLength: 11)
             
         case "OutputIndex30b":
-            ans["Est Total Project Cost"] = "$" + String(format:"%11.0f", tuple.1!)
+            ans["Est Total Project Cost"] = tuple.1!.toMoney(toLength: 11)
             
         case "OutputIndex30c":
-            ans["Est Agile Invested Savings"] = "$" + String(format:"%9.0f", tuple.1!)
+            ans["Est Agile Invested Savings"] = tuple.1!.toMoney(toLength: 9)
             
         case "OutputIndex31":
             ans["Est Cost-Effectiveness Indicator"] = String(format:"%1.1f", tuple.1!)
