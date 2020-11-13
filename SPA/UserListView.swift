@@ -23,7 +23,8 @@ struct UserListView: View {
     
     @State private var deleteIndexSet: IndexSet?
     @State private var showingDeleteAlert = false
-    
+    @State private var errMsg = "Empty Username"
+    @State private var error = false
     var body: some View {
         let AddUserPopup =
             NavigationView {
@@ -32,8 +33,13 @@ struct UserListView: View {
                         TextField("Enter New User Name", text: $newName)
                     }
                     Button("Add") {
-                        addUser(name: newName)
-                        self.showingAddSheet.toggle()
+                        if(checkValid(name: newName)){
+                            addUser(name: newName)
+                            self.showingAddSheet.toggle()
+                        }
+                        else{
+                            error = true
+                        }
                     }
                     Button(action: {
                         self.showingAddSheet.toggle()
@@ -41,6 +47,9 @@ struct UserListView: View {
                         Text("Dismiss")
                     }.foregroundColor(.red)
                 }.navigationTitle("Add a New User")
+            }
+            .alert(isPresented: $error) {
+                Alert(title: Text("Error"), message: Text(errMsg))
             }
         
         let AddButton = Button(action: {
@@ -55,7 +64,7 @@ struct UserListView: View {
         let LogoutButton = Button(action: {
             user.logout()
         }) {
-            Text("Logout")
+            Text("Logoff")
         }
         
         let navigationButtons = HStack {
@@ -100,19 +109,26 @@ struct UserListView: View {
         self.showingDeleteAlert = true
     }
     
+    private func checkValid(name : String) -> Bool{
+        if(name.isEmpty){
+            errMsg = "Empty Username"
+            return false
+        }
+        for user in users{
+            if(user.username == name){
+                errMsg = "Username already existed"
+                return false
+            }
+        }
+        return true
+    }
+    
     private func addUser(name: String) {
             withAnimation {
                 let newUser = User(context: viewContext)
                 newUser.username = name
 
-                do {
-                    try viewContext.save()
-                } catch {
-                    // Replace this implementation with code to handle the error appropriately.
-                    // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                    let nsError = error as NSError
-                    fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-                }
+                flush()
             }
     }
     
@@ -129,6 +145,10 @@ struct UserListView: View {
             viewContext.delete(temp)
         }
         
+        flush()
+    }
+
+    func flush(){
         do {
             try viewContext.save()
         } catch {
@@ -138,5 +158,4 @@ struct UserListView: View {
             fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }
     }
-
 }

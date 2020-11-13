@@ -19,6 +19,8 @@ struct ProjectListView: View{
     
     @State private var deleteIndexSet: IndexSet?
     @State private var showingDeleteAlert = false
+    @State private var errMsg = "Empty Project Name"
+    @State private var error = false
     
     public var projects: [Project] {
         let set = user.projects as? Set<Project> ?? []
@@ -35,8 +37,13 @@ struct ProjectListView: View{
                         TextField("Enter New Project Name", text: $newName)
                     }
                     Button("Add") {
-                        addProject(name: newName, user: user)
-                        self.showingAddSheet.toggle()
+                        if(checkValid(name: newName)){
+                            addProject(name: newName, user: user)
+                            self.showingAddSheet.toggle()
+                        }
+                        else{
+                            error = true
+                        }
                     }
                     Button(action: {
                         self.showingAddSheet.toggle()
@@ -44,6 +51,9 @@ struct ProjectListView: View{
                         Text("Dismiss")
                     }.foregroundColor(.red)
                 }.navigationTitle("Add a New Project")
+            }
+            .alert(isPresented: $error) {
+                Alert(title: Text("Error"), message: Text(errMsg))
             }
         
         let AddButton = Button(action: {
@@ -59,7 +69,7 @@ struct ProjectListView: View{
         let LogoutButton = Button(action: {
             userModel.logout()
         }) {
-            Text("Logout")
+            Text("Logoff")
         }
         
         let navigationButtons = HStack {
@@ -100,36 +110,43 @@ struct ProjectListView: View{
         self.showingDeleteAlert = true
     }
     
+    private func checkValid(name : String) -> Bool{
+        if(name.isEmpty){
+            errMsg = "Empty Project Name"
+            return false
+        }
+        for project in projects{
+            if(project.name == name){
+                errMsg = "Project name already existed"
+                return false
+            }
+        }
+        return true
+    }
+    
     private func addProject(name: String, user: User) {
             withAnimation {
                 let newProject = Project(context: viewContext)
                 newProject.name = name
                 
                 let newProjectDetails = ProjectDetails(context: viewContext)
-                newProjectDetails.projectName = "CMMILevel4Project"
-                newProjectDetails.projectProgrammingLanguage = "Bliss"
-                newProjectDetails.projectAvgAnnualSalary = 109953.0
-                newProjectDetails.projectTeamSize = 9.0
+                newProjectDetails.projectName = name
+                newProjectDetails.projectProgrammingLanguage = "Language"
+                newProjectDetails.projectAvgAnnualSalary = 100000.0
+                newProjectDetails.projectTeamSize = 1.0
                 newProjectDetails.projectNcSloc = 100000.0
-                newProjectDetails.projectReqDesEffort = 6420.0
-                newProjectDetails.projectDevEffort = 18868.0
-                newProjectDetails.projectFindDefectEffort = 1332.0
-                newProjectDetails.projectReworkEffort = 600.0
-                newProjectDetails.projectIssueCount = 200.0
+                newProjectDetails.projectReqDesEffort = 2000.0
+                newProjectDetails.projectDevEffort = 10000.0
+                newProjectDetails.projectFindDefectEffort = 1000.0
+                newProjectDetails.projectReworkEffort = 100.0
+                newProjectDetails.projectIssueCount = 100.0
                 newProjectDetails.projectPostReleaseIndicator = "N"
                 
                 newProject.details = newProjectDetails
                 
                 user.addToProjects(newProject)
 
-                do {
-                    try viewContext.save()
-                } catch {
-                    // Replace this implementation with code to handle the error appropriately.
-                    // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                    let nsError = error as NSError
-                    fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-                }
+                flush()
             }
     }
     
@@ -140,6 +157,9 @@ struct ProjectListView: View{
             viewContext.delete(temp)
         }
         
+        flush()
+    }
+    func flush(){
         do {
             try viewContext.save()
         } catch {

@@ -15,12 +15,11 @@ struct RawInputView: View {
     @ObservedObject var model : SPAModel
     @EnvironmentObject var viewState: ViewState
     @State private var action: Int? = 0
-    @State var violated: Bool = false
     @State var error: Bool = false
     
     @State var showNewView = false
     
-    var alertMsg = "Invalid Input"
+    @State var alertMsg = "Invalid Input"
     
     func disabled() -> Bool{
         for rawInput in model.rawInputTags{
@@ -31,29 +30,14 @@ struct RawInputView: View {
         return false
     }
     
-    func validate() -> Bool{
-        let checked = model.validate()
-        violated = !checked
-        return checked
+    func validate() -> Int{
+        return model.validate()
     }
     
     var body: some View {
         let GenerateButton = Button("Generate") {
-            
-            if (validate()){
-                
-                let result = model.compute()
-                if(result){
-                    viewState.model = model
-                    saveProjectDetails()
-                    self.showNewView.toggle()
-                }
-                else{
-                    error = true
-                }
-            }
-            
-        }.disabled(disabled())
+            generateResults()
+                    }.disabled(disabled())
         VStack {
             Form {
                 Section(header: Text("Details")) {
@@ -69,11 +53,8 @@ struct RawInputView: View {
                     
                 }
                 
-                .alert(isPresented: $error) {
-                    Alert(title: Text("Error"), message: Text("Error in computataion Engine"))
-                }
-            }.alert(isPresented: $violated) {
-                Alert(title: Text("Violation"), message: Text(alertMsg))
+            }.alert(isPresented: $error) {
+                Alert(title: Text("Error"), message: Text(alertMsg))
             }
             NavigationLink(
                 destination: GeneratedView().environment(\.managedObjectContext, viewContext),
@@ -87,9 +68,39 @@ struct RawInputView: View {
         .navigationBarItems(trailing: GenerateButton)
     }
     
+    private func generateResults(){
+        let violated = validate()
+        if (violated == -1){
+            
+            let result = model.compute()
+            if(result){
+                viewState.model = model
+                saveProjectDetails()
+                self.showNewView.toggle()
+            }
+            else{
+                alertMsg = "Error in computataion Engine"
+                error = true
+            }
+        }
+        else{
+            if(violated == 11){
+                alertMsg = "Unexpected Err"
+            }
+            else{
+                alertMsg = "Invalid Input: " + model.rawInputTags[violated].name + "\nFormat: " + model.rawInputTags[violated].placeholder
+            }
+            error = true
+        }
+
+    }
+    
     private func saveProjectDetails() {
         model.save()
-        
+        flush()
+    }
+    
+    private func flush(){
         do {
             try viewContext.save()
         } catch {

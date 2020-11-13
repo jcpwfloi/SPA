@@ -10,6 +10,11 @@ import SwiftUI
 struct LoginView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \Auth.email, ascending: true)],
+            animation: .default)
+    private var auths: FetchedResults<Auth>
+    
     @ObservedObject var user: UserModel
     
     @State var username: String = ""
@@ -25,7 +30,7 @@ struct LoginView: View {
     @State var showingRegister = false
     @State var showingRegisterAlert = false
     @State var showingSuccessAlert = false
-    
+    @State var errMsg = "Passwords don't match."
     var showAlert = false
     
     @ViewBuilder
@@ -104,13 +109,36 @@ struct LoginView: View {
                     .navigationTitle("Register")
                     .navigationBarItems(trailing: registerButton)
                 }.alert(isPresented: $showingRegisterAlert) {
-                    Alert(title: Text("Error"), message: Text("Passwords don't match."), dismissButton: .default(Text("Got it!")))
+                    Alert(title: Text("Error"), message: Text(errMsg), dismissButton: .default(Text("Got it!")))
                 }
             }).padding(.top, 10.0)
         }
     }
+    
+    private func check() -> Bool{
+        if(registerPassword != confirmPassword){
+            errMsg = "Passwords don't match."
+            return false
+        }
+        if(email.isEmpty || registerPassword.isEmpty || confirmPassword.isEmpty){
+            errMsg = "Empty Fields"
+            return false
+        }
+        if(!email.isValidEmail()){
+            errMsg = "Invalid Email Address"
+            return false
+        }
+        for auth in auths{
+            if(email == auth.email){
+                errMsg = "Email already existed"
+                return false
+            }
+        }
+        return true
+    }
+    
     private func register() {
-        if (registerPassword != confirmPassword) {
+        if (!check()) {
             showingRegisterAlert = true
         } else {
             var newAuth = Auth(context: viewContext)

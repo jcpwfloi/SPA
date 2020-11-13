@@ -78,13 +78,13 @@ class SPAModel : ObservableObject {
         details.projectPostReleaseIndicator = projectPostReleaseIndicator
     }
     
-    func validate() -> Bool{
+    func validate() -> Int{
         for i in 0...rawInputTags.count-1{
             let result = validateInputParameter(rawInputTags[i].textInput, tag:rawInputValidationTags[i])
             if(result == nil){
                 print(i)
                 print(rawInputTags[i].textInput)
-                return false
+                return i
             }
             else{
                 switch i {
@@ -112,11 +112,11 @@ class SPAModel : ObservableObject {
                     projectPostReleaseIndicator = result!.1!
                     
                 default:
-                    return false
+                    return 11
                 }
             }
         }
-        return true
+        return -1
     }
     
     func compute() -> Bool{
