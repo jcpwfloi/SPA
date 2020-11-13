@@ -21,6 +21,9 @@ struct UserListView: View {
     @State private var showAddAlert = false
     @State private var showingAddSheet = false
     
+    @State private var deleteIndexSet: IndexSet?
+    @State private var showingDeleteAlert = false
+    
     var body: some View {
         let AddUserPopup =
             NavigationView {
@@ -63,7 +66,7 @@ struct UserListView: View {
             LogoutButton
         }
         
-        NavigationView{
+        NavigationView {
             VStack {
                 if users.count > 0 {
                     List {
@@ -72,7 +75,7 @@ struct UserListView: View {
                                             .environment(\.managedObjectContext, viewContext)) {
                                 Text("\(myUser.username ?? "Not set")")
                             }
-                        }.onDelete(perform: removeUser)
+                        }.onDelete(perform: deleteUser)
                     }
                     .navigationBarTitle(Text("User List"))
                     .navigationBarItems(trailing: navigationButtons)
@@ -82,7 +85,19 @@ struct UserListView: View {
                         .navigationBarItems(trailing: navigationButtons)
                 }
             }
-        }.navigationViewStyle(StackNavigationViewStyle())
+        }.alert(isPresented: $showingDeleteAlert) {
+            Alert(title: Text("Warning"), message: Text("Do you surely want to delete the item?"), primaryButton: .destructive(Text("Delete")) {
+                if let iset = deleteIndexSet {
+                    removeUser(at: iset)
+                }
+            } , secondaryButton: .cancel())
+        }
+        .navigationViewStyle(StackNavigationViewStyle())
+    }
+    
+    private func deleteUser(at offsets: IndexSet) {
+        self.deleteIndexSet = offsets
+        self.showingDeleteAlert = true
     }
     
     private func addUser(name: String) {
