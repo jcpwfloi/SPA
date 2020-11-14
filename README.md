@@ -4,7 +4,7 @@
 # 1. Getting Started
 * Prerequisites: Xcode 12.1, Macbook with macOS 10.15.7
 * Installing: 
-	- In your terminal run **git clone git@github.com:jcpwfloi/SPA.git** to clone the repository
+	- In your terminal run `git clone git@github.com:jcpwfloi/SPA.git` to clone the repository
 	- Open the SPA folder
 	- Double click SPA.xcodeproj will open the project in Xcode
 	- Click the run button on the top of the Xcode to run the project in the simulator
