@@ -16,7 +16,8 @@ struct ExecutiveView: View {
     @State var metrics :[(String, Double?, String?)] = []
     var body: some View {
         
-        VStack {
+        VStack(alignment:.leading) {
+            Text("Executive Screen").font(.system(.title)).bold().padding(.leading, 30)
             let tags = viewState.model!.executiveTags
             List{
                 ForEach(tags.indices) {

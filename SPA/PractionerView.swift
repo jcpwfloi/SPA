@@ -16,7 +16,8 @@ struct PractionerView: View {
     @State var metrics :[(String, Double?, String?)] = []
     var body: some View {
         
-        VStack {
+        VStack(alignment:.leading) {
+            Text("Practioner Screen").font(.system(.title)).bold().padding(.leading, 30)
             let tags = viewState.model!.practionerTags
             List{
                 ForEach(tags.indices) {
