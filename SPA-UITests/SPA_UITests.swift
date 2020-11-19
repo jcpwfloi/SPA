@@ -28,6 +28,7 @@ class SPA_UITests: XCTestCase {
         addUIInterruptionMonitor(withDescription: "Dialog"){
             (alert) -> Bool in
             alert.buttons["OK"].tap()
+            alert.buttons["Delete"].tap()
             return true
         }
         let username = app.textFields["Username"]
@@ -35,9 +36,9 @@ class SPA_UITests: XCTestCase {
         let loginButton = app.buttons["Login"]
         //test log in
         username.tap()
-        username.typeText("admin")
+        username.typeText("SofTechMetrics@gmail.com")
         password.tap()
-        password.typeText("admin123")
+        password.typeText("Admin")
         loginButton.tap()
         
         //delete all existing users

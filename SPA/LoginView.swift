@@ -47,11 +47,11 @@ struct LoginView: View {
             Spacer().frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 40, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
             TextField("Email", text: $username)
                 .frame(width: 400, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .textFieldStyle(RoundedBorderTextFieldStyle()).accessibilityLabel("Username")
             SecureField("Password", text: $password)
                 .padding(.top, 20.0)
                 .frame(width: 400, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .textFieldStyle(RoundedBorderTextFieldStyle()).accessibilityLabel("Password")
             HStack {
                 Spacer().frame(width: 350, height: 50, alignment: .center)
                 Button("x  clear", action: {
