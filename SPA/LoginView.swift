@@ -35,21 +35,16 @@ struct LoginView: View {
     
     @ViewBuilder
     var body: some View {
-        
         let registerButton = Button("Register", action: register)
             .alert(isPresented: $showingSuccessAlert) {
                 Alert(title: Text("Note"), message: Text("Registration Successful."), dismissButton: .default(Text("Got it!")))
             }
-        let LogoutButton = Button(action: {
-            user.logout()
-        }) {
-            Text("Logoff")
-        }
         VStack {
             Text("Software Project Analytics")
-                .font(.title)
+                .font(.largeTitle)
                 .fontWeight(.semibold)
                 .padding(.top)
+            Spacer().frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 40, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
             TextField("Email", text: $username)
                 .frame(width: 400, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -57,27 +52,43 @@ struct LoginView: View {
                 .padding(.top, 20.0)
                 .frame(width: 400, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
-            HStack{
-                Button("Login", action: {
-                    if !user.login(username, password, viewContext) {
-                        showingAlert = true
-                    }
-                }).alert(isPresented: $showingAlert) {
-                    Alert(title: Text("Error"), message: Text("Incorrect username or password"), dismissButton: .default(Text("Got it!")))
-                }
-                Spacer().frame(width: 50 ,alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                Button("Cancel", action: {
+            HStack {
+                Spacer().frame(width: 350, height: 50, alignment: .center)
+                Button("x  clear", action: {
                     username=""
                     password = ""
                 })
-            }.padding(.top, 30.0)
-           
-//            LogoutButton
-            HStack{
-            Button("Register", action: {
-                self.showingRegister.toggle()
-            }).sheet(isPresented: $showingRegister, content: {
-                NavigationView {
+                .font(.footnote)
+                .foregroundColor(.gray)
+                .frame(width: 100, height: 40)
+                .cornerRadius(15.0)
+            }
+            Spacer().frame(width: 100, height: 10, alignment: .center)
+            Button("Login", action: {
+                if !user.login(username, password, viewContext) {
+                    showingAlert = true
+                }
+            })
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .frame(width: 300, height: 40)
+                            .background(Color.blue)
+                            .cornerRadius(15.0)
+            .alert(isPresented: $showingAlert) {
+                Alert(title: Text("Error"), message: Text("Incorrect username or password"), dismissButton: .default(Text("Got it!")))
+            }
+            Divider().frame(width: 400).padding(20)
+            HStack {
+                Button("Register", action: {
+                    self.showingRegister.toggle()
+                })
+                .font(.headline)
+                .foregroundColor(.white)
+                .frame(width: 100, height: 40, alignment: .center)
+                .background(Color.green)
+                .cornerRadius(15.0)
+                .sheet(isPresented: $showingRegister, content: {
+                    NavigationView {
                     Form {
                         Section(header: Text("UserInfo")) {
                             HStack {
@@ -126,11 +137,16 @@ struct LoginView: View {
                 }.alert(isPresented: $showingRegisterAlert) {
                     Alert(title: Text("Error"), message: Text(errMsg), dismissButton: .default(Text("Got it!")))
                 }
-            
-            })
-                Spacer().frame(width: 50 ,alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                LogoutButton
-            }.padding(.top, 10.0)
+                })
+                Button("Logoff", action: {
+                    user.logout()
+                })
+                .font(.headline)
+                .foregroundColor(.white)
+                .frame(width: 100, height: 40, alignment: .center)
+                .background(Color.red)
+                .cornerRadius(15.0)
+            }
         }
     }
     
