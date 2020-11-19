@@ -17,7 +17,6 @@ struct ManagementView: View {
     var body: some View {
         
         VStack(alignment:.leading) {
-            //Text("Management Screen").font(.system(.title)).bold().padding(.leading, 30)
             let tags = viewState.model!.managementTags
             Form {
                 Section(header: Text("Details")) {

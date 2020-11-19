@@ -19,7 +19,6 @@ struct DerivedInputView: View {
     @State var metrics :[(String, Double?, String?)] = []
     var body: some View {
         VStack(alignment:.leading) {
-            //Text("Derived Input Screen").font(.system(.title)).bold().padding(.leading, 30)
             let tags = viewState.model!.derivedInputTags
             Form {
                 Section(header: Text("Details")) {

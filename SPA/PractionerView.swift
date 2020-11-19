@@ -17,7 +17,6 @@ struct PractionerView: View {
     var body: some View {
         
         VStack(alignment:.leading) {
-            //Text("Practioner Screen").font(.system(.title)).bold().padding(.leading, 30)
             let tags = viewState.model!.practionerTags
             Form {
                 Section(header: Text("Details")) {
