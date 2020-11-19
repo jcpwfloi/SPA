@@ -7,9 +7,6 @@
 
 import SwiftUI
 
-
-
-
 struct PractionerView: View {
     @EnvironmentObject var viewState: ViewState
     
@@ -27,11 +24,5 @@ struct PractionerView: View {
                 }
             }
         }
-    }
-}
-
-struct ProctionerView_Previews: PreviewProvider {
-    static var previews: some View {
-        PractionerView()
     }
 }

@@ -6,9 +6,6 @@
 //
 import SwiftUI
 
-
-
-
 struct RawInputView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
@@ -61,7 +58,6 @@ struct RawInputView: View {
                             Spacer().frame(width: 30)
                             TextField(model.rawInputTags[idx].placeholder, text: $model.rawInputTags[idx].textInput)
                                 .multilineTextAlignment(.trailing).accessibilityIdentifier(model.rawInputTags[idx].name)
-//                            Text(model.rawInputUnits[idx]).multilineTextAlignment(.leading)
                         }
                     }
                     
@@ -106,7 +102,7 @@ struct RawInputView: View {
             }
             error = true
         }
-
+        
     }
     
     private func saveProjectDetails() {

@@ -4,14 +4,7 @@
 //
 //  Created by Jingyuan Chen on 10/15/20.
 //
-
-import Foundation
-
 import SwiftUI
-
-
-
-
 
 struct DerivedInputView: View {
     @EnvironmentObject var viewState: ViewState
@@ -29,11 +22,5 @@ struct DerivedInputView: View {
                 }
             }
         }
-    }
-}
-
-struct DerivedInputView_Previews: PreviewProvider {
-    static var previews: some View {
-        DerivedInputView()
     }
 }

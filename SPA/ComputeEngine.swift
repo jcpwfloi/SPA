@@ -7,10 +7,8 @@
 
 import Foundation
 
-
-
 let industryAverageAnnualSalary = 109953.0      // Source:  www.indeed.com, as of 08/19/2020,
-                                                //          for Average Software Engineer salary including $4K bonus
+//          for Average Software Engineer salary including $4K bonus
 
 //+
 // Named Constant for 1000
@@ -153,7 +151,7 @@ func computeMetrics(projectId: String,
                     projectReworkEffort: Double,
                     projectIssueCount: Double,
                     projectPostReleaseIndicator: String) -> [(String, Double?, String?)]? {
-//func computeMetrics() ->[(String, Double?, String?)]?{
+    //func computeMetrics() ->[(String, Double?, String?)]?{
     //+
     // Computed metric values
     //-
@@ -252,9 +250,9 @@ func computeMetrics(projectId: String,
     
     var metricIndex = 0;
     
-  
+    
     func computeTotalProjectEffort(_ reqDesEffort: Double, devEffort: Double, findDefectEffort: Double, reworkEffort: Double)
-            -> (Double, Double, Double) {
+    -> (Double, Double, Double) {
         
         let developmentEffort = reqDesEffort + devEffort
         let testEffort = findDefectEffort + reworkEffort
@@ -660,7 +658,7 @@ func computeMetrics(projectId: String,
         
     } // end computeCmmiLevelByProductivity
     
-
+    
     func computeCmmiLevelByDefectsPerFp(_ issueCount: Double, ncSloc: Double, ncSlocPerFp: Double) -> Double {
         
         //+
@@ -679,7 +677,7 @@ func computeMetrics(projectId: String,
         var cmmiMaturityLevelByDefectsPerFp = cmmiMaturityLevel1
         
         switch defectsPerFP {
-            
+        
         case 0.0 ... defectsPer0Pt08Fp:
             cmmiMaturityLevelByDefectsPerFp = cmmiMaturityLevel5
             
@@ -749,7 +747,7 @@ func computeMetrics(projectId: String,
         switch cmmiMaturityLevel {
         case cmmiMaturityLevel1:
             dd = 0.450 * numInjectedDefects      // Development takes into account pre-test defects detection at
-                                                 // CMMI Maturity Level 1
+            // CMMI Maturity Level 1
             dl = 0.550 * numInjectedDefects
             qd = 0.700 * dl
             ql = 0.300 * dl
@@ -757,7 +755,7 @@ func computeMetrics(projectId: String,
             
         case cmmiMaturityLevel2:
             dd = 0.562 * numInjectedDefects     // Development takes into account pre-test defects detection at
-                                                // CMMI Maturity Level 2
+            // CMMI Maturity Level 2
             dl = 0.438 * numInjectedDefects
             qd = 0.752 * dl
             ql = 0.248 * dl
@@ -765,7 +763,7 @@ func computeMetrics(projectId: String,
             
         case cmmiMaturityLevel3:
             dd = 0.675 * numInjectedDefects     // Development takes into account pre-test defects detection at
-                                                // CMMI Maturity Level 3
+            // CMMI Maturity Level 3
             dl = 0.325 * numInjectedDefects
             qd = 0.805 * dl
             ql = 0.195 * dl
@@ -773,7 +771,7 @@ func computeMetrics(projectId: String,
             
         case cmmiMaturityLevel4:
             dd = 0.742 * numInjectedDefects     // Development takes into account pre-test defects detection at
-                                                // CMMI Maturity Level 4
+            // CMMI Maturity Level 4
             dl = 0.258 * numInjectedDefects
             qd = 0.840 * dl
             ql = 0.160 * dl
@@ -781,7 +779,7 @@ func computeMetrics(projectId: String,
             
         case cmmiMaturityLevel5:
             dd = 0.810 * numInjectedDefects     // Development takes into account pre-test defects detection at
-                                                // CMMI Maturity Level 5
+            // CMMI Maturity Level 5
             dl = 0.190 * numInjectedDefects
             qd = 0.840 * dl
             ql = 0.160 * dl
@@ -811,7 +809,7 @@ func computeMetrics(projectId: String,
         // Definition of Defect Removal Effectiveness:
         //
         //  Source:  S. H. Kan, "Metrics and Models in Software Engineering Quality, 2nd Edition", p. 160,
-                                    // Addison-Wesley, 2003.
+        // Addison-Wesley, 2003.
         //-
         
         //+
@@ -863,7 +861,7 @@ func computeMetrics(projectId: String,
         var usaAverageDDE = 0.0                 // USA Average Defect Detection Effectiveness
         
         switch numFp {
-            
+        
         case 1.0 ..< 10.0:
             usaAverageDRE = usaAverageDREPoint9966
             usaAverageDDE = usaAverageDDEPoint99
@@ -993,14 +991,14 @@ func computeMetrics(projectId: String,
         // Software Development Phase Effort Distribution
         //
         //    Source 1:  Y. Yang, et al, "Phase Distribution of Software Development Effort", "Proceedings of the 2008
-                                            // ACM-IEEE International Symposium of Empirical Software Engineering and
-                                            // Measurement", pp. 61-69, Kaiserslautern, Germany, October 9-10, 2008.
+        // ACM-IEEE International Symposium of Empirical Software Engineering and
+        // Measurement", pp. 61-69, Kaiserslautern, Germany, October 9-10, 2008.
         //
         //    Source 2:  F.P. Brooks Jr, "The Mythical Man-Month:  Essays in Software Engineering - Anniversary Edition",
-                                            // p. 20, Addison-Wesley, 1995.
+        // p. 20, Addison-Wesley, 1995.
         //
         //    Source 3:  R.B. Grady, "Practical Software Metricss for Project Management and Process Improvement", p. 14,
-                                        // Prentice-Hall, 1992.
+        // Prentice-Hall, 1992.
         //
         //    Source 4:  R. Blair, modified above and adapted based on personal software engineering experience.
         //-
@@ -1042,7 +1040,7 @@ func computeMetrics(projectId: String,
         //        Source 1:  R. Blair, based on personal software enginerring experience and data.
         //
         //        Source 2:  Static data above used in lieu of dynamic historical data required for Rayleigh Curve
-                                // Distribution computation.
+        // Distribution computation.
         //-
         
         let requirementsPhaseStaffingPercent = 0.25
@@ -1134,7 +1132,7 @@ func computeMetrics(projectId: String,
         //  Technical Debt:
         //
         //      Source:  Private Communication, C. Jones, "Quality and Productivity Comparison of 13 Selected Software
-                                                           // Development Methodologies", 2016.
+        // Development Methodologies", 2016.
         //-
         
         let technicalDebtLevel1 = 303465.0
@@ -1181,7 +1179,7 @@ func computeMetrics(projectId: String,
             // fPSizeTable
             //
             //    Source:  C. Jones, "A Guide to Selecting Software Measures and Metrics", Table 16.11, p. 144,
-                                      // CRC Press, 2017.
+            // CRC Press, 2017.
             //-
             
             let fpSizeTable = [1.0, 10.0, 100.0, 1000.0, 10000.00, 100000.0, 1000000.0]
@@ -1190,7 +1188,7 @@ func computeMetrics(projectId: String,
             // defectsPerFpTable
             //
             //    Source:  C. Jones, "A Guide to Selecting Software Measures and Metrics", Table 16.11, p. 144,
-                                      // CRC Press, 2017.
+            // CRC Press, 2017.
             //-
             
             let defectsPerFpTable = [0.004, 0.026, 0.127, 0.209, 0.497, 0.860, 1.628]
@@ -1262,7 +1260,7 @@ func computeMetrics(projectId: String,
         return costEffectivenessIndicator
         
     } // end computeCostEffectivenessIndicator
-
+    
     
     func computeExecutiveDashboardMetrics(_ cmmiMaturityLevel: Double, qualityIndex: Double, costEffectivenessIndicator: Double, defectRemovalEffectiveness: Double) -> (Double, Double, Double, Double)? {
         
@@ -1410,7 +1408,7 @@ func computeMetrics(projectId: String,
         var riskFactors = (0.0, 0.0, 0.0)
         
         switch numFp {
-            
+        
         case numFp1 ..< numFp10:
             riskFactors = (0.0100, 0.0020, 0.0100)
             
@@ -1462,7 +1460,7 @@ func computeMetrics(projectId: String,
         var outcomeFactors = (0.0, 0.0, 0.0, 0.0)
         
         switch numFp {
-            
+        
         case numFp1 ..< numFp10:
             outcomeFactors = (0.01468, 0.8316, 0.0192, 0.0025)
             
@@ -1500,7 +1498,7 @@ func computeMetrics(projectId: String,
         // Real Options Analysis Applied to Agile Software Methodology Projects:
         //
         //        Source:  D.F. Rico, "The Buinsess Value of Agile Software Methods", pp. 102-103, 149-157, J. Ross
-                                       // Publishing, 2009.
+        // Publishing, 2009.
         //-
         
         //+
@@ -1585,9 +1583,9 @@ func computeMetrics(projectId: String,
         //        Source 2: D.F. Rico, "What is the ROI of Agile vs Traditional Methods", p.4, J. Ross Publishing, 2009.
         //
         //            NOTE:  The author states in the second source that his research shows agile methods are 29% nore cost
-                             // efficient than CMMI methods.  I have taken that to mean CMMI Maturity Level 3 projects as
-                             // the author also discusses CMMI Maturity Level 2 and 3 projects in the first source.
-                             // Hence, I have constructed the table below, based on these combined research findings.
+        // efficient than CMMI methods.  I have taken that to mean CMMI Maturity Level 3 projects as
+        // the author also discusses CMMI Maturity Level 2 and 3 projects in the first source.
+        // Hence, I have constructed the table below, based on these combined research findings.
         //-
         
         let benefitPercentageTable = [0.10, 0.20, 0.30, 0.40, 0.50]
@@ -1642,7 +1640,7 @@ func computeMetrics(projectId: String,
     // Compute Backfired NCSLOC per Function Point
     //-
     
-
+    
     (ncSlocPerFp, programmingLanguageLevel, numDefectsPerKNcSloc, numWorkHoursPerFp) = computeBackfiredNcSlocPerFp(projectProgrammingLanguage)
     
     
@@ -1702,7 +1700,7 @@ func computeMetrics(projectId: String,
     //-
     
     (totalProjectEffort, devEffortPercent, testEffortPercent) = computeTotalProjectEffort(projectReqDesEffort, devEffort: projectDevEffort,
-            findDefectEffort: projectFindDefectEffort, reworkEffort: projectReworkEffort)
+                                                                                          findDefectEffort: projectFindDefectEffort, reworkEffort: projectReworkEffort)
     returnValues.insert(("OutputIndex08", totalProjectEffort, nil), at: metricIndex)
     metricIndex += 1
     
@@ -2257,7 +2255,7 @@ func computeMetrics(_ outputValues: [(String, Double?, String?)]) -> [String : S
     for tuple in outputValues {
         
         switch "\(tuple.0)" {
-            
+        
         case "OutputIndex00":
             ans["ProjectId"] = tuple.2!
             
@@ -2281,7 +2279,7 @@ func computeMetrics(_ outputValues: [(String, Double?, String?)]) -> [String : S
             
         case "OutputIndex04c":
             ans["Est Software Poor Quality Risk"] = tuple.1!.toPercent()
-
+            
         case "OutputIndex4d":
             ans["Est Complete Early"] = tuple.1!.toPercent()
             
@@ -2518,20 +2516,3 @@ func computeMetrics(_ outputValues: [(String, Double?, String?)]) -> [String : S
     
     return ans
 }
-//
-//func computeMetricsString(_ outputValues: [(String, Double?, String?)]) -> [String : String] {
-//    let ans = computeMetrics(outputValues)
-//
-//    var ret = [String : String] ()
-//
-//    for (key, value) in ans {
-//        if value.0 == nil {
-//            ret[key] = value.1!
-//        } else {
-//            ret[key] = String(format: "%f", value.0!)
-//        }
-//    }
-//
-//    return ret
-//}
-

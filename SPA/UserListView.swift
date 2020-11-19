@@ -12,11 +12,11 @@ struct UserListView: View {
     
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \User.username, ascending: true)],
-            animation: .default)
+        animation: .default)
     private var users: FetchedResults<User>
     
     @EnvironmentObject var user: UserModel
-
+    
     @State private var newName: String = ""
     @State private var showAddAlert = false
     @State private var showingAddSheet = false
@@ -130,12 +130,12 @@ struct UserListView: View {
     }
     
     private func addUser(name: String) {
-            withAnimation {
-                let newUser = User(context: viewContext)
-                newUser.username = name
-
-                flush()
-            }
+        withAnimation {
+            let newUser = User(context: viewContext)
+            newUser.username = name
+            
+            flush()
+        }
     }
     
     func removeUser(at offsets: IndexSet) {
@@ -153,7 +153,7 @@ struct UserListView: View {
         
         flush()
     }
-
+    
     func flush(){
         user.flush(viewContext: viewContext)
     }

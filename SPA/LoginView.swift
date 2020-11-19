@@ -12,7 +12,7 @@ struct LoginView: View {
     
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Auth.email, ascending: true)],
-            animation: .default)
+        animation: .default)
     private var auths: FetchedResults<Auth>
     
     @ObservedObject var user: UserModel
@@ -69,11 +69,11 @@ struct LoginView: View {
                     showingAlert = true
                 }
             })
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .frame(width: 300, height: 40)
-                            .background(Color.blue)
-                            .cornerRadius(15.0)
+            .font(.headline)
+            .foregroundColor(.white)
+            .frame(width: 300, height: 40)
+            .background(Color.blue)
+            .cornerRadius(15.0)
             .alert(isPresented: $showingAlert) {
                 Alert(title: Text("Error"), message: Text("Incorrect username or password"), dismissButton: .default(Text("Got it!")))
             }
@@ -89,54 +89,54 @@ struct LoginView: View {
                 .cornerRadius(15.0)
                 .sheet(isPresented: $showingRegister, content: {
                     NavigationView {
-                    Form {
-                        Section(header: Text("UserInfo")) {
-                            HStack {
-                                Text("Email").bold()
-                                Spacer().frame(width: 30)
-                                TextField("Email", text: $email)
-                                    .multilineTextAlignment(.trailing)
+                        Form {
+                            Section(header: Text("UserInfo")) {
+                                HStack {
+                                    Text("Email").bold()
+                                    Spacer().frame(width: 30)
+                                    TextField("Email", text: $email)
+                                        .multilineTextAlignment(.trailing)
+                                }
+                                HStack {
+                                    Text("Password").bold()
+                                    Spacer().frame(width: 30)
+                                    SecureField("Password", text: $registerPassword)
+                                        .multilineTextAlignment(.trailing)
+                                }
+                                HStack {
+                                    Text("Confirm Password").bold()
+                                    Spacer().frame(width: 30)
+                                    SecureField("Confirm Password", text: $confirmPassword)
+                                        .multilineTextAlignment(.trailing)
+                                }
+                                HStack {
+                                    Text("Actual Name").bold()
+                                    Spacer().frame(width: 30)
+                                    TextField("Actual Name", text: $realname)
+                                        .multilineTextAlignment(.trailing)
+                                }
+                                HStack {
+                                    Text("Phone Number").bold()
+                                    Spacer().frame(width: 30)
+                                    TextField("Phone Number", text: $number)
+                                        .multilineTextAlignment(.trailing)
+                                }
                             }
-                            HStack {
-                                Text("Password").bold()
-                                Spacer().frame(width: 30)
-                                SecureField("Password", text: $registerPassword)
-                                    .multilineTextAlignment(.trailing)
-                            }
-                            HStack {
-                                Text("Confirm Password").bold()
-                                Spacer().frame(width: 30)
-                                SecureField("Confirm Password", text: $confirmPassword)
-                                    .multilineTextAlignment(.trailing)
-                            }
-                            HStack {
-                                Text("Actual Name").bold()
-                                Spacer().frame(width: 30)
-                                TextField("Actual Name", text: $realname)
-                                    .multilineTextAlignment(.trailing)
-                            }
-                            HStack {
-                                Text("Phone Number").bold()
-                                Spacer().frame(width: 30)
-                                TextField("Phone Number", text: $number)
-                                    .multilineTextAlignment(.trailing)
-                            }
+                            Button("Clear", action: {
+                                email = ""
+                                registerPassword = ""
+                                confirmPassword = ""
+                                realname = ""
+                                number = ""
+                            })
+                            .foregroundColor(.red)
+                            .multilineTextAlignment(.center)
                         }
-                        Button("Clear", action: {
-                            email = ""
-                            registerPassword = ""
-                            confirmPassword = ""
-                            realname = ""
-                            number = ""
-                        })
-                        .foregroundColor(.red)
-                        .multilineTextAlignment(.center)
+                        .navigationTitle("Register")
+                        .navigationBarItems(trailing: registerButton)
+                    }.alert(isPresented: $showingRegisterAlert) {
+                        Alert(title: Text("Error"), message: Text(errMsg), dismissButton: .default(Text("Got it!")))
                     }
-                    .navigationTitle("Register")
-                    .navigationBarItems(trailing: registerButton)
-                }.alert(isPresented: $showingRegisterAlert) {
-                    Alert(title: Text("Error"), message: Text(errMsg), dismissButton: .default(Text("Got it!")))
-                }
                 })
                 Button("Logoff", action: {
                     user.logout()

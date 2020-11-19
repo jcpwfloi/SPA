@@ -84,7 +84,7 @@ struct ProjectListView: View{
             List {
                 ForEach(projects, id: \.self) { project in
                     NavigationLink(destination: RawInputView( model: SPAModel(project: project))
-                            .environment(\.managedObjectContext, viewContext)) {
+                                    .environment(\.managedObjectContext, viewContext)) {
                         Text("\(project.name ?? "Not Set")")
                     }
                 }.onDelete(perform: deleteProject)
@@ -130,29 +130,29 @@ struct ProjectListView: View{
     }
     
     private func addProject(name: String, user: User) {
-            withAnimation {
-                let newProject = Project(context: viewContext)
-                newProject.name = name
-                
-                let newProjectDetails = ProjectDetails(context: viewContext)
-                newProjectDetails.projectName = name
-                newProjectDetails.projectProgrammingLanguage = "Language"
-                newProjectDetails.projectAvgAnnualSalary = 100000.0
-                newProjectDetails.projectTeamSize = 1.0
-                newProjectDetails.projectNcSloc = 100000.0
-                newProjectDetails.projectReqDesEffort = 2000.0
-                newProjectDetails.projectDevEffort = 10000.0
-                newProjectDetails.projectFindDefectEffort = 1000.0
-                newProjectDetails.projectReworkEffort = 100.0
-                newProjectDetails.projectIssueCount = 100.0
-                newProjectDetails.projectPostReleaseIndicator = "N"
-                
-                newProject.details = newProjectDetails
-                
-                user.addToProjects(newProject)
-
-                flush()
-            }
+        withAnimation {
+            let newProject = Project(context: viewContext)
+            newProject.name = name
+            
+            let newProjectDetails = ProjectDetails(context: viewContext)
+            newProjectDetails.projectName = name
+            newProjectDetails.projectProgrammingLanguage = "Language"
+            newProjectDetails.projectAvgAnnualSalary = 100000.0
+            newProjectDetails.projectTeamSize = 1.0
+            newProjectDetails.projectNcSloc = 100000.0
+            newProjectDetails.projectReqDesEffort = 2000.0
+            newProjectDetails.projectDevEffort = 10000.0
+            newProjectDetails.projectFindDefectEffort = 1000.0
+            newProjectDetails.projectReworkEffort = 100.0
+            newProjectDetails.projectIssueCount = 100.0
+            newProjectDetails.projectPostReleaseIndicator = "N"
+            
+            newProject.details = newProjectDetails
+            
+            user.addToProjects(newProject)
+            
+            flush()
+        }
     }
     
     private func removeProject(at offsets: IndexSet) {
@@ -168,10 +168,3 @@ struct ProjectListView: View{
         userModel.flush(viewContext: viewContext)
     }
 }
-//#if DEBUG
-//struct ProjectListView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ProjectListView(user: "U1")
-//    }
-//}
-//#endif

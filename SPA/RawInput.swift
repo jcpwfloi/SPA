@@ -5,7 +5,6 @@
 //  Created by Jingyuan Chen on 10/28/20.
 //
 
-import Foundation
 import SwiftUI
 
 class RawInput : ObservableObject{

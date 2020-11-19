@@ -7,9 +7,6 @@
 
 import SwiftUI
 
-
-
-
 struct ManagementView: View {
     @EnvironmentObject var viewState: ViewState
     

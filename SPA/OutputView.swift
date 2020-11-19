@@ -4,8 +4,6 @@
 //
 //  Created by Jingyuan Chen on 10/28/20.
 //
-
-import Foundation
 import SwiftUI
 
 struct OutputView: View{
@@ -16,6 +14,5 @@ struct OutputView: View{
             Text(name).bold()
             TextField("abc",text: $text).multilineTextAlignment(.trailing).allowsHitTesting(false)
         }
-        
     }
 }

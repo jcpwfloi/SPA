@@ -7,9 +7,6 @@
 
 import SwiftUI
 
-
-
-
 struct ExecutiveView: View {
     @EnvironmentObject var viewState: ViewState
     
@@ -27,11 +24,5 @@ struct ExecutiveView: View {
                 }
             }
         }
-    }
-}
-
-struct ExecutiveScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        ExecutiveView()
     }
 }

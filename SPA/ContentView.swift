@@ -17,15 +17,7 @@ struct ContentView: View {
         switch (viewState.state) {
         case 0:
             return AnyView(UserListView()
-                .environment(\.managedObjectContext, viewContext))
-//        case 1:
-//            return AnyView(DerivedInputView())
-//        case 2:
-//            return AnyView(ExecutiveView())
-//        case 3:
-//            return AnyView(ManagementView())
-//        case 4:
-//            return AnyView(PractionerView())
+                            .environment(\.managedObjectContext, viewContext))
         default:
             return AnyView(EmptyView())
         }
@@ -42,9 +34,3 @@ struct ContentView: View {
         }
     }
 }
-
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ContentView(user: UserModel())
-//    }
-//}

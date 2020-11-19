@@ -60,7 +60,7 @@ func validateInputParameter(_ input: String?, tag: Int) -> (Double?, String?)? {
     var alphabeticRecognized = false
     
     switch inputString[inputString.startIndex] {
-        
+    
     case "A", "B", "C", "D", "E", "F", "G", "H", "I":
         alphabeticRecognized = true
         
@@ -85,7 +85,7 @@ func validateInputParameter(_ input: String?, tag: Int) -> (Double?, String?)? {
     
     if !alphabeticRecognized {
         switch inputString[inputString.startIndex] {
-            
+        
         case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".":
             if let inputDoubleValue = inputString.toDouble() {
                 inputDouble = inputDoubleValue
@@ -105,7 +105,7 @@ func validateInputParameter(_ input: String?, tag: Int) -> (Double?, String?)? {
     //-
     
     switch tag {
-        
+    
     case projectNameValidationTag:                        // Project Name Input Parameter Validation
         
         if let validatedProjectName = validateProjectNameParameter(inputString) {
@@ -288,7 +288,7 @@ func validateProgrammingLanguageParameter(_ programmingLanguage: String) -> Stri
         if programmingLanguageGliphCount == 1 {
             
             switch "\(programmingLanguage[programmingLanguage.startIndex])" {
-                
+            
             case "A", "B", "C", "D", "E", "F", "G", "H", "I":
                 continue
                 
@@ -313,7 +313,7 @@ func validateProgrammingLanguageParameter(_ programmingLanguage: String) -> Stri
             
         } else {
             switch "\(programmingLanguage[programmingLanguageIndex])" {
-                
+            
             case "A", "B", "C", "D", "E", "F", "G", "H", "I":
                 continue
                 
@@ -357,7 +357,7 @@ func validateProgrammingLanguageParameter(_ programmingLanguage: String) -> Stri
 
 func validateInputAvgAnnualSalaryParameter(_ inputAvgAnnualSalary: Double) -> Double? {
     
-//    print("\(inputAvgAnnualSalary)", terminator: "")
+    //    print("\(inputAvgAnnualSalary)", terminator: "")
     
     let minimumInputAvgAnnualSalary = 50000.00
     let maximumInputAvgSalary = 200000.00

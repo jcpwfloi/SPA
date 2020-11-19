@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 import Combine
 
-
 class SPAModel : ObservableObject {
     var projectName = ""
     var projectId = ""
@@ -51,16 +50,16 @@ class SPAModel : ObservableObject {
         let inputPostReleaseIndicator = details.projectPostReleaseIndicator!
         rawInputTags =
             [RawInput(name: "Project Name", placeholder: "Project Name", textInput: projectName),
-                                   RawInput(name: "Programming Language", placeholder: "Programming Language", textInput: programmingLanguage),
-                                   RawInput(name: "Average Annual Salary", placeholder: "<50,000, 999999, 200,000> in US$", textInput: inputAvgAnnualSalary),
-                                   RawInput(name: "Team Size", placeholder: "<1, 9999, 2000> Staff Persons", textInput: inputTeamSize),
-                                   RawInput(name: "NonCommentNonBlankSLOC", placeholder: "<3000, 999999999, 100,000,000> NcSloc", textInput:inputNumNcSloc),
-                                   RawInput(name: "Requirements and Design Effort", placeholder: "<1, 9999999, 2,000,000> Ehrs", textInput: inputReqDesEffort),
-                                   RawInput(name: "Development Effort", placeholder: "<1, 9999999, 2,000,000> Ehrs", textInput: inputDevEffort),
-                                   RawInput(name: "Find Defect Effort", placeholder: "<1, 9999999, 2,000,000> Ehrs", textInput: inputFindDefectEffort),
-                                   RawInput(name: "Rework Effort", placeholder: "<1, 9999999, 2,000,000> Ehrs", textInput: inputReworkEffort),
-                                   RawInput(name: "Issue Count", placeholder: "<1, 999999, 199,999> Issues", textInput:inputIssueCount),
-                                   RawInput(name: "Post-Release Indicator", placeholder: "<'Y', 'N', 'y', 'n'>", textInput: inputPostReleaseIndicator)]
+             RawInput(name: "Programming Language", placeholder: "Programming Language", textInput: programmingLanguage),
+             RawInput(name: "Average Annual Salary", placeholder: "<50,000, 999999, 200,000> in US$", textInput: inputAvgAnnualSalary),
+             RawInput(name: "Team Size", placeholder: "<1, 9999, 2000> Staff Persons", textInput: inputTeamSize),
+             RawInput(name: "NonCommentNonBlankSLOC", placeholder: "<3000, 999999999, 100,000,000> NcSloc", textInput:inputNumNcSloc),
+             RawInput(name: "Requirements and Design Effort", placeholder: "<1, 9999999, 2,000,000> Ehrs", textInput: inputReqDesEffort),
+             RawInput(name: "Development Effort", placeholder: "<1, 9999999, 2,000,000> Ehrs", textInput: inputDevEffort),
+             RawInput(name: "Find Defect Effort", placeholder: "<1, 9999999, 2,000,000> Ehrs", textInput: inputFindDefectEffort),
+             RawInput(name: "Rework Effort", placeholder: "<1, 9999999, 2,000,000> Ehrs", textInput: inputReworkEffort),
+             RawInput(name: "Issue Count", placeholder: "<1, 999999, 199,999> Issues", textInput:inputIssueCount),
+             RawInput(name: "Post-Release Indicator", placeholder: "<'Y', 'N', 'y', 'n'>", textInput: inputPostReleaseIndicator)]
     }
     
     func save() {
