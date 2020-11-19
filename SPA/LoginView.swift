@@ -50,7 +50,7 @@ struct LoginView: View {
                 .font(.title)
                 .fontWeight(.semibold)
                 .padding(.top)
-            TextField("Username", text: $username)
+            TextField("Email", text: $username)
                 .frame(width: 400, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
             SecureField("Password", text: $password)

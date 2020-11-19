@@ -4,7 +4,7 @@
 # 1. Getting Started
 * Prerequisites: Xcode 12.1, Macbook with macOS 10.15.7
 * Installing: 
-	- In your terminal run **git clone git@github.com:jcpwfloi/SPA.git** to clone the repository
+	- In your terminal run `git clone git@github.com:jcpwfloi/SPA.git` to clone the repository
 	- Open the SPA folder
 	- Double click SPA.xcodeproj will open the project in Xcode
 	- Click the run button on the top of the Xcode to run the project in the simulator
@@ -38,12 +38,13 @@
 * More info on [our project website](https://tarheels.live/teamf)
 
 # 6. Authors
+* Rodger Blair: computation engine SPAPrototype
 * Bokai Li: User List View, Project List View, List Operations, Navigation, Environment Variables, UI Integration tests, README
 * Zhongrui Chen: Core Data, Login, Register, UI Design, Computation Middleware, Optimization
 * Jingyuan Chen: Computation Refactoring, Input Views, Output Views, Validation module
 
 # 7. License
-* waiting for client
+* MIT open source
 
 # 8. Acknowledgments
 * We'd like to thank Andrew Gramann as the mentor for our project and for guiding us and providing insightful feedback throughout the semester.

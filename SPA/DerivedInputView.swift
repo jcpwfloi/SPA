@@ -18,12 +18,12 @@ struct DerivedInputView: View {
     
     @State var metrics :[(String, Double?, String?)] = []
     var body: some View {
-        
-        VStack {
+        VStack(alignment:.leading) {
+            Text("Derived Input Screen").font(.system(.title)).bold().padding(.leading, 30)
             let tags = viewState.model!.derivedInputTags
             List{
                 ForEach(tags.indices) {
-                    OutputView(name: tags[$0], labelWidth:350,text: 
+                    OutputView(name: tags[$0], labelWidth:350,text:
                                 viewState.model!.dict[tags[$0]] ?? ""
                     )
                 }
