@@ -11,41 +11,53 @@ struct GeneratedView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @EnvironmentObject var viewState: ViewState
-    @EnvironmentObject var userModel : UserModel
+    @EnvironmentObject var userModel: UserModel
+    
+    @State private var selectedTab = 0
+    private var title: String {
+        switch (self.selectedTab) {
+        case 0:
+            return "Derived Input View"
+        case 1:
+            return "Executive View"
+        case 2:
+            return "Management View"
+        case 3:
+            return "Practitioner View"
+        default:
+            return ""
+        }
+    }
 
     var body: some View {
-        
-        TabView {
+        TabView(selection: $selectedTab) {
             DerivedInputView()
-
             .tabItem {
                 Image(systemName: "list.dash")
                 Text("Derived Input")
-            }
+            }.tag(0)
                 
-            
             ExecutiveView()
-
             .tabItem {
                 Image(systemName: "square.and.pencil")
                 Text("Executive")
-            }
+            }.tag(1)
             
             ManagementView()
-
             .tabItem {
                 Image(systemName: "square.and.pencil")
                 Text("Management")
-            }
+            }.tag(2)
             
             PractionerView()
-
             .tabItem {
                 Image(systemName: "square.and.pencil")
                 Text("Practitioner")
-            }
+            }.tag(3)
 
-        }.navigationBarItems(trailing: Button("Logout") {
+        }
+        .navigationTitle(title)
+        .navigationBarItems(trailing: Button("Logout") {
             userModel.logout()
         })
 //        .id(UUID())
