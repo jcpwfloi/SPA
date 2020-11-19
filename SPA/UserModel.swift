@@ -16,7 +16,7 @@ class UserModel : ObservableObject {
     @Published var isLoggedin = false
     
     func login(_ username: String, _ password: String, _ viewContext: NSManagedObjectContext) -> Bool {
-        if (username == "SofTGechMetrics@gmail.com" && password == "Admin") {
+        if (username == "SofTechMetrics@gmail.com" && password == "Admin") {
             self.isLoggedin = true
             return true
         }
