@@ -27,8 +27,12 @@ class SPA_UITests: XCTestCase {
         app.launch()
         addUIInterruptionMonitor(withDescription: "Dialog"){
             (alert) -> Bool in
-            alert.buttons["OK"].tap()
-            alert.buttons["Delete"].tap()
+            if alert.buttons["OK"].exists{
+                alert.buttons["OK"].tap()
+            }
+            if alert.buttons["Delete"].exists{
+                alert.buttons["Delete"].tap()
+            }
             return true
         }
         let username = app.textFields["Username"]
