@@ -35,11 +35,16 @@ struct LoginView: View {
     
     @ViewBuilder
     var body: some View {
+        
         let registerButton = Button("Register", action: register)
             .alert(isPresented: $showingSuccessAlert) {
                 Alert(title: Text("Note"), message: Text("Registration Successful."), dismissButton: .default(Text("Got it!")))
             }
-        
+        let LogoutButton = Button(action: {
+            user.logout()
+        }) {
+            Text("Logoff")
+        }
         VStack {
             Text("Software Project Analytics")
                 .font(.title)
@@ -52,13 +57,23 @@ struct LoginView: View {
                 .padding(.top, 20.0)
                 .frame(width: 400, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
-            Button("Login", action: {
-                if !user.login(username, password, viewContext) {
-                    showingAlert = true
+            HStack{
+                Button("Login", action: {
+                    if !user.login(username, password, viewContext) {
+                        showingAlert = true
+                    }
+                }).alert(isPresented: $showingAlert) {
+                    Alert(title: Text("Error"), message: Text("Incorrect username or password"), dismissButton: .default(Text("Got it!")))
                 }
-            }).alert(isPresented: $showingAlert) {
-                Alert(title: Text("Error"), message: Text("Incorrect username or password"), dismissButton: .default(Text("Got it!")))
+                Spacer().frame(width: 50 ,alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                Button("Cancel", action: {
+                    username=""
+                    password = ""
+                })
             }.padding(.top, 30.0)
+           
+//            LogoutButton
+            HStack{
             Button("Register", action: {
                 self.showingRegister.toggle()
             }).sheet(isPresented: $showingRegister, content: {
@@ -111,7 +126,11 @@ struct LoginView: View {
                 }.alert(isPresented: $showingRegisterAlert) {
                     Alert(title: Text("Error"), message: Text(errMsg), dismissButton: .default(Text("Got it!")))
                 }
-            }).padding(.top, 10.0)
+            
+            })
+                Spacer().frame(width: 50 ,alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                LogoutButton
+            }.padding(.top, 10.0)
         }
     }
     

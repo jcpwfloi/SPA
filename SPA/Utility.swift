@@ -44,8 +44,8 @@ extension Double{
 }
 
 extension String{
-    func toDouble() -> Double{
-        return Double(self.trim())!
+    func toDouble() -> Double? {
+        return NumberFormatter().number(from: self)?.doubleValue
     }
     func trim() -> String{
         return self.trimmingCharacters(in: .whitespaces)

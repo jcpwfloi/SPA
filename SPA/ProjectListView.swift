@@ -37,8 +37,8 @@ struct ProjectListView: View{
                         TextField("Enter New Project Name", text: $newName)
                     }
                     Button("Add") {
-                        if(checkValid(name: newName)){
-                            addProject(name: newName, user: user)
+                        if let validatedName = checkValid(name: newName) {
+                            addProject(name: validatedName, user: user)
                             self.showingAddSheet.toggle()
                         }
                         else{
@@ -110,18 +110,23 @@ struct ProjectListView: View{
         self.showingDeleteAlert = true
     }
     
-    private func checkValid(name : String) -> Bool{
+    private func checkValid(name : String) -> String?{
         if(name.isEmpty){
             errMsg = "Empty Project Name"
-            return false
+            return nil
+        }
+        let result = validateInputParameter(name,tag:projectNameValidationTag)
+        if(result == nil){
+            errMsg = "Invalid Project name"
+            return nil
         }
         for project in projects{
-            if(project.name == name){
+            if(project.name == result!.1!){
                 errMsg = "Project name already existed"
-                return false
+                return nil
             }
         }
-        return true
+        return result!.1!
     }
     
     private func addProject(name: String, user: User) {
@@ -160,14 +165,7 @@ struct ProjectListView: View{
         flush()
     }
     func flush(){
-        do {
-            try viewContext.save()
-        } catch {
-            // Replace this implementation with code to handle the error appropriately.
-            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            let nsError = error as NSError
-            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-        }
+        userModel.flush(viewContext: viewContext)
     }
 }
 //#if DEBUG

@@ -9,7 +9,6 @@ import Combine
 import CoreData
 
 class UserModel : ObservableObject {
-    @Environment(\.managedObjectContext) private var viewContext
     
     @Published var username: String = ""
     @Published var password: String = ""
@@ -34,7 +33,7 @@ class UserModel : ObservableObject {
         return false
     }
     
-    func flush(){
+    func flush(viewContext:NSManagedObjectContext){
         do {
             try viewContext.save()
         } catch {
@@ -46,7 +45,6 @@ class UserModel : ObservableObject {
     }
     
     func logout() {
-//        flush()
-        self.isLoggedin = false
+        exit(0)
     }
 }

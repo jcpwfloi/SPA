@@ -22,9 +22,7 @@ let postReleaseIndicatorTag = 11
 
 
 extension String {
-    func toDouble() -> Double? {
-        return NumberFormatter().number(from: self)?.doubleValue
-    }
+    
 }
 
 
@@ -271,9 +269,7 @@ func validateProjectNameParameter(_ projectName: String) -> String? {
     if projectNameGliphCount > maximumKProjectNameGliphCount {
         return nil
     }
-    
     return projectName
-    
 } // end validateProjectNameParameter
 
 

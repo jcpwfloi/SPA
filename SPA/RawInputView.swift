@@ -14,6 +14,7 @@ struct RawInputView: View {
     
     @ObservedObject var model : SPAModel
     @EnvironmentObject var viewState: ViewState
+    @EnvironmentObject var userModel: UserModel
     @State private var action: Int? = 0
     @State var error: Bool = false
     
@@ -37,7 +38,20 @@ struct RawInputView: View {
     var body: some View {
         let GenerateButton = Button("Generate") {
             generateResults()
-                    }.disabled(disabled())
+        }.disabled(disabled())
+        let LogoutButton = Button(action: {
+            userModel.logout()
+        }) {
+            Text("Logoff")
+        }
+        
+        let navigationButtons = HStack {
+            GenerateButton
+            Spacer()
+            Spacer()
+            Spacer()
+            LogoutButton
+        }
         VStack {
             Form {
                 Section(header: Text("Details")) {
@@ -65,7 +79,7 @@ struct RawInputView: View {
         }
         
         .navigationTitle("Project Details - \(model.project.name ?? "")")
-        .navigationBarItems(trailing: GenerateButton)
+        .navigationBarItems(trailing: navigationButtons)
     }
     
     private func generateResults(){
@@ -101,14 +115,7 @@ struct RawInputView: View {
     }
     
     private func flush(){
-        do {
-            try viewContext.save()
-        } catch {
-            // Replace this implementation with code to handle the error appropriately.
-            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            let nsError = error as NSError
-            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-        }
+        userModel.flush(viewContext: viewContext)
     }
 }
 
