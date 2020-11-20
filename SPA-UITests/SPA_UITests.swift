@@ -18,8 +18,8 @@ class SPA_UITests: XCTestCase {
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
     
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    override func tearDown() {
+        super.tearDown()
     }
     
     func testIntegration(){
@@ -38,21 +38,19 @@ class SPA_UITests: XCTestCase {
         let username = app.textFields["Username"]
         let password = app.secureTextFields["Password"]
         let loginButton = app.buttons["Login"]
+        let clearButton = app.buttons["Clear"]
         //test log in
+        username.tap()
+        username.typeText("abc")
+        password.tap()
+        password.typeText("password")
+        clearButton.tap()
         username.tap()
         username.typeText("SofTechMetrics@gmail.com")
         password.tap()
         password.typeText("Admin")
         loginButton.tap()
-        
-        //delete all existing users
-        while(app.tables.children(matching: .cell).count != 0){
-                print(app.tables.children(matching: .cell).count)
-                let tablesQuery = app.tables.cells
-                tablesQuery.element(boundBy: 0).swipeLeft()
-                tablesQuery.element(boundBy: 0).buttons["Delete"].tap()
-        }
-        XCTAssertEqual(0, app.tables.children(matching: .cell).count)
+    
         //test add user
         let AddButton = app.buttons["Add a user"]
         AddButton.tap()
@@ -61,46 +59,49 @@ class SPA_UITests: XCTestCase {
         newusername.typeText("user1")
         let subAddButton = app.buttons["Add"]
         subAddButton.tap()
-        XCTAssertEqual(1, app.tables.children(matching: .cell).count)
-        //test delete user
+        
+        if(app.buttons["Dismiss"].exists){
+            app.buttons["Dismiss"].tap();
+        }
+        
+        //test delete project
         AddButton.tap()
         newusername.tap()
         newusername.typeText(XCUIKeyboardKey.delete.rawValue+"2")
         subAddButton.tap()
-        XCTAssertEqual(2, app.tables.children(matching: .cell).count)
+        if(app.buttons["Dismiss"].exists){
+            app.buttons["Dismiss"].tap();
+        }
         let tablesQuery = app.tables.cells
         tablesQuery.element(boundBy: 0).swipeLeft()
         tablesQuery.element(boundBy: 0).buttons["Delete"].tap()
         
-        XCTAssertEqual(1, app.tables.children(matching: .cell).count)
         //test navigation link
         let user1 = app.tables.cells.element(boundBy: 0)
         user1.tap()
+        
         //test add project
-        while(app.tables.children(matching: .cell).count != 0){
-            let tablesQuery = app.tables.cells
-            tablesQuery.element(boundBy: 0).swipeLeft()
-            tablesQuery.element(boundBy: 0).buttons["Delete"].tap()
-        }
-        XCTAssertEqual(0, app.tables.children(matching: .cell).count)
         let AddButtonProject = app.buttons["Add Project"]
         AddButtonProject.tap()
-        let newproject = app.textFields["newProject"]
+        let newproject = app.textFields["new project field"]
         newproject.tap()
         newproject.typeText("project1")
-        let subAddProjectButton = app.buttons["subAddProject"]
+        let subAddProjectButton = app.buttons["Add"]
         subAddProjectButton.tap()
+        if(app.buttons["Dismiss"].exists){
+            app.buttons["Dismiss"].tap();
+        }
         AddButtonProject.tap()
-        XCTAssertEqual(1, app.tables.children(matching: .cell).count)
         newproject.tap()
         newproject.typeText(XCUIKeyboardKey.delete.rawValue+"2")
         subAddProjectButton.tap()
-        XCTAssertEqual(2, app.tables.children(matching: .cell).count)
+        if(app.buttons["Dismiss"].exists){
+            app.buttons["Dismiss"].tap();
+        }
         //test project delete
         let tablesQuery2 = app.tables.cells
         tablesQuery2.element(boundBy: 0).swipeLeft()
         tablesQuery2.element(boundBy: 0).buttons["Delete"].tap()
-        XCTAssertEqual(1, app.tables.children(matching: .cell).count)
         //test navigation link
         let project1 = app.tables.cells.element(boundBy: 0)
         project1.tap()
@@ -134,8 +135,6 @@ class SPA_UITests: XCTestCase {
         app.tabBars.buttons.element(boundBy: 3).tap()
         //Test Derived Input
         app.tabBars.buttons.element(boundBy: 0).tap()
-        
-        
         
         //LogOff This button currently exit the app
         app.buttons["Logout"].tap()

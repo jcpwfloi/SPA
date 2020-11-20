@@ -62,6 +62,7 @@ struct LoginView: View {
                 .foregroundColor(.gray)
                 .frame(width: 100, height: 40)
                 .cornerRadius(15.0)
+                .accessibilityIdentifier("Clear")
             }
             Spacer().frame(width: 100, height: 10, alignment: .center)
             Button("Login", action: {
@@ -81,7 +82,7 @@ struct LoginView: View {
             HStack {
                 Button("Register", action: {
                     self.showingRegister.toggle()
-                })
+                }).accessibilityIdentifier("Register")
                 .font(.headline)
                 .foregroundColor(.white)
                 .frame(width: 100, height: 40, alignment: .center)

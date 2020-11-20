@@ -34,7 +34,7 @@ struct ProjectListView: View{
             NavigationView {
                 Form {
                     Section {
-                        TextField("Enter New Project Name", text: $newName)
+                        TextField("Enter New Project Name", text: $newName).accessibilityIdentifier("new project field")
                     }
                     Button("Add") {
                         if let validatedName = checkValid(name: newName) {
