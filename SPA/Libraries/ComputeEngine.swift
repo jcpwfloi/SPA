@@ -2204,7 +2204,7 @@ func computeMetrics(_ outputValues: [(String, Double?, String?)]) -> [String : S
             ans["Programming Language Level"] = String(format:"%2.0f", tuple.1!)
             
         case "OutputIndex10":
-            ans["NumNcnbSloc"] = String(format:"%9.0f", tuple.1!)
+            ans["NumNonCommentNonBlankSLOC"] = String(format:"%9.0f", tuple.1!)
             
         case "OutputIndex10a":
             ans["Number of Issues"] = String(format:"%6.0f", tuple.1!)
@@ -2237,7 +2237,7 @@ func computeMetrics(_ outputValues: [(String, Double?, String?)]) -> [String : S
             ans["Est Expected Delivered Defects"] = String(format:"%4.0f", tuple.1!) + " Dfs"
             
         case "OutputIndex14a":
-            ans["Est PreRelease Requirements Defects"] = String(format:"%4.0f", tuple.1!) + " Dfs"
+            ans["Est PreRelease Requirement Defects"] = String(format:"%4.0f", tuple.1!) + " Dfs"
             
         case "OutputIndex14b":
             ans["Est PreRelease Design Defects"] = String(format:"%4.0f", tuple.1!) + " Dfs"

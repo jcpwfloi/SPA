@@ -20,7 +20,6 @@
 		814CA0922541218B00ABAA1B /* ManagementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814CA08F2541218B00ABAA1B /* ManagementView.swift */; };
 		814CA09D254A445100ABAA1B /* OutputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814CA09C254A445100ABAA1B /* OutputView.swift */; };
 		814CA0A7254A452F00ABAA1B /* RawInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814CA0A6254A452F00ABAA1B /* RawInput.swift */; };
-		81B7139D256721A0007B868D /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B7139C256721A0007B868D /* ActivityIndicator.swift */; };
 		81B713A3256735C1007B868D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B713A2256735C1007B868D /* Constants.swift */; };
 		81C495D8255508C1007FE463 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C495D7255508C1007FE463 /* Utility.swift */; };
 		81C495DD255509E7007FE463 /* ValidationModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C495DC255509E7007FE463 /* ValidationModule.swift */; };
@@ -61,7 +60,6 @@
 		814CA08F2541218B00ABAA1B /* ManagementView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagementView.swift; sourceTree = "<group>"; };
 		814CA09C254A445100ABAA1B /* OutputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputView.swift; sourceTree = "<group>"; };
 		814CA0A6254A452F00ABAA1B /* RawInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawInput.swift; sourceTree = "<group>"; };
-		81B7139C256721A0007B868D /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		81B713A2256735C1007B868D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		81C495D7255508C1007FE463 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		81C495DC255509E7007FE463 /* ValidationModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationModule.swift; sourceTree = "<group>"; };
@@ -105,6 +103,54 @@
 			path = "SPA-UITests";
 			sourceTree = "<group>";
 		};
+		81B713A625677885007B868D /* OutputViews */ = {
+			isa = PBXGroup;
+			children = (
+				814CA08E2541218B00ABAA1B /* ExecutiveView.swift */,
+				814CA08F2541218B00ABAA1B /* ManagementView.swift */,
+				814CA08D2541218B00ABAA1B /* PractionerView.swift */,
+				814CA065253945C400ABAA1B /* DerivedInputView.swift */,
+				814CA09C254A445100ABAA1B /* OutputView.swift */,
+				FB656AF5254C91BC00B5B88D /* GeneratedView.swift */,
+			);
+			path = OutputViews;
+			sourceTree = "<group>";
+		};
+		81B713A8256778D4007B868D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				814CA05925393F1F00ABAA1B /* UserModel.swift */,
+				814CA03C2537BFFD00ABAA1B /* SPAModel.swift */,
+				814CA06D25394E3700ABAA1B /* SharedModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		81B713A925677903007B868D /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				FB8A7BED251D6674004831BD /* Persistence.swift */,
+				FBB4060525410C360000EA6C /* ComputeEngine.swift */,
+				81C495D7255508C1007FE463 /* Utility.swift */,
+				81C495DC255509E7007FE463 /* ValidationModule.swift */,
+				81B713A2256735C1007B868D /* Constants.swift */,
+			);
+			path = Libraries;
+			sourceTree = "<group>";
+		};
+		81B713AA2567795A007B868D /* InputViews */ = {
+			isa = PBXGroup;
+			children = (
+				FBE437F1252EA9F900DC41AB /* LoginView.swift */,
+				FB8A7BE6251D6672004831BD /* ContentView.swift */,
+				814CA05825393F1F00ABAA1B /* ProjectListView.swift */,
+				814CA05725393F1F00ABAA1B /* UserListView.swift */,
+				814CA037252EBFF500ABAA1B /* RawInputView.swift */,
+				814CA0A6254A452F00ABAA1B /* RawInput.swift */,
+			);
+			path = InputViews;
+			sourceTree = "<group>";
+		};
 		FB8A7BD8251D6672004831BD = {
 			isa = PBXGroup;
 			children = (
@@ -126,32 +172,15 @@
 		FB8A7BE3251D6672004831BD /* SPA */ = {
 			isa = PBXGroup;
 			children = (
-				814CA08E2541218B00ABAA1B /* ExecutiveView.swift */,
-				814CA08F2541218B00ABAA1B /* ManagementView.swift */,
-				814CA08D2541218B00ABAA1B /* PractionerView.swift */,
-				814CA05825393F1F00ABAA1B /* ProjectListView.swift */,
-				814CA05725393F1F00ABAA1B /* UserListView.swift */,
-				814CA05925393F1F00ABAA1B /* UserModel.swift */,
+				81B713AA2567795A007B868D /* InputViews */,
+				81B713A925677903007B868D /* Libraries */,
+				81B713A8256778D4007B868D /* Models */,
+				81B713A625677885007B868D /* OutputViews */,
 				FB8A7BE4251D6672004831BD /* SPAApp.swift */,
-				FB8A7BE6251D6672004831BD /* ContentView.swift */,
 				FB8A7BE8251D6674004831BD /* Assets.xcassets */,
-				FB8A7BED251D6674004831BD /* Persistence.swift */,
 				FB8A7BF2251D6674004831BD /* Info.plist */,
 				FB8A7BEF251D6674004831BD /* SPA.xcdatamodeld */,
 				FB8A7BEA251D6674004831BD /* Preview Content */,
-				FBE437F1252EA9F900DC41AB /* LoginView.swift */,
-				814CA037252EBFF500ABAA1B /* RawInputView.swift */,
-				814CA03C2537BFFD00ABAA1B /* SPAModel.swift */,
-				814CA065253945C400ABAA1B /* DerivedInputView.swift */,
-				814CA06D25394E3700ABAA1B /* SharedModel.swift */,
-				FBB4060525410C360000EA6C /* ComputeEngine.swift */,
-				814CA09C254A445100ABAA1B /* OutputView.swift */,
-				814CA0A6254A452F00ABAA1B /* RawInput.swift */,
-				FB656AF5254C91BC00B5B88D /* GeneratedView.swift */,
-				81C495D7255508C1007FE463 /* Utility.swift */,
-				81C495DC255509E7007FE463 /* ValidationModule.swift */,
-				81B7139C256721A0007B868D /* ActivityIndicator.swift */,
-				81B713A2256735C1007B868D /* Constants.swift */,
 			);
 			path = SPA;
 			sourceTree = "<group>";
@@ -288,7 +317,6 @@
 				814CA0922541218B00ABAA1B /* ManagementView.swift in Sources */,
 				FBB4060625410C370000EA6C /* ComputeEngine.swift in Sources */,
 				81C495D8255508C1007FE463 /* Utility.swift in Sources */,
-				81B7139D256721A0007B868D /* ActivityIndicator.swift in Sources */,
 				814CA038252EBFF500ABAA1B /* RawInputView.swift in Sources */,
 				814CA09D254A445100ABAA1B /* OutputView.swift in Sources */,
 				FB656AF6254C91BC00B5B88D /* GeneratedView.swift in Sources */,
