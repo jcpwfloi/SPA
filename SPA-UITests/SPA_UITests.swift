@@ -47,18 +47,19 @@ class SPA_UITests: XCTestCase {
         
         //delete all existing users
         while(app.tables.children(matching: .cell).count != 0){
-            let tablesQuery = app.tables.cells
-            tablesQuery.element(boundBy: 0).swipeLeft()
-            tablesQuery.element(boundBy: 0).buttons["Delete"].tap()
+                print(app.tables.children(matching: .cell).count)
+                let tablesQuery = app.tables.cells
+                tablesQuery.element(boundBy: 0).swipeLeft()
+                tablesQuery.element(boundBy: 0).buttons["Delete"].tap()
         }
         XCTAssertEqual(0, app.tables.children(matching: .cell).count)
         //test add user
-        let AddButton = app.buttons["Add"]
+        let AddButton = app.buttons["Add a user"]
         AddButton.tap()
-        let newusername = app.textFields["newUser"]
+        let newusername = app.textFields["new user field"]
         newusername.tap()
         newusername.typeText("user1")
-        let subAddButton = app.buttons["Add User"]
+        let subAddButton = app.buttons["Add"]
         subAddButton.tap()
         XCTAssertEqual(1, app.tables.children(matching: .cell).count)
         //test delete user
@@ -70,6 +71,7 @@ class SPA_UITests: XCTestCase {
         let tablesQuery = app.tables.cells
         tablesQuery.element(boundBy: 0).swipeLeft()
         tablesQuery.element(boundBy: 0).buttons["Delete"].tap()
+        
         XCTAssertEqual(1, app.tables.children(matching: .cell).count)
         //test navigation link
         let user1 = app.tables.cells.element(boundBy: 0)

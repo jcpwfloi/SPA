@@ -54,7 +54,7 @@ struct UserListView: View {
             NavigationView {
                 Form {
                     Section {
-                        TextField("Enter New User Name", text: $newName)
+                        TextField("Enter New User Name", text: $newName).accessibilityLabel("new user field")
                     }
                     popUpAddButton
                     popUpDismissButton
