@@ -30,7 +30,7 @@ struct UserListView: View {
             NavigationView {
                 Form {
                     Section {
-                        TextField("Enter New User Name", text: $newName)
+                        TextField("Enter New User Name", text: $newName).accessibilityLabel("new user field")
                     }
                     Button("Add") {
                         if let validatedName = checkValid(name: newName) {
@@ -59,7 +59,7 @@ struct UserListView: View {
                 .font(Font.system(.title).bold())
         }.sheet(isPresented: $showingAddSheet){
             AddUserPopup
-        }
+        }.accessibilityLabel("Add a user")
         
         let LogoutButton = Button(action: {
             user.logout()
