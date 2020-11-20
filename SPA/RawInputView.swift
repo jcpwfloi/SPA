@@ -134,11 +134,13 @@ struct RawInputView: View {
             }
             else{
                 //the computation engine failed
+                self.isLoading.toggle()
                 alertMsg = "Error in computataion Engine"
                 error = true
             }
         }
         else{
+            self.isLoading.toggle()
             //unknown err
             if(violated == 11){
                 alertMsg = "Unexpected Err"
