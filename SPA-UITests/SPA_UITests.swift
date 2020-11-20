@@ -6,6 +6,7 @@
 //
 
 import XCTest
+@testable import SPA
 
 class SPA_UITests: XCTestCase {
     
@@ -93,6 +94,7 @@ class SPA_UITests: XCTestCase {
         confirmPassword.tap()
         confirmPassword.typeText(pass)
         formRegister.tap()
+
         
         
         //Test repeated registration
