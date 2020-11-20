@@ -7,22 +7,21 @@
 
 import SwiftUI
 
+//The top level view of the app
+
 struct ContentView: View {
-    @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.managedObjectContext) private var viewContext //Global context of the core data module
     
-    @EnvironmentObject var user: UserModel
-    @EnvironmentObject var viewState: ViewState
+    @EnvironmentObject var user: UserModel //Global user model used to maintain global app logic
     
+    //return the user list view
     private func ContainedView() -> AnyView {
-        switch (viewState.state) {
-        case 0:
-            return AnyView(UserListView()
+        AnyView(UserListView()
                             .environment(\.managedObjectContext, viewContext))
-        default:
-            return AnyView(EmptyView())
-        }
+        
     }
     
+    //If the user is loggin, show the userlist view; otherwise show the login view
     @ViewBuilder
     var body: some View {
         VStack {

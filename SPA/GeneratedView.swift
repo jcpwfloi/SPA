@@ -7,13 +7,16 @@
 
 import SwiftUI
 
+//this is the output view that combines the four different screens
+
 struct GeneratedView: View {
-    @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.managedObjectContext) private var viewContext  //Global context of the core data module
     
-    @EnvironmentObject var viewState: ViewState
-    @EnvironmentObject var userModel: UserModel
+    @EnvironmentObject var userModel: UserModel  //Global user model used to maintain global app logic
     
-    @State private var selectedTab = 0
+    @State private var selectedTab = 0  //the current view
+    
+    //the navigation bar title
     private var title: String {
         switch (self.selectedTab) {
         case 0:
@@ -30,6 +33,7 @@ struct GeneratedView: View {
     }
     
     var body: some View {
+        //generate a table to switch between the four views
         TabView(selection: $selectedTab) {
             DerivedInputView()
                 .tabItem {
@@ -57,7 +61,7 @@ struct GeneratedView: View {
             
         }
         .navigationTitle(title)
-        .navigationBarItems(trailing: Button("Logout") {
+        .navigationBarItems(trailing: Button("Log off") {
             userModel.logout()
         })
     }

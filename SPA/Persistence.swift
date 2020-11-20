@@ -7,6 +7,8 @@
 
 import CoreData
 
+//This is the persistence controller
+
 struct PersistenceController {
     static let shared = PersistenceController()
     
@@ -27,6 +29,7 @@ struct PersistenceController {
     
     let container: NSPersistentContainer
     
+    //init checks if the dataa is in memory for efficiency
     init(inMemory: Bool = false) {
         container = NSPersistentContainer(name: "SPA")
         if inMemory {

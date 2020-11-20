@@ -7,25 +7,6 @@
 
 import Foundation
 
-
-let projectNameValidationTag = 1
-let programmingLanguageValidationTag = 2
-let inputAvgAnnualSalaryValidationTag = 3
-let teamSizeValidationTag = 4;
-let ncSlocValidationTag = 5
-let reqDesEffortValidationTag = 6
-let devEffortValidationTag = 7
-let findDefectEffortValidationTag = 8
-let reworkEffortValidationTag = 9
-let issueCountValidationTag = 10
-let postReleaseIndicatorTag = 11
-
-
-extension String {
-    
-}
-
-
 //+
 // Validate Input Parameters
 //-

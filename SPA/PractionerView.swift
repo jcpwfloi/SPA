@@ -7,19 +7,19 @@
 
 import SwiftUI
 
+//This is the practitioner screen
+
 struct PractionerView: View {
-    @EnvironmentObject var viewState: ViewState
+    @EnvironmentObject var sharedModel:SharedModel //The global state that contaains the current SPAModel
     
-    @State var metrics :[(String, Double?, String?)] = []
     var body: some View {
-        
         VStack(alignment:.leading) {
-            let tags = viewState.model!.practionerTags
+            let tags = practionerTags
             Form {
                 Section(header: Text("Details")) {
+                    //Generate the list of outputs for the screen
                     ForEach(tags.indices) {
-                        OutputView(name: tags[$0], text: viewState.model!.dict[tags[$0]] ?? ""
-                        )
+                        OutputView(name: tags[$0], text: sharedModel.model!.dict[tags[$0]] ?? "")
                     }
                 }
             }
