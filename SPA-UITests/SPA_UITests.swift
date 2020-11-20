@@ -39,6 +39,12 @@ class SPA_UITests: XCTestCase {
         let password = app.secureTextFields["Password"]
         let loginButton = app.buttons["Login"]
         let clearButton = app.buttons["Clear"]
+        
+        let registerButton = app.buttons["Register"]
+        registerButton.tap()
+        
+        app.tapCoordinate(at: CGPoint(x: 100.0, y: 100.0))
+        
         //test log in
         username.tap()
         username.typeText("abc")
@@ -136,5 +142,14 @@ class SPA_UITests: XCTestCase {
         //Test Derived Input
         app.tabBars.buttons.element(boundBy: 0).tap()
         
+    }
+}
+
+extension XCUIApplication {
+    func tapCoordinate(at point: CGPoint) {
+        let normalized = coordinate(withNormalizedOffset: .zero)
+        let offset = CGVector(dx: point.x, dy: point.y)
+        let coordinate = normalized.withOffset(offset)
+        coordinate.tap()
     }
 }
