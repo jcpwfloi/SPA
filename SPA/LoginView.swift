@@ -96,6 +96,7 @@ struct LoginView: View {
             .foregroundColor(.gray)
             .frame(width: 100, height: 40)
             .cornerRadius(15.0)
+            .accessibilityIdentifier("Clear")
         
         //the clear button that clears the registration form
         let formClearButton =

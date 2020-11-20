@@ -136,8 +136,5 @@ class SPA_UITests: XCTestCase {
         //Test Derived Input
         app.tabBars.buttons.element(boundBy: 0).tap()
         
-        //LogOff This button currently exit the app
-        app.buttons["Logout"].tap()
-        //XCTAssertTrue(loginButton.exists)
     }
 }

@@ -53,6 +53,7 @@ struct ProjectListView: View{
             }){
                 Text("Dismiss")
             }.foregroundColor(.red)
+            .accessibilityIdentifier("Dismiss")
         
         //The add project popup
         let addProjectPopup =

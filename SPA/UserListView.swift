@@ -49,6 +49,7 @@ struct UserListView: View {
             }){
                 Text("Dismiss")
             }.foregroundColor(.red)
+            .accessibilityIdentifier("Dismiss")
         //the add user popup
         let addUserPopup =
             NavigationView {
@@ -73,7 +74,7 @@ struct UserListView: View {
                     .font(Font.system(.title).bold())
             }.sheet(isPresented: $showingAddSheet){
                 addUserPopup
-            }
+            }.accessibilityIdentifier("Add a user")
         
         //the log out button
         let logoutButton =
