@@ -65,12 +65,31 @@ struct LoginView: View {
         //password input field
         let passwordField =
             SecureField("Password", text: $password)
+<<<<<<< HEAD
+                .padding(.top, 20.0)
+                .frame(width: 400, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                .textFieldStyle(RoundedBorderTextFieldStyle()).accessibilityLabel("Password")
+            HStack {
+                Spacer().frame(width: 350, height: 50, alignment: .center)
+                Button("x  clear", action: {
+                    username=""
+                    password = ""
+                })
+                .font(.footnote)
+                .foregroundColor(.gray)
+                .frame(width: 100, height: 40)
+                .cornerRadius(15.0)
+                .accessibilityIdentifier("Clear")
+            }
+            Spacer().frame(width: 100, height: 10, alignment: .center)
+=======
             .padding(.top, 20.0)
             .frame(width: 400, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
             .textFieldStyle(RoundedBorderTextFieldStyle()).accessibilityLabel("Password")
         
         //login button
         let loginButton =
+>>>>>>> 6ccbbb512ad36b9df184b8078c25da60330986ec
             Button("Login", action: {
                 //calls login() in the usermodel
                 if !user.login(username, password, viewContext) {
@@ -194,6 +213,60 @@ struct LoginView: View {
             
             Divider().frame(width: 400).padding(10)
             HStack {
+<<<<<<< HEAD
+                Button("Register", action: {
+                    self.showingRegister.toggle()
+                }).accessibilityIdentifier("Register")
+                .font(.headline)
+                .foregroundColor(.white)
+                .frame(width: 100, height: 40, alignment: .center)
+                .background(Color.green)
+                .cornerRadius(15.0)
+                .sheet(isPresented: $showingRegister, content: {
+                    NavigationView {
+                        Form {
+                            Section(header: Text("UserInfo")) {
+                                HStack {
+                                    Text("Email").bold()
+                                    Spacer().frame(width: 30)
+                                    TextField("Email", text: $email)
+                                        .multilineTextAlignment(.trailing)
+                                }
+                                HStack {
+                                    Text("Password").bold()
+                                    Spacer().frame(width: 30)
+                                    SecureField("Password", text: $registerPassword)
+                                        .multilineTextAlignment(.trailing)
+                                }
+                                HStack {
+                                    Text("Confirm Password").bold()
+                                    Spacer().frame(width: 30)
+                                    SecureField("Confirm Password", text: $confirmPassword)
+                                        .multilineTextAlignment(.trailing)
+                                }
+                                HStack {
+                                    Text("Actual Name").bold()
+                                    Spacer().frame(width: 30)
+                                    TextField("Actual Name", text: $realname)
+                                        .multilineTextAlignment(.trailing)
+                                }
+                                HStack {
+                                    Text("Phone Number").bold()
+                                    Spacer().frame(width: 30)
+                                    TextField("Phone Number", text: $number)
+                                        .multilineTextAlignment(.trailing)
+                                }
+                            }
+                            Button("Clear", action: {
+                                email = ""
+                                registerPassword = ""
+                                confirmPassword = ""
+                                realname = ""
+                                number = ""
+                            })
+                            .foregroundColor(.red)
+                            .multilineTextAlignment(.center)
+=======
                 //the registration button on the main screen will show the popup
                 registrationButton
                     .sheet(isPresented: $showingRegister, content: {
@@ -203,6 +276,7 @@ struct LoginView: View {
                                 .navigationBarItems(trailing: popUpRegisterButton)
                         }.alert(isPresented: $showingRegisterAlert) {
                             registrationErrorAlert
+>>>>>>> 6ccbbb512ad36b9df184b8078c25da60330986ec
                         }
                     })
                 Spacer().frame(width: 30, height: 0, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)

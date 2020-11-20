@@ -7,15 +7,18 @@
 
 import SwiftUI
 
+//The entrance of the app
+
 @main
 struct SPAApp: App {
-    let persistenceController = PersistenceController.shared
+    let persistenceController = PersistenceController.shared //The persistence controller
     
     var body: some Scene {
         WindowGroup {
+            //passing two globaal states: shared model (wrapper around the SPAModel) and the user model
             ContentView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                .environmentObject(ViewState())
+                .environmentObject(SharedModel())
                 .environmentObject(UserModel())
         }
     }

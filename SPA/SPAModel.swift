@@ -9,7 +9,12 @@ import Foundation
 import SwiftUI
 import Combine
 
+//This is the core of the app.
+//It's a model that wraps the data related to a specific project
+//It also contains the output
+
 class SPAModel : ObservableObject {
+    //the real rawinput variables transformed from string
     var projectName = ""
     var projectId = ""
     var projectProgrammingLanguage = ""
@@ -22,18 +27,19 @@ class SPAModel : ObservableObject {
     var projectReworkEffort = 0.0
     var projectIssueCount = 0.0
     var projectPostReleaseIndicator = ""
+    
+    //the rawinput "items"
     @Published var rawInputTags : [RawInput]
-    @Published var derivedInputTags = ["Project Name","Project Team Size", "Labor Rate","Total Project Hours", "Development Effort Percent", "Test Effort Percent", "Programming Language Level","NumNcnbSloc", "Number of Issues","Est Number of Severity 1 Issues","Est Number of Severity 2 Issues","Est Number of Severity 3 Issues","Est Number of Severity 4 Issues"]
-    @Published var executiveTags = ["Project Name", "Project Productivity", "Software Quality", "Project Cost Effectiveness", "Development Process Effectiveness", "Est Project Failure Risk", "Est Project Delay Risk", "Est Software Poor Quality Risk", "Est Complete Early", "Est Complete On-Time", "Est Complete Delayed", "Est Complete Canceled", "Est Cost of Quality", "Est Total Project Cost", "Est Project Duration"]
-    @Published var managementTags = ["Project Name","Project Productivity", "Software Quality", "Project Cost Effectiveness", "Development Process Effectiveness", "Est Project Failure Risk", "Est Project Delay Risk", "Est Software Poor Quality Risk", "Est Complete Early", "Est Complete On-Time", "Est Complete Delayed", "Est Complete Canceled", "Est Cost of Quality", "Est Total Project Cost", "Est Project Duration"]
-    @Published var practionerTags = ["Programming Productivity", "Est PreRelease Defects", "Est PostRelease Defects", "Est Expected Delivered Defects", "Est PreRelease Design Defects", "Est PreRelease Code Defects", "Est PreRelease Test Defects", "Est PreRelease Documentation Defects", "Est PreRelease Bad-Fix Defects", "Software Defect Density", "Industry Average Defect Density", "Est Requirement Defects Left", "Est Design Defects Left", "Est Code Defects Left", "Est Security Defects Left", "Est User Documentation Defects Left", "Est Test Defects Left", "Est Bad-Fix Defects Left", "Est Defects per Engineering Month", "Est Software Inspection Productivity", "Est Quality Assurance Productivity", "Est Defects Leaked to Users", "Est Project Defect Removal Efficiency", "Est Capability-Based DRE", "Est US Average DRE", "Est US Average DDE", "Est Find Fix Effort Per Defect", "Est Avg Find Fix Effort per Defect", "Est Unit Cost per Engineering Month", "Est Find Fix Percentage", "Est Project Effort", "Est Requirements Effort", "Est Design Effort", "Est Code Effort", "Est Test Effort", "Est Total Project Staffing", "Est Requirements Staffing", "Est Design Staffing", "Est Coding Staffing", "Est Test Staffing", "Est Project Duration", "Est Design, Code & Test Cost", "Est Team Cost per Engineering Month", "Est Cost of Quality", "Est Technical Debt", "Est Total Development Cost", "Est Lifetime Maintenance Cost", "Est Total Project Cost", "Est Agile Invested Savings"]
-    var rawInputUnits = ["", "", " in US$", " Staff Persons", " NcSloc", " Ehrs", " Ehrs", " Ehrs", " Ehrs", " Issues", ""]
+    
+    //the output dictionary; use the attribute name to get the string results
     @Published var dict = [String : String]()
+
+    //the project object of the details
     var project : Project
-    var rawInputValidationTags = [projectNameValidationTag,programmingLanguageValidationTag,inputAvgAnnualSalaryValidationTag,teamSizeValidationTag,ncSlocValidationTag,reqDesEffortValidationTag,devEffortValidationTag,findDefectEffortValidationTag,reworkEffortValidationTag,issueCountValidationTag,postReleaseIndicatorTag]
+    
     
     init(project: Project) {
-        
+        //transform raw inputs into strings
         self.project = project
         let details = project.details!
         let projectName = details.projectName!
@@ -43,11 +49,12 @@ class SPAModel : ObservableObject {
         let inputNumNcSloc = details.projectNcSloc.toString()
         let inputReqDesEffort = details.projectReqDesEffort.toString()
         let inputDevEffort = details.projectDevEffort.toString()
-        
         let inputFindDefectEffort =  details.projectFindDefectEffort.toString()
         let inputReworkEffort = details.projectReworkEffort.toString()
         let inputIssueCount = details.projectIssueCount.toString()
         let inputPostReleaseIndicator = details.projectPostReleaseIndicator!
+        
+        //initialize the rawinput items
         rawInputTags =
             [RawInput(name: "Project Name", placeholder: "Project Name", textInput: projectName),
              RawInput(name: "Programming Language", placeholder: "Programming Language", textInput: programmingLanguage),
@@ -62,6 +69,7 @@ class SPAModel : ObservableObject {
              RawInput(name: "Post-Release Indicator", placeholder: "<'Y', 'N', 'y', 'n'>", textInput: inputPostReleaseIndicator)]
     }
     
+    //save the results back to project details persisted
     func save() {
         let details = project.details!
         details.projectName = projectName
@@ -77,6 +85,9 @@ class SPAModel : ObservableObject {
         details.projectPostReleaseIndicator = projectPostReleaseIndicator
     }
     
+    //calls the validation module to validate the results.
+    //returns -1 if successful
+    //returns the index of the first invalid input if not
     func validate() -> Int{
         for i in 0...rawInputTags.count-1{
             let result = validateInputParameter(rawInputTags[i].textInput, tag:rawInputValidationTags[i])
@@ -86,6 +97,7 @@ class SPAModel : ObservableObject {
                 return i
             }
             else{
+                //successful, get the validated resutls back
                 switch i {
                 case 0:
                     projectName = result!.1!
@@ -118,15 +130,21 @@ class SPAModel : ObservableObject {
         return -1
     }
     
+    //calls the computation engine
+    //returns the computed metrics if succesful
+    //returns nil if failed
     func compute() -> Bool{
+        //calls the computation engine
         let result = computeMetrics(projectId:projectId, projectProgrammingLanguage: projectProgrammingLanguage, projectAvgAnnualSalary: projectAvgAnnualSalary,projectTeamSize: projectTeamSize,projectNcSloc: projectNcSloc, projectReqDesEffort: projectReqDesEffort, projectDevEffort: projectDevEffort, projectFindDefectEffort: projectFindDefectEffort,projectReworkEffort: projectReworkEffort,projectIssueCount: projectIssueCount,projectPostReleaseIndicator: projectPostReleaseIndicator)
         
         if(result == nil) {
             return false
         }
         var metrics = result!
-        
+        //sort the results for translation
         metrics = metrics.sorted {$0.0 < $1.0}
+        
+        //translate from the metrics the real dictionary
         dict = computeMetrics(metrics)
         dict["Project Name"] = projectName
         return true
