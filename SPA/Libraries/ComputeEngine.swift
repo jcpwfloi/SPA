@@ -2237,7 +2237,7 @@ func computeMetrics(_ outputValues: [(String, Double?, String?)]) -> [String : S
             ans["Est Expected Delivered Defects"] = String(format:"%4.0f", tuple.1!) + " Dfs"
             
         case "OutputIndex14a":
-            ans["Est PreRelease Requirements Defects"] = String(format:"%4.0f", tuple.1!) + " Dfs"
+            ans["Est PreRelease Requirement Defects"] = String(format:"%4.0f", tuple.1!) + " Dfs"
             
         case "OutputIndex14b":
             ans["Est PreRelease Design Defects"] = String(format:"%4.0f", tuple.1!) + " Dfs"
