@@ -49,7 +49,7 @@ struct UserListView: View {
             }){
                 Text("Dismiss")
             }.foregroundColor(.red)
-            .accessibilityIdentifier("Dismiss")
+            .accessibilityIdentifier("UserDismiss")
         //the add user popup
         let addUserPopup =
             NavigationView {
@@ -103,15 +103,15 @@ struct UserListView: View {
                         Text("\(myUser.username ?? "Not set")")
                     }
                 }.onDelete(perform: deleteUser)
-            }
+            }.accessibilityIdentifier("UserList")
         
         //the delete alert
         let deleteAlert =
-            Alert(title: Text("Warning"), message: Text("Do you surely want to delete the item?"), primaryButton: .destructive(Text("Delete")) {
+            Alert(title: Text("Warning"), message: Text("Do you surely want to delete the item?"), primaryButton: .destructive(Text("Delete"), action:{
                 if let iset = deleteIndexSet {
                     removeUser(at: iset)
                 }
-            } , secondaryButton: .cancel())
+            }), secondaryButton: .cancel())
         
         //conditional views on the main screen
         NavigationView {

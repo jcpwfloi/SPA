@@ -21,6 +21,7 @@ struct ExecutiveView: View {
                     ForEach(tags.indices) {
                         OutputView(name: tags[$0], text: sharedModel.model!.dict[tags[$0]] ?? "")
                     }
+                    
                 }
             }
         }

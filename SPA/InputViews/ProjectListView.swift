@@ -53,7 +53,7 @@ struct ProjectListView: View{
             }){
                 Text("Dismiss")
             }.foregroundColor(.red)
-            .accessibilityIdentifier("Dismiss")
+            .accessibilityIdentifier("ProjectDismiss")
         
         //The add project popup
         let addProjectPopup =
@@ -110,6 +110,7 @@ struct ProjectListView: View{
                     }
                 }.onDelete(perform: deleteProject)
             }
+            .accessibilityIdentifier("ProjectList")
         
         //The alert to warn the user of deleting a project
         let deleteAlert =

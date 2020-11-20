@@ -49,6 +49,7 @@ struct LoginView: View {
             .alert(isPresented: $showingSuccessAlert) {
                 registrationSuccessfulAlert
             }
+            .accessibilityIdentifier("FormRegister")
         //title
         let title =
             Text("Software Project Analytics")
@@ -109,6 +110,7 @@ struct LoginView: View {
             })
             .foregroundColor(.red)
             .multilineTextAlignment(.center)
+            .accessibilityIdentifier("FormClear")
         
         //the registration form on the popup
         let registrationForm =
@@ -120,18 +122,21 @@ struct LoginView: View {
                         Spacer().frame(width: 30)
                         TextField("Email", text: $email)
                             .multilineTextAlignment(.trailing)
+                            .accessibilityIdentifier("EmailField")
                     }
                     HStack {
                         Text("Password").bold()
                         Spacer().frame(width: 30)
                         SecureField("Password", text: $registerPassword)
                             .multilineTextAlignment(.trailing)
+                            .accessibilityIdentifier("PasswordField")
                     }
                     HStack {
                         Text("Confirm Password").bold()
                         Spacer().frame(width: 30)
                         SecureField("Confirm Password", text: $confirmPassword)
                             .multilineTextAlignment(.trailing)
+                            .accessibilityIdentifier("ConfirmPasswordField")
                     }
                     
                     //Optional fields
@@ -161,6 +166,7 @@ struct LoginView: View {
             .frame(width: 135, height: 40, alignment: .center)
             .background(Color.blue)
             .cornerRadius(15.0)
+            .accessibilityIdentifier("Register")
         
         //the log off button
         let logoffButton =
