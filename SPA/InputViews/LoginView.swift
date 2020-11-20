@@ -80,7 +80,7 @@ struct LoginView: View {
             .font(.headline)
             .foregroundColor(.white)
             .frame(width: 300, height: 40)
-            .background(Color.blue)
+            .background(Color.green)
             .cornerRadius(15.0)
             .alert(isPresented: $showingAlert) {
                 incorrectAlert
@@ -159,7 +159,7 @@ struct LoginView: View {
             .font(.headline)
             .foregroundColor(.white)
             .frame(width: 135, height: 40, alignment: .center)
-            .background(Color.green)
+            .background(Color.blue)
             .cornerRadius(15.0)
         
         //the log off button
@@ -193,7 +193,7 @@ struct LoginView: View {
             }
             
             
-            Divider().frame(width: 400).padding(10)
+            Divider().frame(width: 400).padding(5)
             HStack {
                 //the registration button on the main screen will show the popup
                 registrationButton
