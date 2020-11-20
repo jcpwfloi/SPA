@@ -6,6 +6,7 @@
 //
 
 import XCTest
+@testable import SPA
 
 class SPA_UITests: XCTestCase {
     
@@ -43,7 +44,7 @@ class SPA_UITests: XCTestCase {
         let registerButton = app.buttons["Register"]
         registerButton.tap()
         
-        app.tapCoordinate(at: CGPoint(x: 100.0, y: 100.0))
+        app.tapCoordinate(at: CGPoint(x: 10.0, y: 50.0))
         
         //test log in
         username.tap()
