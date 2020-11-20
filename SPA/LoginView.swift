@@ -212,7 +212,11 @@ struct LoginView: View {
         }
     }
     
-    //check if the new app user profile is valid
+    /* @function check
+    // @params none
+    // @returns Bool
+    // Returns true if the register constraints meet our requirements.
+    */
     private func check() -> Bool{
         //check unmatched passwords
         if(registerPassword != confirmPassword){
@@ -242,8 +246,11 @@ struct LoginView: View {
         return true
     }
     
-    
-    //register the new app user
+    /* @function check
+    // @params none
+    // @returns none
+    // Given all state variables, generate a new user and save to the database.
+    */
     private func register() {
         if (!check()) {
             showingRegisterAlert = true
