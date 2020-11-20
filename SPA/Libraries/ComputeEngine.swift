@@ -2204,7 +2204,7 @@ func computeMetrics(_ outputValues: [(String, Double?, String?)]) -> [String : S
             ans["Programming Language Level"] = String(format:"%2.0f", tuple.1!)
             
         case "OutputIndex10":
-            ans["NumNcnbSloc"] = String(format:"%9.0f", tuple.1!)
+            ans["NumNonCommentNonBlankSLOC"] = String(format:"%9.0f", tuple.1!)
             
         case "OutputIndex10a":
             ans["Number of Issues"] = String(format:"%6.0f", tuple.1!)
